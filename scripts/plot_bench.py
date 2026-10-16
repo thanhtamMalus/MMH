@@ -25,12 +25,12 @@ def load(path):
     rows = []
     with open(path, newline="", encoding="utf-8") as f:
         for r in csv.DictReader(f):
-            for k in ("size_bytes", "ops_per_run", "runs"):
+            for k in ("size_bytes", "ops_per_block", "runs"):
                 r[k] = int(r[k])
             for k in r:
                 if k.startswith(("thr_", "lat_")):
                     r[k] = float(r[k])
-            r["aead"] = int(r["aead"])
+            r["aead"] = 1 if r["mode"] in ("ccm", "gcm") else 0
             rows.append(r)
     return rows
 
@@ -41,10 +41,10 @@ def size_label(b):
     return f"{b >> 10} KiB"
 
 
-def series(rows, op="encrypt"):
+def series(rows, op="enc"):
     d = defaultdict(list)
     for r in rows:
-        if r["op"] == op:
+        if r["dir"] == op:
             d[r["mode"]].append(r)
     for m in d:
         d[m].sort(key=lambda r: r["size_bytes"])
@@ -57,9 +57,8 @@ def line_plot(rows, key, ylabel, fname, outdir, title):
     for mode, rs in sorted(d.items()):
         x = [r["size_bytes"] for r in rs]
         y = [r[f"{key}_mean_" + ("MBps" if key == "thr" else "us")] for r in rs]
-        lo = [r[f"{key}_ci95_lo"] for r in rs]
-        hi = [r[f"{key}_ci95_hi"] for r in rs]
-        err = [[a - b for a, b in zip(y, lo)], [b - a for a, b in zip(y, hi)]]
+        e = [r[f"{key}_ci95"] for r in rs]
+        err = [e, e]
         plt.errorbar(x, y, yerr=err, marker="o", capsize=3, label=mode.upper())
     plt.xscale("log", base=2)
     if key == "lat":
@@ -85,7 +84,7 @@ def aead_bar(rows, outdir, title):
             if r["size_bytes"] == biggest:
                 modes.append(mode.upper())
                 vals.append(r["thr_mean_MBps"])
-                errs.append(r["thr_ci95_hi"] - r["thr_mean_MBps"])
+                errs.append(r["thr_ci95"])
                 colors.append("tab:red" if r["aead"] else "tab:blue")
     plt.figure(figsize=(8, 5))
     plt.bar(modes, vals, yerr=errs, capsize=4, color=colors)
@@ -126,7 +125,7 @@ def main():
     files = []
     for p in a.csv:
         rows = load(p)
-        files.append((f"{rows[0]['os']} ({os.path.basename(p)})", rows))
+        files.append((os.path.basename(p), rows))
     label, rows = files[0]
     line_plot(rows, "thr", "throughput (MB/s)", "throughput_vs_size.png", a.out, f"Throughput - {label}")
     line_plot(rows, "lat", "latency per operation (us)", "latency_vs_size.png", a.out, f"Latency - {label}")
