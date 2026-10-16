@@ -1,0 +1,66 @@
+Start testing: Oct 16 22:55 +07
+----------------------------------------------------------
+1/2 Testing: nist_kat
+1/2 Test: nist_kat
+Command: "/home/malus/Github/MMH/aestool/build/bin/aestool" "--kat" "/home/malus/Github/MMH/aestool/vectors/nist_vectors.json"
+Directory: /home/malus/Github/MMH/aestool/build
+"nist_kat" start time: Oct 16 22:55 +07
+Output:
+----------------------------------------------------------
+[PASS] SP800-38A F.1.1 ECB-AES128 (ecb)
+[PASS] SP800-38A F.2.1 CBC-AES128 (cbc)
+[PASS] SP800-38A F.2.5 CBC-AES256 (cbc)
+[PASS] SP800-38A F.3.13 CFB128-AES128 (cfb)
+[PASS] SP800-38A F.4.1 OFB-AES128 (ofb)
+[PASS] SP800-38A F.5.1 CTR-AES128 (ctr)
+[PASS] SP800-38A F.5.5 CTR-AES256 (ctr)
+[PASS] GCM Test Case 1 (AES-128, empty) (gcm)
+[PASS] GCM Test Case 2 (AES-128) (gcm)
+[PASS] GCM Test Case 3 (AES-128) (gcm)
+[PASS] GCM Test Case 4 (AES-128, with AAD) (gcm)
+[PASS] GCM Test Case 13 (AES-256, empty) (gcm)
+[PASS] GCM Test Case 14 (AES-256) (gcm)
+[PASS] NEGATIVE: GCM Test Case 2 with corrupted tag must be rejected (gcm)
+[PASS] CCM SP800-38C Example 1 (Tlen=4, Nlen=7) (ccm)
+[PASS] CCM SP800-38C Example 2 (Tlen=6, Nlen=8) (ccm)
+[PASS] CCM SP800-38C Example 3 (Tlen=8, Nlen=12) (ccm)
+
+==== KAT summary ====
+Mode       Total    Pass    Fail
+cbc            2       2       0
+ccm            3       3       0
+cfb            1       1       0
+ctr            2       2       0
+ecb            1       1       0
+gcm            7       7       0
+ofb            1       1       0
+TOTAL         17      17       0
+RESULT: ALL PASS
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"nist_kat" end time: Oct 16 22:55 +07
+"nist_kat" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: unit_tests
+2/2 Test: unit_tests
+Command: "/home/malus/Github/MMH/aestool/build/bin/aescore_tests"
+Directory: /home/malus/Github/MMH/aestool/build
+"unit_tests" start time: Oct 16 22:55 +07
+Output:
+----------------------------------------------------------
+Randomness seeded to: 4034987495
+===============================================================================
+All tests passed (126 assertions in 13 test cases)
+
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"unit_tests" end time: Oct 16 22:55 +07
+"unit_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 16 22:55 +07
