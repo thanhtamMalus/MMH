@@ -1,0 +1,91 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        // ---------------------------
+        // MinGW (g++) build task
+        // ---------------------------
+        {
+            "type": "shell",
+            "label": "C/C++: g++.exe build active file (MinGW)",
+            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g2",
+                "-O3",
+                "-DNDEBUG",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-D_WIN32_WINNT=0x0501",
+                "-lpthread",
+                "-L${workspaceFolder}\\lib",
+                "-l:libcryptopp.a",
+                "-I${workspaceFolder}\\include",
+                "-Wall"
+            ],
+            "options": {
+                "cwd": "C:\\msys64\\mingw64\\bin"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: MinGW g++.exe"
+        },
+
+        // ---------------------------
+        // MSVC (cl.exe) build task
+        // ---------------------------
+        {
+            "type": "shell",
+            "label": "C/C++: cl.exe build active file (MSVC)",
+            "command": "cl.exe",
+            "args": [
+                "/EHsc",
+                "/O2",
+                "/DNDEBUG",
+                "/Fe:${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${file}",
+                "/I", "${workspaceFolder}\\include",
+                "/link",
+                "/LIBPATH:${workspaceFolder}\\lib",
+                "cryptlib.lib"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$msCompile"],
+            "group": "build",
+            "detail": "compiler: Microsoft cl.exe"
+        },
+
+        // ---------------------------
+        // Clang++ build task
+        // ---------------------------
+        {
+            "type": "shell",
+            "label": "C/C++: clang++ build active file (Clang)",
+            "command": "C:\\msys64\\mingw64\\bin\\clang++.exe",
+            "args": [
+                "-std=c++17",
+                "-O3",
+                "-DNDEBUG",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-D_WIN32_WINNT=0x0501",
+                "-lpthread",
+                "-L${workspaceFolder}\\lib",
+                "-l:libcryptopp.a",
+                "-I${workspaceFolder}\\include",
+                "-Wall"
+            ],
+            "options": {
+                "cwd": "C:\\msys64\\mingw64\\bin"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build",
+            "detail": "compiler: Clang++"
+        }
+    ]
+}

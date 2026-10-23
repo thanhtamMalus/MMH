@@ -1,0 +1,57 @@
+1. Setup Visual Studio Code
+i) update packages
+sudo apt update
+sudo apt install software-properties-common apt-transport-https wget
+
+ii) import the Microsoft GPG key
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+
+iii) Enable Visual Studio Code repository
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+
+iv) install the Visual Studio Code
+sudo apt update
+sudo apt install code
+
+2. Setup c++ compile 
+
+i) Setup Ubuntu tool chains
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+
+ii) setup build-essential
+sudo apt install build-essential
+sudo apt-get install manpages-dev
+
+
+iii) Setup g++-10 and gcc-10 compile
+sudo apt-get install g++-10
+sudo apt-get install gcc-10
+
+iv) Check g++, gcc, g++-10, gcc-10
+g++-10 --version
+gcc-10 --version
+gcc --version
+g++ --version
+
+3. Compile cryptopp
+Chage directory to cryptopp code, then run
+
+make 
+make all
+make test
+
+
+4. Copy the cryptopp library 
+mkdir lib
+mkdir -p include/cryptopp
+cp *.h include/cryptopp
+cp *.a lib
+cp *.so lib
+
+Copy two folder include and lib to your C++ project
+Note: you may install the cryptopp library using command: make install
+the library will setup to the path: /usr/local
+
+MAC OS
+std::wcout.imbue(std::locale("en_US.UTF-8"));
