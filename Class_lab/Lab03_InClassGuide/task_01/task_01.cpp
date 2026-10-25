@@ -21,6 +21,7 @@ BIGNUM* readNumber(const string& prompt)
     if (!(cin >> s))
         return nullptr;
 
+        
     if (s.empty())
         return nullptr;
 

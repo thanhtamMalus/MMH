@@ -260,9 +260,9 @@ CMakeFiles/aestool.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/aescore_tests.dir/all: CMakeFiles/aescore_core.dir/all
-CMakeFiles/aescore_tests.dir/all: _deps/cryptopp_cmake-build/cryptopp/CMakeFiles/cryptopp.dir/all
 CMakeFiles/aescore_tests.dir/all: _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/all
 CMakeFiles/aescore_tests.dir/all: _deps/catch2-build/src/CMakeFiles/Catch2.dir/all
+CMakeFiles/aescore_tests.dir/all: _deps/cryptopp_cmake-build/cryptopp/CMakeFiles/cryptopp.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\aescore_tests.dir\build.make CMakeFiles/aescore_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\aescore_tests.dir\build.make CMakeFiles/aescore_tests.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\build\CMakeFiles --progress-num=40 "Built target aescore_tests"
