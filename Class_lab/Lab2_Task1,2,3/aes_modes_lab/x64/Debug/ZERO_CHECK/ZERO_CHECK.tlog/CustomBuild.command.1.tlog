@@ -1,0 +1,10 @@
+^D:\GITHUB\MMH\CLASS_LAB\LAB2_TASK1,2,3\AES_MODES_LAB\CMAKEFILES\93ED3AA0E38B3881A59B2A65BC703B6C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/GitHub/MMH/Class_lab/Lab2_Task1,2,3/aes_modes_lab -BD:/GitHub/MMH/Class_lab/Lab2_Task1,2,3/aes_modes_lab --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/GitHub/MMH/Class_lab/Lab2_Task1,2,3/aes_modes_lab/aes_modes_lab.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

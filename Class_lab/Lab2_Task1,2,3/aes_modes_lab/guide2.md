@@ -22,7 +22,7 @@ Môi trường: Windows 11. Trả lời/giải thích bằng tiếng Việt, cod
 - Clang/Clang++: ``
 
 # CẤU TRÚC THƯ MỤC MỤC TIÊU
-Lab-2/
+Lab2_task1,2,3/aes_modes_lab/
 ├── Build_msvc/  Build_gcc/  Build_clang/     (out-of-source, không commit)
 ├── cmake/        (toolchain files, helper modules, CPU-feature detection)
 ├── src/          (aes core, modes, C API)

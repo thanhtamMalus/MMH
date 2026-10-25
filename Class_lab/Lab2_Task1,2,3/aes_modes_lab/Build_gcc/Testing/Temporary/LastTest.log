@@ -1,0 +1,18 @@
+Start testing: Oct 25 12:33 SE Asia Standard Time
+----------------------------------------------------------
+1/1 Testing: aes_tests
+1/1 Test: aes_tests
+Command: "D:/GitHub/MMH/Class_lab/Lab2_Task1,2,3/aes_modes_lab/Build_gcc/aes_tests.exe"
+Directory: D:/GitHub/MMH/Class_lab/Lab2_Task1,2,3/aes_modes_lab/Build_gcc
+"aes_tests" start time: Oct 25 12:33 SE Asia Standard Time
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"aes_tests" end time: Oct 25 12:33 SE Asia Standard Time
+"aes_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 25 12:33 SE Asia Standard Time
