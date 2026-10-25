@@ -1,3 +1,0 @@
-aes_tests 0 0
----
-aes_tests

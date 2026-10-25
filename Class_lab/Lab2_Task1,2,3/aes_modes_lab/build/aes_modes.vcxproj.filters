@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\GitHub\MMH\Class_lab\Lab2_Task1,2,3\aes_modes_lab\src\aes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitHub\MMH\Class_lab\Lab2_Task1,2,3\aes_modes_lab\src\sp800_38a.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitHub\MMH\Class_lab\Lab2_Task1,2,3\aes_modes_lab\src\sp800_38c.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitHub\MMH\Class_lab\Lab2_Task1,2,3\aes_modes_lab\src\sp800_38d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\GitHub\MMH\Class_lab\Lab2_Task1,2,3\aes_modes_lab\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9CEF1A7E-A73A-3DB3-9EDD-914FC288DB2D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

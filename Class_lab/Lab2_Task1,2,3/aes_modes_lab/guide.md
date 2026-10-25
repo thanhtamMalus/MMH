@@ -1,122 +1,108 @@
-# Hướng dẫn biên dịch và chạy
+# Hướng Dẫn Biên Dịch Và Chạy Dự Án (Installation & Execution Guide)
 
-Dự án yêu cầu trình biên dịch hỗ trợ C++17 và CMake 3.16 trở lên. Tất cả lệnh dưới đây giả sử terminal đang ở thư mục `aes_modes_lab`.
+Tài liệu này hướng dẫn chi tiết cách cấu hình, biên dịch và chạy dự án trên cả hai hệ điều hành **Windows** và **Linux** (hoặc WSL), cũng như cách triển khai qua **Docker Container**.
 
-## Ubuntu / Linux
+---
 
-### 1. Cài công cụ cần thiết
+## 🛠 Yêu cầu hệ thống (Prerequisites)
 
-```bash
+| Công cụ | Windows | Linux (Ubuntu/Debian) |
+| :--- | :--- | :--- |
+| **C++ Compiler** | MSVC (Visual Studio 2019/202s2) | GCC / G++ (`g++ >= 9`) |
+| **Build System** | CMake >= 3.16 | CMake >= 3.16 |
+| **Scripting** | Python 3.x | Python 3.x |
+| **Container** | Docker Desktop | Docker Engine / Docker Desktop |
+
+---
+
+## 💻 1. Cài đặt và Chạy trên WINDOWS
+
+### Bước 1: Khởi tạo thư mục Build
+Mở **PowerShell** tại thư mục gốc `aes_modes_lab` và khởi tạo cấu hình CMake:
+
+```powershell
+cmake -S . -B build
+```
+### Bước 2: Biên dịch (Build)
+Biên dịch dự án ở chế độ Debug để xuất ra thư viện tĩnh .lib, thư viện động .dll và file test thực thi:
+
+```powershell
+cmake --build build --config Debug
+```
+Các file thành phẩm sẽ nằm tại build\Debug\:
+aes_modes.lib (Thư viện tĩnh)
+aes_modes.dll (Thư viện động)
+aes_tests.exe (File chạy test C++)
+
+### Bước 3: Chạy Unit Test C++
+```powershell
+.\build\Debug\aes_tests.exe
+```
+### Bước 4: Kiểm tra Python Binding (gọi file .dll)
+Chạy script Python để test import thư viện động C++:
+
+```powershell
+python python_binding/test_aes.py
+```
+## 🐧 2. Cài đặt và Chạy trên LINUX (Ubuntu / Debian / WSL)
+### Bước 1: Cài đặt các công cụ cần thiết (nếu chưa có)
+Mở Terminal (Bash) và chạy lệnh:
+
+```
 sudo apt update
-sudo apt install -y build-essential cmake g++
+sudo apt install -y build-essential cmake python3
 ```
+### Bước 2: Khởi tạo cấu hình CMake
+Tại thư mục gốc aes_modes_lab, chạy:
 
-### 2. Tạo thư mục build và cấu hình CMake
-
-```bash
-mkdir -p build
-cd build
-cmake ..
 ```
-
-Nếu muốn chỉ định trình biên dịch C++:
-
-```bash
-cmake -DCMAKE_CXX_COMPILER=g++ ..
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 ```
+Bước 3: Biên dịch (Build)
+Chạy Make để biên dịch dự án:
 
-### 3. Biên dịch
-
-```bash
-cmake --build . --parallel
 ```
-
-### 4. Chạy bộ kiểm thử
-
-```bash
-./aes_tests
+cmake --build build --parallel
 ```
+Các file thành phẩm sẽ nằm tại build/:
+libaes_modes.a (Thư viện tĩnh Linux)
+libaes_modes.so (Thư viện động Linux)
+aes_tests (File chạy test C++)
 
-Hoặc chạy bằng CTest:
-
-```bash
-ctest --output-on-failure
+### Bước 4: Chạy Unit Test C++
 ```
+./build/aes_tests
+```
+### Bước 5: Kiểm tra Python Binding (gọi file .so)
+Cần khai báo đường dẫn chứa file .so cho hệ thống trước khi chạy Python:
 
-## Windows
+```
+export LD_LIBRARY_PATH=$(pwd)/build:$LD_LIBRARY_PATH
+python3 python_binding/test_aes.py
+```
+## 🐳 3. Đóng gói và Chạy bằng DOCKER (Cross-Platform)
+Cách này hoạt động giống hệt nhau trên cả Windows và Linux mà không cần cài đặt môi trường C++.
 
-### Cách 1: PowerShell hoặc CMD với CMake và compiler native
+### Bước 1: Build Docker Image
+Chạy lệnh đóng gói (Docker sẽ tự động biên dịch sang môi trường Linux và kiểm thử):
 
-Cài CMake và một compiler C++17. Có thể dùng MinGW-w64/GCC, Clang hoặc Visual Studio Build Tools/MSVC. Mở terminal trong thư mục `aes_modes_lab`, rồi tạo thư mục build:
+```
+docker build -t aes-modes-lab .
+```
+### Bước 2: Chạy Container
+```
+docker run --rm aes-modes-lab
+```
+## 🧹 Dọn dẹp File rác (Clean Up)
+Để xóa toàn bộ file tạm sinh ra trong quá trình build:
 
+### Trên Windows (PowerShell):
 ```powershell
-New-Item -ItemType Directory -Force build
-Set-Location build
+Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue
+```
+### Trên Linux (Bash):
+```
+rm -rf build
 ```
 
-#### MinGW Makefiles (GCC)
 
-```powershell
-cmake -G "MinGW Makefiles" ..
-cmake --build .
-.\aes_tests.exe
-```
-
-Hoặc chạy test qua CTest:
-
-```powershell
-ctest --output-on-failure
-```
-
-#### Visual Studio / MSVC
-
-```powershell
-cmake ..
-cmake --build . --config Release
-.\Release\aes_tests.exe
-```
-
-Với generator MSVC một cấu hình khác, file thực thi có thể nằm trong `Debug`; chạy đúng cấu hình đã build, ví dụ `.\Debug\aes_tests.exe`. CTest vẫn có thể chạy từ thư mục build:
-
-```powershell
-ctest -C Release --output-on-failure
-```
-
-Nếu dùng Clang với generator MinGW, chỉ định compiler khi cấu hình (đảm bảo `clang++` đã nằm trong `PATH`):
-
-```powershell
-cmake -G "MinGW Makefiles" -DCMAKE_CXX_COMPILER=clang++ ..
-cmake --build .
-.\aes_tests.exe
-```
-
-### Cách 2: Windows Terminal với WSL (Ubuntu)
-
-Cài WSL/Ubuntu nếu chưa có, mở Ubuntu từ Windows Terminal, rồi chuyển đến vị trí dự án trên ổ Windows. Ví dụ, nếu dự án ở `D:\work\aes_modes_lab`:
-
-```bash
-cd /mnt/d/work/aes_modes_lab
-sudo apt update
-sudo apt install -y build-essential cmake g++
-mkdir -p build
-cd build
-cmake ..
-cmake --build . --parallel
-./aes_tests
-```
-
-Chạy toàn bộ kiểm thử bằng CTest:
-
-```bash
-ctest --output-on-failure
-```
-
-## Kết quả mong đợi
-
-Khi thành công, executable in:
-
-```text
-All AES mode tests passed.
-```
-
-Nếu kiểm thử thất bại, chương trình in `Test failure:` cùng mô tả lỗi và trả mã thoát khác 0. `ctest --output-on-failure` sẽ hiển thị chẩn đoán tương ứng.

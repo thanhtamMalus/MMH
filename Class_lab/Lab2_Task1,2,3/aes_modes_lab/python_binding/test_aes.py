@@ -5,9 +5,9 @@ import platform
 # Xác định đường dẫn file DLL / SO
 base_dir = os.path.dirname(os.path.abspath(__file__))
 if platform.system() == "Windows":
-    lib_path = os.path.join(base_dir, "../Build_gcc/aes_modes.dll")
+    lib_path = os.path.join(base_dir, "../build/Debug/aes_modes.dll")
 else:
-    lib_path = os.path.join(base_dir, "../Build_gcc/libaes_modes.so")
+    lib_path = os.path.join(base_dir, "../build/libaes_modes.so")
 
 # Nạp thư viện C++ vào Python
 try:
