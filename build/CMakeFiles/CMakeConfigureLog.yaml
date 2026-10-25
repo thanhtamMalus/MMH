@@ -1,0 +1,1445 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 6.2.9200 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/msys64/ucrt64/bin/g++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+      
+      The CXX compiler identification is GNU, found in:
+        D:/GitHub/MMH/build/CMakeFiles/3.29.2/CompilerIdCXX/a.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:64 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-9vqlgn"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-9vqlgn"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-9vqlgn'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_7fd26/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_7fd26.dir\\build.make CMakeFiles/cmTC_7fd26.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-9vqlgn'
+        Building CXX object CMakeFiles/cmTC_7fd26.dir/CMakeCXXCompilerABI.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -v -o CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj -c C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=C:\\msys64\\ucrt64\\bin\\g++.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../gcc-16.2.0/configure --prefix=/ucrt64 --with-sysroot=/ucrt64 --with-build-sysroot=D:/M/msys64/ucrt64 --with-local-prefix=/local --with-native-system-header-dir=/include --libexecdir=/ucrt64/lib --enable-bootstrap --enable-checking=release --with-arch=nocona --with-tune=generic --enable-mingw-wildcard --enable-languages=c,c++,ada,fortran,lto,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-tls --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-backtrace=yes --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-libgomp --disable-libssp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/ucrt64 --with-mpfr=/ucrt64 --with-mpc=/ucrt64 --with-isl=/ucrt64 --with-pkgversion='Rev4, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-libstdcxx-zoneinfo=yes --disable-libstdcxx-debug --enable-lto --enable-plugin --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 16.2.0 (Rev4, Built by MSYS2 project) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7fd26.dir\\'
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/cc1plus.exe -quiet -v -iprefix C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/ -isysroot C:/msys64/ucrt64/bin/../../ucrt64 -D_REENTRANT C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_7fd26.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o C:\\Users\\Malus\\AppData\\Local\\Temp\\ccLQrj3H.s
+        GNU C++20 (Rev4, Built by MSYS2 project) version 16.2.0 (x86_64-w64-mingw32)
+        	compiled by GNU C version 16.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.4.1, isl version isl-0.28-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/include"
+        ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0"
+        ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/x86_64-w64-mingw32"
+        ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/backward"
+        ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/include"
+        ignoring nonexistent directory "C:/msys64/ucrt64/bin/../../ucrt64/local/include"
+        ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed"
+        ignoring nonexistent directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/x86_64-w64-mingw32
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/backward
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed
+         C:/msys64/ucrt64/bin/../../ucrt64/include
+        End of search list.
+        Compiler executable checksum: 8e7d23a9ab3cd610d3de06f65ae43541
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7fd26.dir\\'
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\Malus\\AppData\\Local\\Temp\\ccLQrj3H.s
+        GNU assembler version 2.47 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.47.20260726
+        COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/;C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../;C:/msys64/ucrt64/bin/../../ucrt64/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_7fd26.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_7fd26.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_7fd26.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_7fd26.dir/objects.a @CMakeFiles\\cmTC_7fd26.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_7fd26.dir/objects.a -Wl,--no-whole-archive -o cmTC_7fd26.exe -Wl,--out-implib,libcmTC_7fd26.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        Using built-in specs.
+        COLLECT_GCC=C:\\msys64\\ucrt64\\bin\\g++.exe
+        COLLECT_LTO_WRAPPER=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../gcc-16.2.0/configure --prefix=/ucrt64 --with-sysroot=/ucrt64 --with-build-sysroot=D:/M/msys64/ucrt64 --with-local-prefix=/local --with-native-system-header-dir=/include --libexecdir=/ucrt64/lib --enable-bootstrap --enable-checking=release --with-arch=nocona --with-tune=generic --enable-mingw-wildcard --enable-languages=c,c++,ada,fortran,lto,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-tls --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-backtrace=yes --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-libgomp --disable-libssp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/ucrt64 --with-mpfr=/ucrt64 --with-mpc=/ucrt64 --with-isl=/ucrt64 --with-pkgversion='Rev4, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-libstdcxx-zoneinfo=yes --disable-libstdcxx-debug --enable-lto --enable-plugin --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 16.2.0 (Rev4, Built by MSYS2 project) 
+        COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/;C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../;C:/msys64/ucrt64/bin/../../ucrt64/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7fd26.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_7fd26.'
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\cc96HyGa.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/msys64/ucrt64/bin/../../ucrt64 -m i386pep -Bdynamic -o cmTC_7fd26.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../.. -LC:/msys64/ucrt64/bin/../../ucrt64/lib -v --whole-archive CMakeFiles\\cmTC_7fd26.dir/objects.a --no-whole-archive --out-implib libcmTC_7fd26.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o
+        collect2 version 16.2.0
+        C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\cc96HyGa.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/msys64/ucrt64/bin/../../ucrt64 -m i386pep -Bdynamic -o cmTC_7fd26.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../.. -LC:/msys64/ucrt64/bin/../../ucrt64/lib -v --whole-archive CMakeFiles\\cmTC_7fd26.dir/objects.a --no-whole-archive --out-implib libcmTC_7fd26.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o
+        GNU ld (GNU Binutils) 2.47.20260726
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7fd26.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_7fd26.'
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-9vqlgn'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:134 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0]
+          add: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/x86_64-w64-mingw32]
+          add: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/backward]
+          add: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include]
+          add: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed]
+          add: [C:/msys64/ucrt64/bin/../../ucrt64/include]
+        end of search list found
+        collapse include dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0] ==> [C:/msys64/ucrt64/include/c++/16.2.0]
+        collapse include dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/x86_64-w64-mingw32] ==> [C:/msys64/ucrt64/include/c++/16.2.0/x86_64-w64-mingw32]
+        collapse include dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/backward] ==> [C:/msys64/ucrt64/include/c++/16.2.0/backward]
+        collapse include dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/include]
+        collapse include dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed]
+        collapse include dir [C:/msys64/ucrt64/bin/../../ucrt64/include] ==> [C:/msys64/ucrt64/include]
+        implicit include dirs: [C:/msys64/ucrt64/include/c++/16.2.0;C:/msys64/ucrt64/include/c++/16.2.0/x86_64-w64-mingw32;C:/msys64/ucrt64/include/c++/16.2.0/backward;C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/include;C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed;C:/msys64/ucrt64/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:170 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-9vqlgn']
+        ignore line: []
+        ignore line: [Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_7fd26/fast]
+        ignore line: [C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_7fd26.dir\\build.make CMakeFiles/cmTC_7fd26.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-9vqlgn']
+        ignore line: [Building CXX object CMakeFiles/cmTC_7fd26.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [C:\\msys64\\ucrt64\\bin\\g++.exe   -v -o CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj -c C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:\\msys64\\ucrt64\\bin\\g++.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../gcc-16.2.0/configure --prefix=/ucrt64 --with-sysroot=/ucrt64 --with-build-sysroot=D:/M/msys64/ucrt64 --with-local-prefix=/local --with-native-system-header-dir=/include --libexecdir=/ucrt64/lib --enable-bootstrap --enable-checking=release --with-arch=nocona --with-tune=generic --enable-mingw-wildcard --enable-languages=c,c++,ada,fortran,lto,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-tls --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-backtrace=yes --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-libgomp --disable-libssp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/ucrt64 --with-mpfr=/ucrt64 --with-mpc=/ucrt64 --with-isl=/ucrt64 --with-pkgversion='Rev4, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-libstdcxx-zoneinfo=yes --disable-libstdcxx-debug --enable-lto --enable-plugin --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 16.2.0 (Rev4  Built by MSYS2 project) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7fd26.dir\\']
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/cc1plus.exe -quiet -v -iprefix C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/ -isysroot C:/msys64/ucrt64/bin/../../ucrt64 -D_REENTRANT C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_7fd26.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o C:\\Users\\Malus\\AppData\\Local\\Temp\\ccLQrj3H.s]
+        ignore line: [GNU C++20 (Rev4  Built by MSYS2 project) version 16.2.0 (x86_64-w64-mingw32)]
+        ignore line: [	compiled by GNU C version 16.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.4.1  isl version isl-0.28-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/include"]
+        ignore line: [ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0"]
+        ignore line: [ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/x86_64-w64-mingw32"]
+        ignore line: [ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/backward"]
+        ignore line: [ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/include"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/ucrt64/bin/../../ucrt64/local/include"]
+        ignore line: [ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0]
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/x86_64-w64-mingw32]
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../include/c++/16.2.0/backward]
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include]
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed]
+        ignore line: [ C:/msys64/ucrt64/bin/../../ucrt64/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: 8e7d23a9ab3cd610d3de06f65ae43541]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7fd26.dir\\']
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\Malus\\AppData\\Local\\Temp\\ccLQrj3H.s]
+        ignore line: [GNU assembler version 2.47 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.47.20260726]
+        ignore line: [COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../]
+        ignore line: [C:/msys64/ucrt64/bin/../../ucrt64/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7fd26.dir\\CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_7fd26.exe]
+        ignore line: [C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_7fd26.dir\\link.txt --verbose=1]
+        ignore line: [C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_7fd26.dir/objects.a]
+        ignore line: [C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_7fd26.dir/objects.a @CMakeFiles\\cmTC_7fd26.dir\\objects1.rsp]
+        ignore line: [C:\\msys64\\ucrt64\\bin\\g++.exe  -v -Wl -v -Wl --whole-archive CMakeFiles\\cmTC_7fd26.dir/objects.a -Wl --no-whole-archive -o cmTC_7fd26.exe -Wl --out-implib libcmTC_7fd26.dll.a -Wl --major-image-version 0 --minor-image-version 0]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:\\msys64\\ucrt64\\bin\\g++.exe]
+        ignore line: [COLLECT_LTO_WRAPPER=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../gcc-16.2.0/configure --prefix=/ucrt64 --with-sysroot=/ucrt64 --with-build-sysroot=D:/M/msys64/ucrt64 --with-local-prefix=/local --with-native-system-header-dir=/include --libexecdir=/ucrt64/lib --enable-bootstrap --enable-checking=release --with-arch=nocona --with-tune=generic --enable-mingw-wildcard --enable-languages=c,c++,ada,fortran,lto,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-tls --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-backtrace=yes --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-libgomp --disable-libssp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/ucrt64 --with-mpfr=/ucrt64 --with-mpc=/ucrt64 --with-isl=/ucrt64 --with-pkgversion='Rev4, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-libstdcxx-zoneinfo=yes --disable-libstdcxx-debug --enable-lto --enable-plugin --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 16.2.0 (Rev4  Built by MSYS2 project) ]
+        ignore line: [COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../]
+        ignore line: [C:/msys64/ucrt64/bin/../../ucrt64/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7fd26.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_7fd26.']
+        link line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\cc96HyGa.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/msys64/ucrt64/bin/../../ucrt64 -m i386pep -Bdynamic -o cmTC_7fd26.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../.. -LC:/msys64/ucrt64/bin/../../ucrt64/lib -v --whole-archive CMakeFiles\\cmTC_7fd26.dir/objects.a --no-whole-archive --out-implib libcmTC_7fd26.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/collect2.exe] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll] ==> ignore
+          arg [-plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\cc96HyGa.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+          arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [--sysroot=C:/msys64/ucrt64/bin/../../ucrt64] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_7fd26.exe] ==> ignore
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o] ==> obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o]
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o] ==> obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib]
+          arg [-LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib] ==> dir [C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../..] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../..]
+          arg [-LC:/msys64/ucrt64/bin/../../ucrt64/lib] ==> dir [C:/msys64/ucrt64/bin/../../ucrt64/lib]
+          arg [-v] ==> ignore
+          arg [--whole-archive] ==> ignore
+          arg [CMakeFiles\\cmTC_7fd26.dir/objects.a] ==> ignore
+          arg [--no-whole-archive] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_7fd26.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o] ==> obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o]
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o] ==> obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+        ignore line: [collect2 version 16.2.0]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\cc96HyGa.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/msys64/ucrt64/bin/../../ucrt64 -m i386pep -Bdynamic -o cmTC_7fd26.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../.. -LC:/msys64/ucrt64/bin/../../ucrt64/lib -v --whole-archive CMakeFiles\\cmTC_7fd26.dir/objects.a --no-whole-archive --out-implib libcmTC_7fd26.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+        linker tool for 'CXX': C:/msys64/ucrt64/x86_64-w64-mingw32/bin/ld.exe
+        remove lib [msvcrt]
+        remove lib [msvcrt]
+        collapse obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o] ==> [C:/msys64/ucrt64/lib/crt2.o]
+        collapse obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o]
+        collapse obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o] ==> [C:/msys64/ucrt64/lib/default-manifest.o]
+        collapse obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc] ==> [C:/msys64/ucrt64/lib/gcc]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [C:/msys64/ucrt64/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib] ==> [C:/msys64/ucrt64/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib] ==> [C:/msys64/ucrt64/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib] ==> [C:/msys64/ucrt64/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../..] ==> [C:/msys64/ucrt64/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../../ucrt64/lib] ==> [C:/msys64/ucrt64/lib]
+        implicit libs: [stdc++;mingw32;gcc_s;gcc;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;mingw32;gcc_s;gcc;mingwex;kernel32]
+        implicit objs: [C:/msys64/ucrt64/lib/crt2.o;C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o;C:/msys64/ucrt64/lib/default-manifest.o;C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+        implicit dirs: [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0;C:/msys64/ucrt64/lib/gcc;C:/msys64/ucrt64/x86_64-w64-mingw32/lib;C:/msys64/ucrt64/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:207 (cmake_determine_linker_id)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/msys64/ucrt64/x86_64-w64-mingw32/bin/ld.exe" "-v"
+      GNU ld (GNU Binutils) 2.47.20260726
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/CMakeLists.txt:53 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/msys64/ucrt64/bin/gcc.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+      
+      The C compiler identification is GNU, found in:
+        D:/GitHub/MMH/build/CMakeFiles/3.29.2/CompilerIdC/a.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1165 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/CMakeLists.txt:53 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      gcc.exe (Rev4, Built by MSYS2 project) 16.2.0
+      Copyright (C) 2026 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:64 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/CMakeLists.txt:53 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-um7auw"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-um7auw"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-um7auw'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_c8a9c/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_c8a9c.dir\\build.make CMakeFiles/cmTC_c8a9c.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-um7auw'
+        Building C object CMakeFiles/cmTC_c8a9c.dir/CMakeCCompilerABI.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj -c C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=C:\\msys64\\ucrt64\\bin\\gcc.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../gcc-16.2.0/configure --prefix=/ucrt64 --with-sysroot=/ucrt64 --with-build-sysroot=D:/M/msys64/ucrt64 --with-local-prefix=/local --with-native-system-header-dir=/include --libexecdir=/ucrt64/lib --enable-bootstrap --enable-checking=release --with-arch=nocona --with-tune=generic --enable-mingw-wildcard --enable-languages=c,c++,ada,fortran,lto,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-tls --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-backtrace=yes --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-libgomp --disable-libssp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/ucrt64 --with-mpfr=/ucrt64 --with-mpc=/ucrt64 --with-isl=/ucrt64 --with-pkgversion='Rev4, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-libstdcxx-zoneinfo=yes --disable-libstdcxx-debug --enable-lto --enable-plugin --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 16.2.0 (Rev4, Built by MSYS2 project) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_c8a9c.dir\\'
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/cc1.exe -quiet -v -iprefix C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/ -isysroot C:/msys64/ucrt64/bin/../../ucrt64 -D_REENTRANT C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_c8a9c.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o C:\\Users\\Malus\\AppData\\Local\\Temp\\cciBGRaP.s
+        GNU C23 (Rev4, Built by MSYS2 project) version 16.2.0 (x86_64-w64-mingw32)
+        	compiled by GNU C version 16.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.4.1, isl version isl-0.28-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/include"
+        ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/include"
+        ignoring nonexistent directory "C:/msys64/ucrt64/bin/../../ucrt64/local/include"
+        ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed"
+        ignoring nonexistent directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed
+         C:/msys64/ucrt64/bin/../../ucrt64/include
+        End of search list.
+        Compiler executable checksum: 2022b23b8b7d9c73833c7865f9b2aa21
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_c8a9c.dir\\'
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Malus\\AppData\\Local\\Temp\\cciBGRaP.s
+        GNU assembler version 2.47 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.47.20260726
+        COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/;C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../;C:/msys64/ucrt64/bin/../../ucrt64/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.'
+        Linking C executable cmTC_c8a9c.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_c8a9c.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_c8a9c.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_c8a9c.dir/objects.a @CMakeFiles\\cmTC_c8a9c.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\gcc.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_c8a9c.dir/objects.a -Wl,--no-whole-archive -o cmTC_c8a9c.exe -Wl,--out-implib,libcmTC_c8a9c.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        Using built-in specs.
+        COLLECT_GCC=C:\\msys64\\ucrt64\\bin\\gcc.exe
+        COLLECT_LTO_WRAPPER=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../gcc-16.2.0/configure --prefix=/ucrt64 --with-sysroot=/ucrt64 --with-build-sysroot=D:/M/msys64/ucrt64 --with-local-prefix=/local --with-native-system-header-dir=/include --libexecdir=/ucrt64/lib --enable-bootstrap --enable-checking=release --with-arch=nocona --with-tune=generic --enable-mingw-wildcard --enable-languages=c,c++,ada,fortran,lto,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-tls --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-backtrace=yes --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-libgomp --disable-libssp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/ucrt64 --with-mpfr=/ucrt64 --with-mpc=/ucrt64 --with-isl=/ucrt64 --with-pkgversion='Rev4, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-libstdcxx-zoneinfo=yes --disable-libstdcxx-debug --enable-lto --enable-plugin --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 16.2.0 (Rev4, Built by MSYS2 project) 
+        COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/;C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../;C:/msys64/ucrt64/bin/../../ucrt64/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8a9c.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_c8a9c.'
+         C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\ccYYC8Da.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/msys64/ucrt64/bin/../../ucrt64 -m i386pep -Bdynamic -o cmTC_c8a9c.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../.. -LC:/msys64/ucrt64/bin/../../ucrt64/lib -v --whole-archive CMakeFiles\\cmTC_c8a9c.dir/objects.a --no-whole-archive --out-implib libcmTC_c8a9c.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o
+        collect2 version 16.2.0
+        C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\ccYYC8Da.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/msys64/ucrt64/bin/../../ucrt64 -m i386pep -Bdynamic -o cmTC_c8a9c.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../.. -LC:/msys64/ucrt64/bin/../../ucrt64/lib -v --whole-archive CMakeFiles\\cmTC_c8a9c.dir/objects.a --no-whole-archive --out-implib libcmTC_c8a9c.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o
+        GNU ld (GNU Binutils) 2.47.20260726
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8a9c.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_c8a9c.'
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-um7auw'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:134 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/CMakeLists.txt:53 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include]
+          add: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed]
+          add: [C:/msys64/ucrt64/bin/../../ucrt64/include]
+        end of search list found
+        collapse include dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/include]
+        collapse include dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed]
+        collapse include dir [C:/msys64/ucrt64/bin/../../ucrt64/include] ==> [C:/msys64/ucrt64/include]
+        implicit include dirs: [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/include;C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed;C:/msys64/ucrt64/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:170 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/CMakeLists.txt:53 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-um7auw']
+        ignore line: []
+        ignore line: [Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_c8a9c/fast]
+        ignore line: [C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_c8a9c.dir\\build.make CMakeFiles/cmTC_c8a9c.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-um7auw']
+        ignore line: [Building C object CMakeFiles/cmTC_c8a9c.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:\\msys64\\ucrt64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj -c C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:\\msys64\\ucrt64\\bin\\gcc.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../gcc-16.2.0/configure --prefix=/ucrt64 --with-sysroot=/ucrt64 --with-build-sysroot=D:/M/msys64/ucrt64 --with-local-prefix=/local --with-native-system-header-dir=/include --libexecdir=/ucrt64/lib --enable-bootstrap --enable-checking=release --with-arch=nocona --with-tune=generic --enable-mingw-wildcard --enable-languages=c,c++,ada,fortran,lto,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-tls --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-backtrace=yes --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-libgomp --disable-libssp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/ucrt64 --with-mpfr=/ucrt64 --with-mpc=/ucrt64 --with-isl=/ucrt64 --with-pkgversion='Rev4, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-libstdcxx-zoneinfo=yes --disable-libstdcxx-debug --enable-lto --enable-plugin --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 16.2.0 (Rev4  Built by MSYS2 project) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_c8a9c.dir\\']
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/cc1.exe -quiet -v -iprefix C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/ -isysroot C:/msys64/ucrt64/bin/../../ucrt64 -D_REENTRANT C:\\Strawberry\\c\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_c8a9c.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o C:\\Users\\Malus\\AppData\\Local\\Temp\\cciBGRaP.s]
+        ignore line: [GNU C23 (Rev4  Built by MSYS2 project) version 16.2.0 (x86_64-w64-mingw32)]
+        ignore line: [	compiled by GNU C version 16.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.4.1  isl version isl-0.28-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/include"]
+        ignore line: [ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/include"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/ucrt64/bin/../../ucrt64/local/include"]
+        ignore line: [ignoring duplicate directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/ucrt64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include]
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/include-fixed]
+        ignore line: [ C:/msys64/ucrt64/bin/../../ucrt64/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: 2022b23b8b7d9c73833c7865f9b2aa21]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_c8a9c.dir\\']
+        ignore line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Malus\\AppData\\Local\\Temp\\cciBGRaP.s]
+        ignore line: [GNU assembler version 2.47 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.47.20260726]
+        ignore line: [COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../]
+        ignore line: [C:/msys64/ucrt64/bin/../../ucrt64/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_c8a9c.dir\\CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_c8a9c.exe]
+        ignore line: [C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_c8a9c.dir\\link.txt --verbose=1]
+        ignore line: [C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_c8a9c.dir/objects.a]
+        ignore line: [C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_c8a9c.dir/objects.a @CMakeFiles\\cmTC_c8a9c.dir\\objects1.rsp]
+        ignore line: [C:\\msys64\\ucrt64\\bin\\gcc.exe  -v -Wl -v -Wl --whole-archive CMakeFiles\\cmTC_c8a9c.dir/objects.a -Wl --no-whole-archive -o cmTC_c8a9c.exe -Wl --out-implib libcmTC_c8a9c.dll.a -Wl --major-image-version 0 --minor-image-version 0]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:\\msys64\\ucrt64\\bin\\gcc.exe]
+        ignore line: [COLLECT_LTO_WRAPPER=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../gcc-16.2.0/configure --prefix=/ucrt64 --with-sysroot=/ucrt64 --with-build-sysroot=D:/M/msys64/ucrt64 --with-local-prefix=/local --with-native-system-header-dir=/include --libexecdir=/ucrt64/lib --enable-bootstrap --enable-checking=release --with-arch=nocona --with-tune=generic --enable-mingw-wildcard --enable-languages=c,c++,ada,fortran,lto,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-tls --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-backtrace=yes --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-libgomp --disable-libssp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/ucrt64 --with-mpfr=/ucrt64 --with-mpc=/ucrt64 --with-isl=/ucrt64 --with-pkgversion='Rev4, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-libstdcxx-zoneinfo=yes --disable-libstdcxx-debug --enable-lto --enable-plugin --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 16.2.0 (Rev4  Built by MSYS2 project) ]
+        ignore line: [COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../]
+        ignore line: [C:/msys64/ucrt64/bin/../../ucrt64/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8a9c.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_c8a9c.']
+        link line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\ccYYC8Da.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/msys64/ucrt64/bin/../../ucrt64 -m i386pep -Bdynamic -o cmTC_c8a9c.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../.. -LC:/msys64/ucrt64/bin/../../ucrt64/lib -v --whole-archive CMakeFiles\\cmTC_c8a9c.dir/objects.a --no-whole-archive --out-implib libcmTC_c8a9c.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/collect2.exe] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll] ==> ignore
+          arg [-plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\ccYYC8Da.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+          arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [--sysroot=C:/msys64/ucrt64/bin/../../ucrt64] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_c8a9c.exe] ==> ignore
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o] ==> obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o]
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o] ==> obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib]
+          arg [-LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib] ==> dir [C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib]
+          arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../..] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../..]
+          arg [-LC:/msys64/ucrt64/bin/../../ucrt64/lib] ==> dir [C:/msys64/ucrt64/bin/../../ucrt64/lib]
+          arg [-v] ==> ignore
+          arg [--whole-archive] ==> ignore
+          arg [CMakeFiles\\cmTC_c8a9c.dir/objects.a] ==> ignore
+          arg [--no-whole-archive] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_c8a9c.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lgcc_eh] ==> lib [gcc_eh]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lgcc_eh] ==> lib [gcc_eh]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o] ==> obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o]
+          arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o] ==> obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+        ignore line: [collect2 version 16.2.0]
+        ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Malus\\AppData\\Local\\Temp\\ccYYC8Da.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/msys64/ucrt64/bin/../../ucrt64 -m i386pep -Bdynamic -o cmTC_c8a9c.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../../ucrt64/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../.. -LC:/msys64/ucrt64/bin/../../ucrt64/lib -v --whole-archive CMakeFiles\\cmTC_c8a9c.dir/objects.a --no-whole-archive --out-implib libcmTC_c8a9c.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+        linker tool for 'C': C:/msys64/ucrt64/x86_64-w64-mingw32/bin/ld.exe
+        remove lib [gcc_eh]
+        remove lib [msvcrt]
+        remove lib [gcc_eh]
+        remove lib [msvcrt]
+        collapse obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/crt2.o] ==> [C:/msys64/ucrt64/lib/crt2.o]
+        collapse obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o]
+        collapse obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib/default-manifest.o] ==> [C:/msys64/ucrt64/lib/default-manifest.o]
+        collapse obj [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0] ==> [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc] ==> [C:/msys64/ucrt64/lib/gcc]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [C:/msys64/ucrt64/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../lib] ==> [C:/msys64/ucrt64/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../../ucrt64/lib/../lib] ==> [C:/msys64/ucrt64/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../../../x86_64-w64-mingw32/lib] ==> [C:/msys64/ucrt64/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.2.0/../../..] ==> [C:/msys64/ucrt64/lib]
+        collapse library dir [C:/msys64/ucrt64/bin/../../ucrt64/lib] ==> [C:/msys64/ucrt64/lib]
+        implicit libs: [mingw32;gcc;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;mingw32;gcc;mingwex;kernel32]
+        implicit objs: [C:/msys64/ucrt64/lib/crt2.o;C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/crtbegin.o;C:/msys64/ucrt64/lib/default-manifest.o;C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0/crtend.o]
+        implicit dirs: [C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/16.2.0;C:/msys64/ucrt64/lib/gcc;C:/msys64/ucrt64/x86_64-w64-mingw32/lib;C:/msys64/ucrt64/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:207 (cmake_determine_linker_id)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/CMakeLists.txt:53 (project)"
+    message: |
+      Running the C compiler's linker: "C:/msys64/ucrt64/x86_64-w64-mingw32/bin/ld.exe" "-v"
+      GNU ld (GNU Binutils) 2.47.20260726
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:219 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_8ea9a/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_8ea9a.dir\\build.make CMakeFiles/cmTC_8ea9a.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_8ea9a.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_8ea9a.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_8ea9a.dir\\build.make:77: CMakeFiles/cmTC_8ea9a.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_8ea9a/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:220 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_902b5/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_902b5.dir\\build.make CMakeFiles/cmTC_902b5.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_902b5.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_902b5.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_902b5.dir\\build.make:77: CMakeFiles/cmTC_902b5.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_902b5/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:221 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_80316/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_80316.dir\\build.make CMakeFiles/cmTC_80316.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_80316.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_80316.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_80316.dir\\build.make:77: CMakeFiles/cmTC_80316.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_80316/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:222 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_1c249/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_1c249.dir\\build.make CMakeFiles/cmTC_1c249.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_1c249.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_1c249.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_1c249.dir\\build.make:77: CMakeFiles/cmTC_1c249.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_1c249/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:223 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_bd93a/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_bd93a.dir\\build.make CMakeFiles/cmTC_bd93a.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_bd93a.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_bd93a.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_bd93a.dir\\build.make:77: CMakeFiles/cmTC_bd93a.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_bd93a/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:224 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_9c389/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_9c389.dir\\build.make CMakeFiles/cmTC_9c389.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_9c389.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_9c389.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_9c389.dir\\build.make:77: CMakeFiles/cmTC_9c389.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_9c389/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:225 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_bdbf0/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_bdbf0.dir\\build.make CMakeFiles/cmTC_bdbf0.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_bdbf0.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_bdbf0.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_bdbf0.dir\\build.make:77: CMakeFiles/cmTC_bdbf0.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_bdbf0/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:226 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_fbf2b/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_fbf2b.dir\\build.make CMakeFiles/cmTC_fbf2b.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_fbf2b.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_fbf2b.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_fbf2b.dir\\build.make:77: CMakeFiles/cmTC_fbf2b.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_fbf2b/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:227 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_57939/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_57939.dir\\build.make CMakeFiles/cmTC_57939.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_57939.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_57939.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_57939.dir\\build.make:77: CMakeFiles/cmTC_57939.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_57939/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:474 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_6e19b/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_6e19b.dir\\build.make CMakeFiles/cmTC_6e19b.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_6e19b.dir/test_x86_sse2.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -msse2 -o CMakeFiles\\cmTC_6e19b.dir\\test_x86_sse2.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_sse2.cpp
+        Linking CXX executable cmTC_6e19b.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_6e19b.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_6e19b.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_6e19b.dir/objects.a @CMakeFiles\\cmTC_6e19b.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_6e19b.dir/objects.a -Wl,--no-whole-archive -o cmTC_6e19b.exe -Wl,--out-implib,libcmTC_6e19b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_6e19b.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:483 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_d9836/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_d9836.dir\\build.make CMakeFiles/cmTC_d9836.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_d9836.dir/test_x86_sse3.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -msse3 -o CMakeFiles\\cmTC_d9836.dir\\test_x86_sse3.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_sse3.cpp
+        Linking CXX executable cmTC_d9836.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_d9836.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_d9836.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_d9836.dir/objects.a @CMakeFiles\\cmTC_d9836.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_d9836.dir/objects.a -Wl,--no-whole-archive -o cmTC_d9836.exe -Wl,--out-implib,libcmTC_d9836.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_d9836.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:490 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_50275/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_50275.dir\\build.make CMakeFiles/cmTC_50275.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_50275.dir/test_x86_ssse3.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -mssse3 -o CMakeFiles\\cmTC_50275.dir\\test_x86_ssse3.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_ssse3.cpp
+        Linking CXX executable cmTC_50275.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_50275.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_50275.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_50275.dir/objects.a @CMakeFiles\\cmTC_50275.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_50275.dir/objects.a -Wl,--no-whole-archive -o cmTC_50275.exe -Wl,--out-implib,libcmTC_50275.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_50275.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:509 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_9e65c/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_9e65c.dir\\build.make CMakeFiles/cmTC_9e65c.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_9e65c.dir/test_x86_sse41.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -msse4.1 -o CMakeFiles\\cmTC_9e65c.dir\\test_x86_sse41.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_sse41.cpp
+        Linking CXX executable cmTC_9e65c.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_9e65c.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_9e65c.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_9e65c.dir/objects.a @CMakeFiles\\cmTC_9e65c.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_9e65c.dir/objects.a -Wl,--no-whole-archive -o cmTC_9e65c.exe -Wl,--out-implib,libcmTC_9e65c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_9e65c.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:521 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_dec9d/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_dec9d.dir\\build.make CMakeFiles/cmTC_dec9d.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_dec9d.dir/test_x86_sse42.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -msse4.2 -o CMakeFiles\\cmTC_dec9d.dir\\test_x86_sse42.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_sse42.cpp
+        Linking CXX executable cmTC_dec9d.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_dec9d.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_dec9d.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_dec9d.dir/objects.a @CMakeFiles\\cmTC_dec9d.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_dec9d.dir/objects.a -Wl,--no-whole-archive -o cmTC_dec9d.exe -Wl,--out-implib,libcmTC_dec9d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_dec9d.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:532 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_d79fb/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_d79fb.dir\\build.make CMakeFiles/cmTC_d79fb.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_d79fb.dir/test_x86_clmul.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -mpclmul -o CMakeFiles\\cmTC_d79fb.dir\\test_x86_clmul.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_clmul.cpp
+        Linking CXX executable cmTC_d79fb.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_d79fb.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_d79fb.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_d79fb.dir/objects.a @CMakeFiles\\cmTC_d79fb.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_d79fb.dir/objects.a -Wl,--no-whole-archive -o cmTC_d79fb.exe -Wl,--out-implib,libcmTC_d79fb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_d79fb.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:543 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_a9e49/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a9e49.dir\\build.make CMakeFiles/cmTC_a9e49.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_a9e49.dir/test_x86_aes.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -maes -o CMakeFiles\\cmTC_a9e49.dir\\test_x86_aes.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_aes.cpp
+        Linking CXX executable cmTC_a9e49.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_a9e49.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_a9e49.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_a9e49.dir/objects.a @CMakeFiles\\cmTC_a9e49.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_a9e49.dir/objects.a -Wl,--no-whole-archive -o cmTC_a9e49.exe -Wl,--out-implib,libcmTC_a9e49.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_a9e49.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:554 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_7a5ee/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_7a5ee.dir\\build.make CMakeFiles/cmTC_7a5ee.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_7a5ee.dir/test_x86_avx.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -mavx -o CMakeFiles\\cmTC_7a5ee.dir\\test_x86_avx.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_avx.cpp
+        Linking CXX executable cmTC_7a5ee.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_7a5ee.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_7a5ee.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_7a5ee.dir/objects.a @CMakeFiles\\cmTC_7a5ee.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_7a5ee.dir/objects.a -Wl,--no-whole-archive -o cmTC_7a5ee.exe -Wl,--out-implib,libcmTC_7a5ee.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_7a5ee.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:563 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_ddde5/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_ddde5.dir\\build.make CMakeFiles/cmTC_ddde5.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_ddde5.dir/test_x86_avx2.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -mavx2 -o CMakeFiles\\cmTC_ddde5.dir\\test_x86_avx2.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_avx2.cpp
+        Linking CXX executable cmTC_ddde5.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_ddde5.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_ddde5.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_ddde5.dir/objects.a @CMakeFiles\\cmTC_ddde5.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_ddde5.dir/objects.a -Wl,--no-whole-archive -o cmTC_ddde5.exe -Wl,--out-implib,libcmTC_ddde5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_ddde5.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:169 (try_compile)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:575 (check_compile_link_option)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "COMMAND_SUCCESS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_46bf2/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_46bf2.dir\\build.make CMakeFiles/cmTC_46bf2.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_46bf2.dir/test_x86_sha.cpp.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe   -std=c++17   -msha -o CMakeFiles\\cmTC_46bf2.dir\\test_x86_sha.cpp.obj -c D:\\GitHub\\MMH\\build\\_deps\\cryptopp_src-src\\TestPrograms\\test_x86_sha.cpp
+        Linking CXX executable cmTC_46bf2.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_46bf2.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_46bf2.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_46bf2.dir/objects.a @CMakeFiles\\cmTC_46bf2.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_46bf2.dir/objects.a -Wl,--no-whole-archive -o cmTC_46bf2.exe -Wl,--out-implib,libcmTC_46bf2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_46bf2.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:1402 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-8m5kq5"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-8m5kq5"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake;D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-8m5kq5'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_a8efd/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a8efd.dir\\build.make CMakeFiles/cmTC_a8efd.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-8m5kq5'
+        Building C object CMakeFiles/cmTC_a8efd.dir/src.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles\\cmTC_a8efd.dir\\src.c.obj -c D:\\GitHub\\MMH\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8m5kq5\\src.c
+        Linking C executable cmTC_a8efd.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_a8efd.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_a8efd.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_a8efd.dir/objects.a @CMakeFiles\\cmTC_a8efd.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_a8efd.dir/objects.a -Wl,--no-whole-archive -o cmTC_a8efd.exe -Wl,--out-implib,libcmTC_a8efd.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_a8efd.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-8m5kq5'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Strawberry/c/share/cmake-3.29/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "D:/GitHub/MMH/build/_deps/catch2-src/CMake/CatchMiscFunctions.cmake:12 (check_cxx_compiler_flag)"
+      - "D:/GitHub/MMH/build/_deps/catch2-src/CMake/CatchMiscFunctions.cmake:119 (add_cxx_flag_if_supported_to_targets)"
+      - "D:/GitHub/MMH/build/_deps/catch2-src/src/CMakeLists.txt:352 (add_build_reproducibility_settings)"
+    checks:
+      - "Performing Test HAVE_FLAG__ffile_prefix_map_D__GitHub_MMH_build__deps_catch2_src__"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-u6nsdv"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-u6nsdv"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/catch2-src/extras;D:/GitHub/MMH/build/_deps/catch2-src/CMake"
+    buildResult:
+      variable: "HAVE_FLAG__ffile_prefix_map_D__GitHub_MMH_build__deps_catch2_src__"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-u6nsdv'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_b7327/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_b7327.dir\\build.make CMakeFiles/cmTC_b7327.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-u6nsdv'
+        Building CXX object CMakeFiles/cmTC_b7327.dir/src.cxx.obj
+        C:\\msys64\\ucrt64\\bin\\g++.exe -DHAVE_FLAG__ffile_prefix_map_D__GitHub_MMH_build__deps_catch2_src__  -std=c++17   -ffile-prefix-map=D:/GitHub/MMH/build/_deps/catch2-src/= -o CMakeFiles\\cmTC_b7327.dir\\src.cxx.obj -c D:\\GitHub\\MMH\\build\\CMakeFiles\\CMakeScratch\\TryCompile-u6nsdv\\src.cxx
+        Linking CXX executable cmTC_b7327.exe
+        C:\\Strawberry\\c\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_b7327.dir\\link.txt --verbose=1
+        C:\\Strawberry\\c\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_b7327.dir/objects.a
+        C:\\msys64\\ucrt64\\bin\\ar.exe qc CMakeFiles\\cmTC_b7327.dir/objects.a @CMakeFiles\\cmTC_b7327.dir\\objects1.rsp
+        C:\\msys64\\ucrt64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_b7327.dir/objects.a -Wl,--no-whole-archive -o cmTC_b7327.exe -Wl,--out-implib,libcmTC_b7327.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_b7327.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeScratch/TryCompile-u6nsdv'
+        
+      exitCode: 0
+...

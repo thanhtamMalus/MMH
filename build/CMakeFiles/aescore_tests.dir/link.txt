@@ -1,0 +1,3 @@
+C:\Strawberry\c\bin\cmake.exe -E rm -f CMakeFiles\aescore_tests.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\aescore_tests.dir/objects.a @CMakeFiles\aescore_tests.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -g -static-libgcc -static-libstdc++ -Wl,--whole-archive CMakeFiles\aescore_tests.dir/objects.a -Wl,--no-whole-archive -o bin\aescore_tests.exe -Wl,--out-implib,lib\libaescore_tests.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\aescore_tests.dir\linkLibs.rsp

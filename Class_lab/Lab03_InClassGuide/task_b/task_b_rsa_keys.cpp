@@ -113,6 +113,7 @@ static void part1EducationalRsa(int bits) {
         allOk &= BN_cmp(r, m) == 0;
         OK1(BN_mod_exp(r, c, dLam, n, ctx));
         allOk &= BN_cmp(r, m) == 0;
+
         // CRT (Garner): m1 = c^dP mod p, m2 = c^dQ mod q,
         // h = qInv (m1 - m2) mod p, m = m2 + h q
         OK1(BN_mod_exp(m1, c, dP, p, ctx));
@@ -146,7 +147,7 @@ static EVP_PKEY* generateKey(int bits) {
     return key;
 }
 
-    static void writeKeyFiles(EVP_PKEY* key) {
+static void writeKeyFiles(EVP_PKEY* key) {
     // PEM private key: PKCS#8 "BEGIN PRIVATE KEY", no encryption (lab only)
     BIO* b = BIO_new_file("private.pem", "wb"); NOTNULL(b);
     OK1(PEM_write_bio_PrivateKey(b, key, nullptr, nullptr, 0, nullptr, nullptr));
