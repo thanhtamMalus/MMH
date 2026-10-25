@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b_rsa_keys.cpp" "CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj" "gcc" "CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj.d"
+  "D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b_rsa_keys.cpp" "CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj" "gcc" "CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

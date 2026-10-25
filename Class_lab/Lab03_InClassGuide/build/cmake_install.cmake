@@ -1,4 +1,4 @@
-# Install script for directory: D:/GitHub/MMH/Class_lab/Lab03
+# Install script for directory: D:/GitHub/MMH/Class_lab/Lab03_InClassGuide
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/GitHub/MMH/Class_lab/Lab03/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

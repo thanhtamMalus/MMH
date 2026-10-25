@@ -52,10 +52,10 @@ RM = C:\Strawberry\c\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\GitHub\MMH\Class_lab\Lab03
+CMAKE_SOURCE_DIR = D:\GitHub\MMH\Class_lab\Lab03_InClassGuide
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\GitHub\MMH\Class_lab\Lab03\build
+CMAKE_BINARY_DIR = D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/task_b.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/task_b.dir/flags.make
 
 CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: CMakeFiles/task_b.dir/flags.make
 CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: CMakeFiles/task_b.dir/includes_CXX.rsp
-CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b_rsa_keys.cpp
+CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b_rsa_keys.cpp
 CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: CMakeFiles/task_b.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj -MF CMakeFiles\task_b.dir\task_b\task_b_rsa_keys.cpp.obj.d -o CMakeFiles\task_b.dir\task_b\task_b_rsa_keys.cpp.obj -c D:\GitHub\MMH\Class_lab\Lab03\task_b\task_b_rsa_keys.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj -MF CMakeFiles\task_b.dir\task_b\task_b_rsa_keys.cpp.obj.d -o CMakeFiles\task_b.dir\task_b\task_b_rsa_keys.cpp.obj -c D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\task_b\task_b_rsa_keys.cpp
 
 CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.i"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\GitHub\MMH\Class_lab\Lab03\task_b\task_b_rsa_keys.cpp > CMakeFiles\task_b.dir\task_b\task_b_rsa_keys.cpp.i
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\task_b\task_b_rsa_keys.cpp > CMakeFiles\task_b.dir\task_b\task_b_rsa_keys.cpp.i
 
 CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.s"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\GitHub\MMH\Class_lab\Lab03\task_b\task_b_rsa_keys.cpp -o CMakeFiles\task_b.dir\task_b\task_b_rsa_keys.cpp.s
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\task_b\task_b_rsa_keys.cpp -o CMakeFiles\task_b.dir\task_b\task_b_rsa_keys.cpp.s
 
 # Object files for target task_b
 task_b_OBJECTS = \
@@ -90,17 +90,17 @@ task_b_OBJECTS = \
 # External object files for target task_b
 task_b_EXTERNAL_OBJECTS =
 
-D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b.exe: CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj
-D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b.exe: CMakeFiles/task_b.dir/build.make
-D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b.exe: C:/Strawberry/c/lib/libcrypto.a
-D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b.exe: CMakeFiles/task_b.dir/linkLibs.rsp
-D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b.exe: CMakeFiles/task_b.dir/objects1.rsp
-D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b.exe: CMakeFiles/task_b.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable D:\GitHub\MMH\Class_lab\Lab03\task_b\task_b.exe"
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b.exe: CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b.exe: CMakeFiles/task_b.dir/build.make
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b.exe: C:/Strawberry/c/lib/libcrypto.a
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b.exe: CMakeFiles/task_b.dir/linkLibs.rsp
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b.exe: CMakeFiles/task_b.dir/objects1.rsp
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b.exe: CMakeFiles/task_b.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\task_b\task_b.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\task_b.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/task_b.dir/build: D:/GitHub/MMH/Class_lab/Lab03/task_b/task_b.exe
+CMakeFiles/task_b.dir/build: D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_b/task_b.exe
 .PHONY : CMakeFiles/task_b.dir/build
 
 CMakeFiles/task_b.dir/clean:
@@ -108,6 +108,6 @@ CMakeFiles/task_b.dir/clean:
 .PHONY : CMakeFiles/task_b.dir/clean
 
 CMakeFiles/task_b.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\GitHub\MMH\Class_lab\Lab03 D:\GitHub\MMH\Class_lab\Lab03 D:\GitHub\MMH\Class_lab\Lab03\build D:\GitHub\MMH\Class_lab\Lab03\build D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles\task_b.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\GitHub\MMH\Class_lab\Lab03_InClassGuide D:\GitHub\MMH\Class_lab\Lab03_InClassGuide D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles\task_b.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/task_b.dir/depend
 

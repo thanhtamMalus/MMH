@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: g++.exe build active file (MinGW)",
+            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g2", //optional debug info
+                "-O3", //optimize for speed
+                "-DNDEBUG", //define NDEBUG to disable assert() checks
+                "${file}", //input file
+                "-o", //output file
+                "${fileDirname}\\${fileBasenameNoExtension}gcc.exe", //output file name
+                "-D_WIN32_WINNT=0x0501", //define Windows version for compatibility
+                "-ID:\\cryptolib2026\\openssl402\\include", //include directory for OpenSSL headers
+                "-LD:\\cryptolib2026\\openssl402\\lib\\VC\\x64\\MDd", //link with OpenSSL library
+                "-l:libcrypto.lib", //link with OpenSSL crypto library
+                "-l:libssl.lib", //link with OpenSSL SSL library
+                "-lpthread", //link with pthread library
+                "-lws2_32", //link with Windows Sockets library
+                "-lcrypt32", //link with Windows Cryptography library
+                "-lbcrypt", //link with Windows bcrypt library
+                "-Wall" //enable all warnings
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: MinGW g++.exe"
+        }
+    ]
+}

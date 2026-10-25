@@ -94,6 +94,7 @@ static void part1EducationalRsa(int bits) {
     check("e * d_phi = 1 (mod phi)", BN_is_one(t));
     OK1(BN_mod_mul(t, e, dLam, lambda, ctx));
     check("e * d_lambda = 1 (mod lambda)", BN_is_one(t));
+
     // d_phi and d_lambda agree modulo lambda; since phi = gcd(p-1,q-1) * lambda,
     // d_phi may equal d_lambda + k*lambda. Both exponents decrypt correctly.
     OK1(BN_nnmod(t, dPhi, lambda, ctx));

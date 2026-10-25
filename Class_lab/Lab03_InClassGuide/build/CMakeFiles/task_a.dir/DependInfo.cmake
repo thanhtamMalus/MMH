@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/GitHub/MMH/Class_lab/Lab03/task_a/task_a_bignum.cpp" "CMakeFiles/task_a.dir/task_a/task_a_bignum.cpp.obj" "gcc" "CMakeFiles/task_a.dir/task_a/task_a_bignum.cpp.obj.d"
+  "D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/task_a/task_a_bignum.cpp" "CMakeFiles/task_a.dir/task_a/task_a_bignum.cpp.obj" "gcc" "CMakeFiles/task_a.dir/task_a/task_a_bignum.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

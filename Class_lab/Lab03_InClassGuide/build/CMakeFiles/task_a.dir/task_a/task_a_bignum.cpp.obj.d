@@ -1,5 +1,5 @@
 CMakeFiles/task_a.dir/task_a/task_a_bignum.cpp.obj: \
- D:\GitHub\MMH\Class_lab\Lab03\task_a\task_a_bignum.cpp \
+ D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\task_a\task_a_bignum.cpp \
  C:/msys64/mingw64/include/c++/16.2.0/cstdio \
  C:/msys64/mingw64/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++config.h \
  C:/msys64/mingw64/include/c++/16.2.0/x86_64-w64-mingw32/bits/os_defines.h \
@@ -184,7 +184,7 @@ CMakeFiles/task_a.dir/task_a/task_a_bignum.cpp.obj: \
  C:/msys64/mingw64/include/c++/16.2.0/bits/stl_vector.h \
  C:/msys64/mingw64/include/c++/16.2.0/bits/stl_bvector.h \
  C:/msys64/mingw64/include/c++/16.2.0/bits/vector.tcc \
- D:/GitHub/MMH/Class_lab/Lab03/common.h \
+ D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/common.h \
  C:/msys64/mingw64/include/c++/16.2.0/iomanip \
  C:/msys64/mingw64/include/c++/16.2.0/locale \
  C:/msys64/mingw64/include/c++/16.2.0/bits/locale_facets_nonio.h \

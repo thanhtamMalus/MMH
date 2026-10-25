@@ -1,5 +1,5 @@
 CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: \
- D:\GitHub\MMH\Class_lab\Lab03\task_b\task_b_rsa_keys.cpp \
+ D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\task_b\task_b_rsa_keys.cpp \
  C:/Strawberry/c/include/openssl/bio.h \
  C:/Strawberry/c/include/openssl/macros.h \
  C:/Strawberry/c/include/openssl/opensslconf.h \
@@ -215,7 +215,7 @@ CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: \
  C:/msys64/mingw64/include/c++/16.2.0/bits/ostream.tcc \
  C:/msys64/mingw64/include/c++/16.2.0/istream \
  C:/msys64/mingw64/include/c++/16.2.0/bits/istream.tcc \
- D:/GitHub/MMH/Class_lab/Lab03/common.h \
+ D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/common.h \
  C:/msys64/mingw64/include/c++/16.2.0/iomanip \
  C:/msys64/mingw64/include/c++/16.2.0/locale \
  C:/msys64/mingw64/include/c++/16.2.0/bits/locale_facets_nonio.h \

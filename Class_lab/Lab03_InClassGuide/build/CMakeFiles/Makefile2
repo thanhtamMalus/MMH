@@ -53,10 +53,10 @@ RM = C:\Strawberry\c\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\GitHub\MMH\Class_lab\Lab03
+CMAKE_SOURCE_DIR = D:\GitHub\MMH\Class_lab\Lab03_InClassGuide
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\GitHub\MMH\Class_lab\Lab03\build
+CMAKE_BINARY_DIR = D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = D:\GitHub\MMH\Class_lab\Lab03\build
 # The main recursive "all" target.
 all: CMakeFiles/task_a.dir/all
 all: CMakeFiles/task_b.dir/all
+all: CMakeFiles/task_01.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,6 +74,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/task_a.dir/clean
 clean: CMakeFiles/task_b.dir/clean
+clean: CMakeFiles/task_01.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -82,14 +84,14 @@ clean: CMakeFiles/task_b.dir/clean
 CMakeFiles/task_a.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_a.dir\build.make CMakeFiles/task_a.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_a.dir\build.make CMakeFiles/task_a.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles --progress-num=1,2 "Built target task_a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=3,4 "Built target task_a"
 .PHONY : CMakeFiles/task_a.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/task_a.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/task_a.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 0
 .PHONY : CMakeFiles/task_a.dir/rule
 
 # Convenience name for target.
@@ -108,14 +110,14 @@ CMakeFiles/task_a.dir/clean:
 CMakeFiles/task_b.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_b.dir\build.make CMakeFiles/task_b.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_b.dir\build.make CMakeFiles/task_b.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles --progress-num=3,4 "Built target task_b"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=5,6 "Built target task_b"
 .PHONY : CMakeFiles/task_b.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/task_b.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/task_b.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 0
 .PHONY : CMakeFiles/task_b.dir/rule
 
 # Convenience name for target.
@@ -126,6 +128,32 @@ task_b: CMakeFiles/task_b.dir/rule
 CMakeFiles/task_b.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_b.dir\build.make CMakeFiles/task_b.dir/clean
 .PHONY : CMakeFiles/task_b.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/task_01.dir
+
+# All Build rule for target.
+CMakeFiles/task_01.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_01.dir\build.make CMakeFiles/task_01.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_01.dir\build.make CMakeFiles/task_01.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=1,2 "Built target task_01"
+.PHONY : CMakeFiles/task_01.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/task_01.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/task_01.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 0
+.PHONY : CMakeFiles/task_01.dir/rule
+
+# Convenience name for target.
+task_01: CMakeFiles/task_01.dir/rule
+.PHONY : task_01
+
+# clean rule for target.
+CMakeFiles/task_01.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_01.dir\build.make CMakeFiles/task_01.dir/clean
+.PHONY : CMakeFiles/task_01.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

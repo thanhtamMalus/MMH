@@ -56,10 +56,10 @@ RM = C:\Strawberry\c\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\GitHub\MMH\Class_lab\Lab03
+CMAKE_SOURCE_DIR = D:\GitHub\MMH\Class_lab\Lab03_InClassGuide
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\GitHub\MMH\Class_lab\Lab03\build
+CMAKE_BINARY_DIR = D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles D:\GitHub\MMH\Class_lab\Lab03\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -140,6 +140,43 @@ task_b: cmake_check_build_system
 task_b/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_b.dir\build.make CMakeFiles/task_b.dir/build
 .PHONY : task_b/fast
+
+#=============================================================================
+# Target rules for targets named task_01
+
+# Build rule for target.
+task_01: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 task_01
+.PHONY : task_01
+
+# fast build rule for target.
+task_01/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_01.dir\build.make CMakeFiles/task_01.dir/build
+.PHONY : task_01/fast
+
+task_01/task_01.obj: task_01/task_01.cpp.obj
+.PHONY : task_01/task_01.obj
+
+# target to build an object file
+task_01/task_01.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_01.dir\build.make CMakeFiles/task_01.dir/task_01/task_01.cpp.obj
+.PHONY : task_01/task_01.cpp.obj
+
+task_01/task_01.i: task_01/task_01.cpp.i
+.PHONY : task_01/task_01.i
+
+# target to preprocess a source file
+task_01/task_01.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_01.dir\build.make CMakeFiles/task_01.dir/task_01/task_01.cpp.i
+.PHONY : task_01/task_01.cpp.i
+
+task_01/task_01.s: task_01/task_01.cpp.s
+.PHONY : task_01/task_01.s
+
+# target to generate assembly for a file
+task_01/task_01.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_01.dir\build.make CMakeFiles/task_01.dir/task_01/task_01.cpp.s
+.PHONY : task_01/task_01.cpp.s
 
 task_a/task_a_bignum.obj: task_a/task_a_bignum.cpp.obj
 .PHONY : task_a/task_a_bignum.obj
@@ -197,8 +234,12 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... task_01
 	@echo ... task_a
 	@echo ... task_b
+	@echo ... task_01/task_01.obj
+	@echo ... task_01/task_01.i
+	@echo ... task_01/task_01.s
 	@echo ... task_a/task_a_bignum.obj
 	@echo ... task_a/task_a_bignum.i
 	@echo ... task_a/task_a_bignum.s

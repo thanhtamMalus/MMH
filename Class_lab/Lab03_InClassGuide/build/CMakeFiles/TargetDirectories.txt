@@ -1,4 +1,5 @@
-D:/GitHub/MMH/Class_lab/Lab03/build/CMakeFiles/task_a.dir
-D:/GitHub/MMH/Class_lab/Lab03/build/CMakeFiles/task_b.dir
-D:/GitHub/MMH/Class_lab/Lab03/build/CMakeFiles/edit_cache.dir
-D:/GitHub/MMH/Class_lab/Lab03/build/CMakeFiles/rebuild_cache.dir
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/build/CMakeFiles/task_a.dir
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/build/CMakeFiles/task_b.dir
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/build/CMakeFiles/task_01.dir
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/build/CMakeFiles/edit_cache.dir
+D:/GitHub/MMH/Class_lab/Lab03_InClassGuide/build/CMakeFiles/rebuild_cache.dir

@@ -27,4 +27,5 @@ endfunction()
 # Mỗi task chỉ cần một dòng
 add_task(task_a task_a/task_a_bignum.cpp)
 add_task(task_b task_b/task_b_rsa_keys.cpp)
+# add_task(task_01 task_01/task_01.cpp)
 # add_task(task_c task_c/task_c_xxx.cpp)
