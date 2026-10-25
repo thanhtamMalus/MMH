@@ -178,7 +178,6 @@
 # define COMPILER_VERSION_MINOR DEC(__open_xl_release__)
 # define COMPILER_VERSION_PATCH DEC(__open_xl_modification__)
 # define COMPILER_VERSION_TWEAK DEC(__open_xl_ptf_fix_level__)
-# define COMPILER_VERSION_INTERNAL_STR  __clang_version__
 
 
 #elif defined(__ibmxl__) && defined(__clang__)
@@ -283,13 +282,6 @@
 # define COMPILER_VERSION_MAJOR DEC(__ORANGEC_MAJOR__)
 # define COMPILER_VERSION_MINOR DEC(__ORANGEC_MINOR__)
 # define COMPILER_VERSION_PATCH DEC(__ORANGEC_PATCHLEVEL__)
-
-#elif defined(__RENESAS__)
-# define COMPILER_ID "Renesas"
-/* __RENESAS_VERSION__ = 0xVVRRPP00 */
-# define COMPILER_VERSION_MAJOR HEX(__RENESAS_VERSION__ >> 24 & 0xFF)
-# define COMPILER_VERSION_MINOR HEX(__RENESAS_VERSION__ >> 16 & 0xFF)
-# define COMPILER_VERSION_PATCH HEX(__RENESAS_VERSION__ >> 8  & 0xFF)
 
 #elif defined(__SCO_VERSION__)
 # define COMPILER_ID "SCO"
@@ -416,24 +408,13 @@
 #  define COMPILER_VERSION_MAJOR DEC((__VER__) / 1000000)
 #  define COMPILER_VERSION_MINOR DEC(((__VER__) / 1000) % 1000)
 #  define COMPILER_VERSION_PATCH DEC((__VER__) % 1000)
+#  define COMPILER_VERSION_INTERNAL DEC(__IAR_SYSTEMS_ICC__)
 # elif defined(__VER__) && (defined(__ICCAVR__) || defined(__ICCRX__) || defined(__ICCRH850__) || defined(__ICCRL78__) || defined(__ICC430__) || defined(__ICCRISCV__) || defined(__ICCV850__) || defined(__ICC8051__) || defined(__ICCSTM8__))
 #  define COMPILER_VERSION_MAJOR DEC((__VER__) / 100)
 #  define COMPILER_VERSION_MINOR DEC((__VER__) - (((__VER__) / 100)*100))
 #  define COMPILER_VERSION_PATCH DEC(__SUBVERSION__)
+#  define COMPILER_VERSION_INTERNAL DEC(__IAR_SYSTEMS_ICC__)
 # endif
-# if defined(__IAR_COMPILERBASE__)
-#  define COMPILER_VERSION_INTERNAL DEC(__IAR_COMPILERBASE__)
-# else
-#  define COMPILER_VERSION_INTERNAL DEC((__IAR_SYSTEMS_ICC__ << 16))
-# endif
-
-#elif defined(__DCC__) && defined(_DIAB_TOOL)
-# define COMPILER_ID "Diab"
-  # define COMPILER_VERSION_MAJOR DEC(__VERSION_MAJOR_NUMBER__)
-  # define COMPILER_VERSION_MINOR DEC(__VERSION_MINOR_NUMBER__)
-  # define COMPILER_VERSION_PATCH DEC(__VERSION_ARCH_FEATURE_NUMBER__)
-  # define COMPILER_VERSION_TWEAK DEC(__VERSION_BUG_FIX_NUMBER__)
-
 
 
 /* These compilers are either not known or too old to define an
@@ -686,7 +667,7 @@ char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";
 
 #elif defined(__clang__) && defined(__ti__)
 # if defined(__ARM_ARCH)
-#  define ARCHITECTURE_ID "ARM"
+#  define ARCHITECTURE_ID "Arm"
 
 # else /* unknown architecture */
 #  define ARCHITECTURE_ID ""
@@ -723,7 +704,7 @@ char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";
 # elif defined(__CMCS__)
 #  define ARCHITECTURE_ID "MCS"
 
-# elif defined(__CARM__) || defined(__CPARM__)
+# elif defined(__CARM__)
 #  define ARCHITECTURE_ID "ARM"
 
 # elif defined(__CARC__)
@@ -734,20 +715,6 @@ char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";
 
 # elif defined(__CPCP__)
 #  define ARCHITECTURE_ID "PCP"
-
-# else
-#  define ARCHITECTURE_ID ""
-# endif
-
-#elif defined(__RENESAS__)
-# if defined(__CCRX__)
-#  define ARCHITECTURE_ID "RX"
-
-# elif defined(__CCRL__)
-#  define ARCHITECTURE_ID "RL78"
-
-# elif defined(__CCRH__)
-#  define ARCHITECTURE_ID "RH850"
 
 # else
 #  define ARCHITECTURE_ID ""
@@ -839,75 +806,32 @@ char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
 
 
 
-#define CXX_STD_98 199711L
-#define CXX_STD_11 201103L
-#define CXX_STD_14 201402L
-#define CXX_STD_17 201703L
-#define CXX_STD_20 202002L
-#define CXX_STD_23 202302L
-
-#if defined(__INTEL_COMPILER) && defined(_MSVC_LANG)
-#  if _MSVC_LANG > CXX_STD_17
-#    define CXX_STD _MSVC_LANG
-#  elif _MSVC_LANG == CXX_STD_17 && defined(__cpp_aggregate_paren_init)
-#    define CXX_STD CXX_STD_20
-#  elif _MSVC_LANG > CXX_STD_14 && __cplusplus > CXX_STD_17
-#    define CXX_STD CXX_STD_20
-#  elif _MSVC_LANG > CXX_STD_14
-#    define CXX_STD CXX_STD_17
-#  elif defined(__INTEL_CXX11_MODE__) && defined(__cpp_aggregate_nsdmi)
-#    define CXX_STD CXX_STD_14
-#  elif defined(__INTEL_CXX11_MODE__)
-#    define CXX_STD CXX_STD_11
+#if defined(__INTEL_COMPILER) && defined(_MSVC_LANG) && _MSVC_LANG < 201403L
+#  if defined(__INTEL_CXX11_MODE__)
+#    if defined(__cpp_aggregate_nsdmi)
+#      define CXX_STD 201402L
+#    else
+#      define CXX_STD 201103L
+#    endif
 #  else
-#    define CXX_STD CXX_STD_98
+#    define CXX_STD 199711L
 #  endif
 #elif defined(_MSC_VER) && defined(_MSVC_LANG)
-#  if _MSVC_LANG > __cplusplus
-#    define CXX_STD _MSVC_LANG
-#  else
-#    define CXX_STD __cplusplus
-#  endif
-#elif defined(__NVCOMPILER)
-#  if __cplusplus > CXX_STD_20 && defined(__cpp_pp_embed)
-#    define CXX_STD /*CXX_STD_26*/ (CXX_STD_23 + 1)
-#  elif __cplusplus == CXX_STD_17 && defined(__cpp_aggregate_paren_init)
-#    define CXX_STD CXX_STD_20
-#  else
-#    define CXX_STD __cplusplus
-#  endif
-#elif defined(__INTEL_COMPILER) || defined(__PGI)
-#  if __cplusplus == CXX_STD_11 && defined(__cpp_namespace_attributes)
-#    define CXX_STD CXX_STD_17
-#  elif __cplusplus == CXX_STD_11 && defined(__cpp_aggregate_nsdmi)
-#    define CXX_STD CXX_STD_14
-#  else
-#    define CXX_STD __cplusplus
-#  endif
-#elif (defined(__IBMCPP__) || defined(__ibmxl__)) && defined(__linux__)
-#  if __cplusplus == CXX_STD_11 && defined(__cpp_aggregate_nsdmi)
-#    define CXX_STD CXX_STD_14
-#  else
-#    define CXX_STD __cplusplus
-#  endif
-#elif __cplusplus == 1 && defined(__GXX_EXPERIMENTAL_CXX0X__)
-#  define CXX_STD CXX_STD_11
+#  define CXX_STD _MSVC_LANG
 #else
 #  define CXX_STD __cplusplus
 #endif
 
 const char* info_language_standard_default = "INFO" ":" "standard_default["
-#if CXX_STD > CXX_STD_23
-  "26"
-#elif CXX_STD > CXX_STD_20
+#if CXX_STD > 202002L
   "23"
-#elif CXX_STD > CXX_STD_17
+#elif CXX_STD > 201703L
   "20"
-#elif CXX_STD > CXX_STD_14
+#elif CXX_STD >= 201703L
   "17"
-#elif CXX_STD > CXX_STD_11
+#elif CXX_STD >= 201402L
   "14"
-#elif CXX_STD >= CXX_STD_11
+#elif CXX_STD >= 201103L
   "11"
 #else
   "98"
@@ -916,7 +840,7 @@ const char* info_language_standard_default = "INFO" ":" "standard_default["
 
 const char* info_language_extensions_default = "INFO" ":" "extensions_default["
 #if (defined(__clang__) || defined(__GNUC__) || defined(__xlC__) ||           \
-     defined(__TI_COMPILER_VERSION__) || defined(__RENESAS__)) &&             \
+     defined(__TI_COMPILER_VERSION__)) &&                                     \
   !defined(__STRICT_ANSI__)
   "ON"
 #else
@@ -935,7 +859,7 @@ int main(int argc, char* argv[])
 #ifdef COMPILER_VERSION_MAJOR
   require += info_version[argc];
 #endif
-#if defined(COMPILER_VERSION_INTERNAL) || defined(COMPILER_VERSION_INTERNAL_STR)
+#ifdef COMPILER_VERSION_INTERNAL
   require += info_version_internal[argc];
 #endif
 #ifdef SIMULATE_ID

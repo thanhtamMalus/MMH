@@ -10,6 +10,21 @@ cmake --build build        # biên dịch, tạo/cập nhật file .exe
 
 **Không cần gõ `g++` nữa.** `cmake --build build` đã biên dịch và tạo luôn file `.exe`.
 
+## Mỗi lần qua máy khác
+
+1. Xóa cache của build cũ
+Trước tiên, hãy xóa hoàn toàn thư mục build bị lỗi cũ để CMake nhận diện lại môi trường từ đầu:
+
+```powershell
+Remove-Item -Recurse -Force build
+```
+2. Chỉ định rõ Generator là MinGW Makefiles
+Strawberry Perl thường chen ngang vào lệnh cmake. Bạn cần chỉ định rõ Generator của MSYS2 bằng tham số -G "MinGW Makefiles":
+
+```powershell
+cmake -B build -G "MinGW Makefiles"
+cmake --build build
+```
 ---
 
 ## 1. Cấu trúc thư mục

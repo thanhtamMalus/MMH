@@ -1,11 +1,11 @@
 CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: \
  D:\GitHub\MMH\Class_lab\Lab03\task_b\task_b_rsa_keys.cpp \
- C:/msys64/mingw64/include/openssl/bio.h \
- C:/msys64/mingw64/include/openssl/macros.h \
- C:/msys64/mingw64/include/openssl/opensslconf.h \
- C:/msys64/mingw64/include/openssl/configuration.h \
- C:/msys64/mingw64/include/openssl/opensslv.h \
- C:/msys64/mingw64/include/openssl/e_os2.h \
+ C:/Strawberry/c/include/openssl/bio.h \
+ C:/Strawberry/c/include/openssl/macros.h \
+ C:/Strawberry/c/include/openssl/opensslconf.h \
+ C:/Strawberry/c/include/openssl/configuration.h \
+ C:/Strawberry/c/include/openssl/opensslv.h \
+ C:/Strawberry/c/include/openssl/e_os2.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
  C:/msys64/mingw64/include/stdint.h C:/msys64/mingw64/include/crtdefs.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
@@ -20,7 +20,7 @@ CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdarg.h \
  C:/msys64/mingw64/include/stdarg.h \
  C:/msys64/mingw64/include/_mingw_stdarg.h \
- C:/msys64/mingw64/include/openssl/crypto.h \
+ C:/Strawberry/c/include/openssl/crypto.h \
  C:/msys64/mingw64/include/c++/16.2.0/stdlib.h \
  C:/msys64/mingw64/include/c++/16.2.0/cstdlib \
  C:/msys64/mingw64/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -42,55 +42,54 @@ CMakeFiles/task_b.dir/task_b/task_b_rsa_keys.cpp.obj: \
  C:/msys64/mingw64/include/_timeval.h \
  C:/msys64/mingw64/include/pthread_time.h \
  C:/msys64/mingw64/include/pthread_compat.h \
- C:/msys64/mingw64/include/openssl/safestack.h \
- C:/msys64/mingw64/include/openssl/stack.h \
- C:/msys64/mingw64/include/openssl/types.h \
- C:/msys64/mingw64/include/openssl/cryptoerr.h \
- C:/msys64/mingw64/include/openssl/symhacks.h \
- C:/msys64/mingw64/include/openssl/cryptoerr_legacy.h \
- C:/msys64/mingw64/include/openssl/core.h \
- C:/msys64/mingw64/include/openssl/bioerr.h \
- C:/msys64/mingw64/include/openssl/bn.h \
- C:/msys64/mingw64/include/openssl/bnerr.h \
- C:/msys64/mingw64/include/openssl/core_names.h \
- C:/msys64/mingw64/include/openssl/err.h \
- C:/msys64/mingw64/include/openssl/lhash.h \
- C:/msys64/mingw64/include/openssl/evp.h \
- C:/msys64/mingw64/include/openssl/core_dispatch.h \
- C:/msys64/mingw64/include/openssl/indicator.h \
- C:/msys64/mingw64/include/openssl/params.h \
- C:/msys64/mingw64/include/openssl/evperr.h \
- C:/msys64/mingw64/include/openssl/objects.h \
- C:/msys64/mingw64/include/openssl/obj_mac.h \
- C:/msys64/mingw64/include/openssl/asn1.h \
- C:/msys64/mingw64/include/openssl/asn1err.h \
- C:/msys64/mingw64/include/openssl/objectserr.h \
- C:/msys64/mingw64/include/openssl/pem.h \
- C:/msys64/mingw64/include/openssl/x509.h \
- C:/msys64/mingw64/include/openssl/buffer.h \
- C:/msys64/mingw64/include/openssl/buffererr.h \
+ C:/Strawberry/c/include/openssl/safestack.h \
+ C:/Strawberry/c/include/openssl/stack.h \
+ C:/Strawberry/c/include/openssl/types.h \
+ C:/Strawberry/c/include/openssl/cryptoerr.h \
+ C:/Strawberry/c/include/openssl/symhacks.h \
+ C:/Strawberry/c/include/openssl/cryptoerr_legacy.h \
+ C:/Strawberry/c/include/openssl/core.h \
+ C:/Strawberry/c/include/openssl/bioerr.h \
+ C:/Strawberry/c/include/openssl/bn.h \
+ C:/Strawberry/c/include/openssl/bnerr.h \
+ C:/Strawberry/c/include/openssl/core_names.h \
+ C:/Strawberry/c/include/openssl/err.h \
+ C:/Strawberry/c/include/openssl/lhash.h \
+ C:/Strawberry/c/include/openssl/evp.h \
+ C:/Strawberry/c/include/openssl/core_dispatch.h \
+ C:/Strawberry/c/include/openssl/indicator.h \
+ C:/Strawberry/c/include/openssl/params.h \
+ C:/Strawberry/c/include/openssl/evperr.h \
+ C:/Strawberry/c/include/openssl/objects.h \
+ C:/Strawberry/c/include/openssl/obj_mac.h \
+ C:/Strawberry/c/include/openssl/asn1.h \
+ C:/Strawberry/c/include/openssl/asn1err.h \
+ C:/Strawberry/c/include/openssl/objectserr.h \
+ C:/Strawberry/c/include/openssl/pem.h \
+ C:/Strawberry/c/include/openssl/x509.h \
+ C:/Strawberry/c/include/openssl/buffer.h \
+ C:/Strawberry/c/include/openssl/buffererr.h \
  C:/msys64/mingw64/include/sys/types.h \
- C:/msys64/mingw64/include/openssl/ec.h \
- C:/msys64/mingw64/include/string.h \
+ C:/Strawberry/c/include/openssl/ec.h C:/msys64/mingw64/include/string.h \
  C:/msys64/mingw64/include/corecrt_memory.h \
  C:/msys64/mingw64/include/corecrt_wstring.h \
- C:/msys64/mingw64/include/openssl/ecerr.h \
- C:/msys64/mingw64/include/openssl/rsa.h \
- C:/msys64/mingw64/include/openssl/rsaerr.h \
- C:/msys64/mingw64/include/openssl/dsa.h \
- C:/msys64/mingw64/include/openssl/dh.h \
- C:/msys64/mingw64/include/openssl/dherr.h \
- C:/msys64/mingw64/include/openssl/dsaerr.h \
- C:/msys64/mingw64/include/openssl/sha.h \
- C:/msys64/mingw64/include/openssl/x509err.h \
- C:/msys64/mingw64/include/openssl/x509_vfy.h \
- C:/msys64/mingw64/include/openssl/pkcs7.h \
- C:/msys64/mingw64/include/openssl/pkcs7err.h \
- C:/msys64/mingw64/include/openssl/http.h \
- C:/msys64/mingw64/include/openssl/conf.h \
- C:/msys64/mingw64/include/openssl/conferr.h \
- C:/msys64/mingw64/include/openssl/conftypes.h \
- C:/msys64/mingw64/include/openssl/pemerr.h \
+ C:/Strawberry/c/include/openssl/ecerr.h \
+ C:/Strawberry/c/include/openssl/rsa.h \
+ C:/Strawberry/c/include/openssl/rsaerr.h \
+ C:/Strawberry/c/include/openssl/dsa.h \
+ C:/Strawberry/c/include/openssl/dh.h \
+ C:/Strawberry/c/include/openssl/dherr.h \
+ C:/Strawberry/c/include/openssl/dsaerr.h \
+ C:/Strawberry/c/include/openssl/sha.h \
+ C:/Strawberry/c/include/openssl/x509err.h \
+ C:/Strawberry/c/include/openssl/x509_vfy.h \
+ C:/Strawberry/c/include/openssl/pkcs7.h \
+ C:/Strawberry/c/include/openssl/pkcs7err.h \
+ C:/Strawberry/c/include/openssl/http.h \
+ C:/Strawberry/c/include/openssl/conf.h \
+ C:/Strawberry/c/include/openssl/conferr.h \
+ C:/Strawberry/c/include/openssl/conftypes.h \
+ C:/Strawberry/c/include/openssl/pemerr.h \
  C:/msys64/mingw64/include/c++/16.2.0/cstdio \
  C:/msys64/mingw64/include/c++/16.2.0/string \
  C:/msys64/mingw64/include/c++/16.2.0/bits/requires_hosted.h \
