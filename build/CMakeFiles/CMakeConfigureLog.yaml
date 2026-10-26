@@ -2935,3 +2935,376 @@ events:
       variable: "run_result_unused"
       cached: true
 ...
+
+---
+events:
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:219 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_25f04/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_25f04.dir\\build.make CMakeFiles/cmTC_25f04.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_25f04.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_25f04.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_25f04.dir\\build.make:77: CMakeFiles/cmTC_25f04.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_25f04/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:220 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_11f33/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_11f33.dir\\build.make CMakeFiles/cmTC_11f33.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_11f33.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_11f33.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_11f33.dir\\build.make:77: CMakeFiles/cmTC_11f33.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_11f33/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:221 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_97edf/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_97edf.dir\\build.make CMakeFiles/cmTC_97edf.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_97edf.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_97edf.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_97edf.dir\\build.make:77: CMakeFiles/cmTC_97edf.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_97edf/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:222 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_392ef/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_392ef.dir\\build.make CMakeFiles/cmTC_392ef.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_392ef.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_392ef.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_392ef.dir\\build.make:77: CMakeFiles/cmTC_392ef.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_392ef/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:223 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_b632e/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_b632e.dir\\build.make CMakeFiles/cmTC_b632e.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_b632e.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_b632e.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_b632e.dir\\build.make:77: CMakeFiles/cmTC_b632e.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_b632e/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:224 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_284a8/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_284a8.dir\\build.make CMakeFiles/cmTC_284a8.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_284a8.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_284a8.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_284a8.dir\\build.make:77: CMakeFiles/cmTC_284a8.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_284a8/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:225 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_71bfb/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_71bfb.dir\\build.make CMakeFiles/cmTC_71bfb.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_71bfb.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_71bfb.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_71bfb.dir\\build.make:77: CMakeFiles/cmTC_71bfb.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_71bfb/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:226 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_b4ef9/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_b4ef9.dir\\build.make CMakeFiles/cmTC_b4ef9.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_b4ef9.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_b4ef9.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_b4ef9.dir\\build.make:77: CMakeFiles/cmTC_b4ef9.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_b4ef9/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/TargetArch.cmake:115 (try_run)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:191 (target_architecture)"
+      - "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt:227 (check_target_architecture)"
+    directories:
+      source: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+      binary: "D:/GitHub/MMH/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake"
+      CMAKE_POSITION_INDEPENDENT_CODE: "1"
+      CMAKE_USER_MAKE_RULES_OVERRIDE: "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cmake/ResetInitialCompilerOptions.cmake"
+    buildResult:
+      variable: "compile_result_unused"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/Strawberry/c/bin/cmake.exe -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_af2e9/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_af2e9.dir\\build.make CMakeFiles/cmTC_af2e9.dir/build
+        mingw32-make[1]: Entering directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_af2e9.dir/arch.c.obj
+        C:\\msys64\\ucrt64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_af2e9.dir\\arch.c.obj -c D:\\GitHub\\MMH\\build\\arch.c
+        D:\\GitHub\\MMH\\build\\arch.c:15:6: error: #error cmake_ARCH mingw64
+           15 |     #error cmake_ARCH mingw64
+              |      ^~~~~
+        D:\\GitHub\\MMH\\build\\arch.c:33:2: error: #error cmake_ARCH unknown
+           33 | #error cmake_ARCH unknown
+              |  ^~~~~
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_af2e9.dir\\build.make:77: CMakeFiles/cmTC_af2e9.dir/arch.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/GitHub/MMH/build/CMakeFiles/CMakeTmp'
+        mingw32-make: *** [Makefile:126: cmTC_af2e9/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "run_result_unused"
+      cached: true
+...

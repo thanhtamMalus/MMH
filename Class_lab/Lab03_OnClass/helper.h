@@ -1,4 +1,5 @@
 // Helper blocks
+#include<iostream>
 using Bytes = std::vector<unsigned char>;
 static int g_failures = 0;
 

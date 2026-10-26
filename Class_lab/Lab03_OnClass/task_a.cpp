@@ -1,10 +1,9 @@
 // Lab 3, task a in class
-// task_a_bignum.cpp
 
 /*
-Build:  g++ -std=c++17 -Wall -Wextra task_a_bignum.cpp -o task_a -lcrypto
- Run: ./task_a -> run the handout’s test vectors
-    ./task_a <a> <b> <m> -> compute a^b mod m and a^-1 mod m
+Build with task.json
+ Run: ./task_agcc -> run the handout’s test vectors
+    ./task_agcc <a> <b> <m> -> compute a^b mod m and a^-1 mod m
 */
 
 // kết quả sẽ so với BN_mod_exp và BN_mod_inverse
@@ -18,8 +17,10 @@ Build:  g++ -std=c++17 -Wall -Wextra task_a_bignum.cpp -o task_a -lcrypto
 #include <cstring>
 #include <string>
 #include <vector>
+#include <iomanip>
 #include "helper.h"
-//1. Parse a decimal string into a BIGNUM
+
+//decimal string into a BIGNUM
 static BIGNUM* parseDec(const char* s) {
     size_t len = std::strlen(s);
     if (len == 0 || len > 10000) //ktra độ dài chữ số
@@ -61,9 +62,6 @@ static BIGNUM* myModExp(const BIGNUM* a, const BIGNUM* b, const BIGNUM* m, BN_CT
 }
 
 //3.thuật toán Extended Euclidean để tìm nghịch đảo a^-1(mod m) và gcd(a, m)
-/*
-
-*/
 
 static BIGNUM* myModInverse(const BIGNUM* a, const BIGNUM* m, BIGNUM* gcdOut, BN_CTX* ctx) {
     BIGNUM *r0 = BN_dup(m), *r1 = BN_new(), *t0 = BN_new(), *t1 = BN_new();
@@ -73,14 +71,19 @@ static BIGNUM* myModInverse(const BIGNUM* a, const BIGNUM* m, BIGNUM* gcdOut, BN
     OK1(BN_nnmod(r1, a, m, ctx));
     BN_zero(t0);
     OK1(BN_one(t1));
+
+
+    
     while (!BN_is_zero(r1)) {
         OK1(BN_div(q, tmp, r0, r1, ctx)); // q = r0 / r1, tmp = r0 mod r1
         BN_swap(r0, r1); // (r0, r1) = (r1, r0 mod r1)
         BN_swap(r1, tmp);
+
         OK1(BN_mul(prod, q, t1, ctx)); // (t0, t1) = (t1, t0 - q*t1)
         OK1(BN_sub(tmp, t0, prod));
         BN_swap(t0, t1);
         BN_swap(t1, tmp);
+
     }
     NOTNULL(BN_copy(gcdOut, r0));
     BIGNUM* inv = nullptr;
@@ -158,6 +161,9 @@ static void demoOtherOps() {
     std::printf("\n");
 }
 
+
+
+
 //5. main function: run the handout’s test vectors, or your own values
 int main(int argc, char** argv) {
     if (argc == 4) { // your own values
@@ -176,3 +182,75 @@ int main(int argc, char** argv) {
     std::printf("%s\n", g_failures ? "SOME CHECKS FAILED" : "ALL CHECKS PASSED");
     return g_failures ? 1 : 0;
 }
+// ===================== 
+#include <openssl/crypto.h>
+
+// Bài 1: vết (trace) thuật toán Euclid mở rộng
+static void exA1_trace(long a, long m) {
+    long r0 = m, r1 = a % m, t0 = 0, t1 = 1;
+    std::printf("  %-4s %-4s %-4s %-5s %-5s\n", "q", "r0", "r1", "t0", "t1");
+    std::printf("  %-4s %-4ld %-4ld %-5ld %-5ld\n", "-", r0, r1, t0, t1);
+    while (r1 != 0) {
+        long q = r0 / r1;
+        long r2 = r0 - q * r1, t2 = t0 - q * t1;
+        r0 = r1; r1 = r2; t0 = t1; t1 = t2;
+        std::printf("  %-4ld %-4ld %-4ld %-5ld %-5ld\n", q, r0, r1, t0, t1);
+    }
+    long inv = ((t0 % m) + m) % m;
+    std::printf("  gcd = r0 = %ld, inverse = t0 mod m = %ld\n", r0, inv);
+    check("trace gives inverse 19", r0 == 1 && inv == 19);
+}
+
+// Bài 2: đếm số phép bình phương / nhân của square-and-multiply
+static void exA2_count(const char* label, const BIGNUM* b) {
+    int squarings = BN_num_bits(b), mults = 0;
+    for (int i = squarings - 1; i >= 0; --i)
+        if (BN_is_bit_set(b, i)) ++mults;
+    std::printf("  %-16s squarings = %d, multiplications = %d, total = %d\n",
+                label, squarings, mults, squarings + mults);
+}
+
+// Bài 4: mô phỏng timing side channel
+static void exA4_timing_leak() {
+    const unsigned long d = 0b101101; // "khóa bí mật" 45
+    int top = 63;
+    while (!((d >> top) & 1)) --top;
+    std::vector<int> cost;// thời gian mỗi vòng lặp: 1 = chỉ S, 2 = S + M
+    std::string secret;
+    for (int i = top; i >= 0; --i) {
+        int bit = (d >> i) & 1;
+        secret += bit ? '1' : '0';
+        cost.push_back(bit ? 2 : 1);
+    }
+    std::string recovered;
+    std::printf("  secret exponent bits : %s\n  time per iteration   :", secret.c_str());
+    for (int c : cost) { std::printf(" %d", c); recovered += (c == 2) ? '1' : '0'; }
+    std::printf("\n  attacker recovers    : %s\n", recovered.c_str());
+    check("timing trace reveals every bit of d", recovered == secret);
+}
+
+static void runExercisesA() {
+    std::printf("\nTask a\n");
+    std::printf("1. Extended Euclid trace, a=7, m=33\n");
+    exA1_trace(7, 33);
+
+    std::printf("2. Operation counts of square-and-multiply\n");
+    BIGNUM* b1 = parseDec("65537");
+    BIGNUM* b2 = BN_new(); NOTNULL(b2);
+    OK1(BN_rand(b2, 2048, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ANY));
+    exA2_count("b = 65537", b1);
+    exA2_count("b = random 2048", b2);
+    BN_free(b1); BN_free(b2);
+
+    std::printf("3. Edge cases (the third one, ./task_a 1 1 0, dies by design: m = 0)\n");
+    runCase("12", "0", "7", nullptr, nullptr);
+    runCase("0", "5", "1", nullptr, nullptr);
+
+    std::printf("4. Timing side channel (simulation)\n");
+    exA4_timing_leak();
+}
+[[maybe_unused]] static const int exA_registered = [] {
+    OPENSSL_init_crypto(0, nullptr);   // đăng ký cleanup của OpenSSL TRƯỚC handler của ta
+    std::atexit(runExercisesA);
+    return 0;
+}();

@@ -177,15 +177,15 @@
 		},
 		{
 			"backtrace" : 3,
+			"id" : "cryptopp::@a180db1787849b07c483"
+		},
+		{
+			"backtrace" : 3,
 			"id" : "Catch2WithMain::@fa92aa50e9bf5e1a7206"
 		},
 		{
 			"backtrace" : 3,
 			"id" : "Catch2::@fa92aa50e9bf5e1a7206"
-		},
-		{
-			"backtrace" : 3,
-			"id" : "cryptopp::@a180db1787849b07c483"
 		}
 	],
 	"id" : "aescore_tests::@6890427a1f51a3e7e1df",

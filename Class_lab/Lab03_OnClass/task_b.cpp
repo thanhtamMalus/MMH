@@ -13,6 +13,11 @@
 #include <openssl/evp.h>
 #include <openssl/pem.h>
 #include <openssl/x509.h>
+#include <openssl/crypto.h>
+#include <chrono>
+#include <cstring>
+#include <fstream>
+#include <map>
 #include <cstdio>
 #include <cstdlib>
 #include <string>
@@ -276,3 +281,133 @@ int main(int argc, char** argv) {
     std::printf("%s\n", g_failures ? "SOME CHECKS FAILED" : "ALL CHECKS PASSED");
     return g_failures ? 1 : 0;
 }
+
+
+//============================
+static BIGNUM* nb() { BIGNUM* x = BN_new(); NOTNULL(x); return x; }
+
+// Bài 1: d_phi == d_lambda xảy ra bao nhiêu lần, liên hệ với gcd(p-1, q-1)
+static void exB1_dphi_vs_dlambda() {
+    BN_CTX* ctx = BN_CTX_new(); NOTNULL(ctx);
+    BIGNUM *e = nb(), *p = nb(), *q = nb(), *pm1 = nb(), *qm1 = nb(),
+           *g = nb(), *phi = nb(), *lam = nb();
+    OK1(BN_set_word(e, 65537));
+    std::map<unsigned long long, std::pair<int, int>> stat;   // gcd -> (số lần, số lần bằng nhau)
+    const int TRIALS = 300;
+    for (int i = 0; i < TRIALS; ++i) {
+        drawPrime(p, pm1, e, 128, ctx);
+        do { drawPrime(q, qm1, e, 128, ctx); } while (BN_cmp(p, q) == 0);
+        OK1(BN_mul(phi, pm1, qm1, ctx));
+        OK1(BN_gcd(g, pm1, qm1, ctx));
+        OK1(BN_div(lam, nullptr, phi, g, ctx));
+        BIGNUM* dPhi = BN_mod_inverse(nullptr, e, phi, ctx);
+        BIGNUM* dLam = BN_mod_inverse(nullptr, e, lam, ctx);
+        NOTNULL(dPhi); NOTNULL(dLam);
+        auto& s = stat[(unsigned long long)BN_get_word(g)];
+        ++s.first;
+        if (BN_cmp(dPhi, dLam) == 0) ++s.second;
+        BN_free(dPhi); BN_free(dLam);
+    }
+    int same = 0;
+    for (auto& kv : stat) {
+        same += kv.second.second;
+        std::printf("  gcd(p-1,q-1) = %-4llu trials = %-4d d_phi==d_lambda: %-4d (%3.0f%%)  expected ~ 1/gcd = %3.0f%%\n", kv.first, kv.second.first, kv.second.second, 100.0 * kv.second.second / kv.second.first, 100.0 / kv.first);
+    }
+    std::printf("  overall: %d / %d trials equal\n", same, TRIALS);
+    for (BIGNUM* x : {e, p, q, pm1, qm1, g, phi, lam}) BN_clear_free(x);
+    BN_CTX_free(ctx);
+}
+
+// Bài 2: e = 3 cần bao nhiêu lần rút số nguyên tố?
+static void exB2_small_e() {
+    BN_CTX* ctx = BN_CTX_new(); NOTNULL(ctx);
+    BIGNUM *e = nb(), *p = nb(), *pm1 = nb();
+    const int N = 300;
+    for (unsigned long ev : {3ul, 65537ul}) {
+        OK1(BN_set_word(e, ev));
+        long total = 0;
+        for (int i = 0; i < N; ++i) total += drawPrime(p, pm1, e, 256, ctx);
+        std::printf("  e = %-6lu -> %.2f draws per prime (over %d primes)\n", ev, (double)total / N, N);
+    }
+    std::printf("  e = 3 fails whenever p = 1 (mod 3), i.e. for about half of all primes.\n");
+    for (BIGNUM* x : {e, p, pm1}) BN_clear_free(x);
+    BN_CTX_free(ctx);
+}
+
+// Bài 3: 1000 lần giải mã, d trực tiếp vs CRT (khóa giáo dục 1024 bit)
+static void exB3_crt_speed() {
+    using clk = std::chrono::steady_clock;
+    BN_CTX* ctx = BN_CTX_new(); NOTNULL(ctx);
+    BIGNUM *e = nb(), *p = nb(), *q = nb(), *pm1 = nb(), *qm1 = nb(), *g = nb(), *n = nb(),
+           *phi = nb(), *lam = nb(), *dP = nb(), *dQ = nb(), *c = nb(), *r = nb(),
+           *m1 = nb(), *m2 = nb(), *h = nb();
+    OK1(BN_set_word(e, 65537));
+    drawPrime(p, pm1, e, 512, ctx);
+    do { drawPrime(q, qm1, e, 512, ctx); } while (BN_cmp(p, q) == 0);
+    OK1(BN_mul(n, p, q, ctx));
+    OK1(BN_mul(phi, pm1, qm1, ctx));
+    OK1(BN_gcd(g, pm1, qm1, ctx));
+    OK1(BN_div(lam, nullptr, phi, g, ctx));
+    BIGNUM* d = BN_mod_inverse(nullptr, e, lam, ctx); NOTNULL(d);
+    OK1(BN_nnmod(dP, d, pm1, ctx));
+    OK1(BN_nnmod(dQ, d, qm1, ctx));
+    BIGNUM* qInv = BN_mod_inverse(nullptr, q, p, ctx); NOTNULL(qInv);
+    OK1(BN_rand_range(c, n));
+
+    const int N = 1000;
+    auto t0 = clk::now();
+    for (int i = 0; i < N; ++i) OK1(BN_mod_exp(r, c, d, n, ctx));
+    auto t1 = clk::now();
+    BIGNUM* ref = BN_dup(r); NOTNULL(ref);
+    for (int i = 0; i < N; ++i) {
+        OK1(BN_mod_exp(m1, c, dP, p, ctx));
+        OK1(BN_mod_exp(m2, c, dQ, q, ctx));
+        OK1(BN_mod_sub(h, m1, m2, p, ctx));
+        OK1(BN_mod_mul(h, qInv, h, p, ctx));
+        OK1(BN_mul(r, h, q, ctx));
+        OK1(BN_add(r, r, m2));
+    }
+    auto t2 = clk::now();
+    double tDirect = std::chrono::duration<double, std::milli>(t1 - t0).count();
+    double tCrt = std::chrono::duration<double, std::milli>(t2 - t1).count();
+    check("CRT result equals direct result", BN_cmp(r, ref) == 0);
+    std::printf("  direct c^d mod n : %8.1f ms for %d decryptions\n", tDirect, N);
+    std::printf("  CRT (Garner)     : %8.1f ms for %d decryptions\n", tCrt, N);
+    std::printf("  speed-up = %.2fx (theory: about 4x)\n", tDirect / tCrt);
+    for (BIGNUM* x : {e, p, q, pm1, qm1, g, n, phi, lam, dP, dQ, c, r, m1, m2, h, d, qInv, ref})
+        BN_clear_free(x);
+    BN_CTX_free(ctx);
+}
+
+// Bài 4: dòng Base64 đầu của private.pem == những byte đầu của private.der
+static void exB4_pem_vs_der() {
+    std::ifstream pf("private.pem");
+    std::string line, first;
+    std::getline(pf, line);                    // -----BEGIN PRIVATE KEY-----
+    std::getline(pf, first);                   // dòng Base64 đầu tiên
+    if (!first.empty() && first.back() == '\r') first.pop_back();
+    unsigned char dec[128];
+    int decLen = EVP_DecodeBlock(dec, (const unsigned char*)first.data(), (int)first.size());
+    std::ifstream df("private.der", std::ios::binary);
+    unsigned char der[128] = {0};
+    df.read((char*)der, sizeof der);
+    std::printf("  PEM line 1 : %.16s...  (%d bytes after Base64 decoding)\n", first.c_str(), decLen);
+    printHex("decoded PEM", dec, 16, 16);
+    printHex("DER file", der, 16, 16);
+    std::printf("  'MII' = 001100 001000 001000 -> 0x30 0x82 = ASN.1 SEQUENCE with a 2-byte length\n");
+    check("first Base64 line == first bytes of private.der",
+          decLen > 0 && std::memcmp(dec, der, (size_t)decLen) == 0);
+}
+
+static void runExercisesB() {
+    std::printf("\nTASK B\n");
+    std::printf("1. d_phi vs d_lambda (256-bit toy keys)\n");  exB1_dphi_vs_dlambda();
+    std::printf("2. Prime draws: e = 3 vs e = 65537\n");        exB2_small_e();
+    std::printf("3. Direct decryption vs CRT (1024-bit toy key)\n"); exB3_crt_speed();
+    std::printf("4. PEM Base64 vs DER bytes\n");                exB4_pem_vs_der();
+}
+[[maybe_unused]] static const int exB_registered = [] {
+    OPENSSL_init_crypto(0, nullptr);
+    std::atexit(runExercisesB);
+    return 0;
+}();
