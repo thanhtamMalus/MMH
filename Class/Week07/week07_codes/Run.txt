@@ -1,0 +1,3 @@
+D:\Pythons\Python312-uit\python.exe -m pip install sympy
+
+D:\Pythons\Python312-uit\python.exe

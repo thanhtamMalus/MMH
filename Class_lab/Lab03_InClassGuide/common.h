@@ -55,29 +55,29 @@ inline int g_failures = 0;
 
 // NOTNULL(p): con trỏ phải khác nullptr, ngược lại die().
 // Dùng cho các hàm *_new(), BN_bn2dec(), ... trả về con trỏ.
-#define NOTNULL(p)                                    
-    do {                                              
-        if ((p) == nullptr) {                         
-            die("unexpected NULL: " #p);              
-        }                                             
+#define NOTNULL(p)                                    \
+    do {                                              \
+        if ((p) == nullptr) {                         \
+            die("unexpected NULL: " #p);              \
+        }                                             \
     } while (0)
 
 // OK1(expr): hàm phải trả về đúng 1 (quy ước thành công của đa số hàm OpenSSL).
-#define OK1(expr)                                     
-    do {                                              
-        if ((expr) != 1) {                            
-            die("OpenSSL call failed: " #expr);       
-        }                                             
+#define OK1(expr)                                     \
+    do {                                              \
+        if ((expr) != 1) {                            \
+            die("OpenSSL call failed: " #expr);       \
+        }                                             \
     } while (0)
 
 // OKPOS(expr): hàm phải trả về giá trị > 0.
 // Dùng cho các hàm EVP_PKEY_* có thể trả về 1 hoặc số dương khác,
 // còn 0 / số âm nghĩa là lỗi.
-#define OKPOS(expr)                                   
-    do {                                              
-        if ((expr) <= 0) {                            
-            die("OpenSSL call failed: " #expr);       
-        }                                             
+#define OKPOS(expr)                                   \
+    do {                                              \
+        if ((expr) <= 0) {                            \
+            die("OpenSSL call failed: " #expr);       \
+        }                                             \
     } while (0)
 
 // ---------------------------------------------------------------------------

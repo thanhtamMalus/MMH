@@ -46,3 +46,5 @@ c1c2=(m1m2)^e mod n
 
 task e: nói về hàm hask băm key
 chỉ cần 1 sheet nhỏ -> key aes -> phân phối key bên t3 làm việc
+
+## 5 task ở nhà k dùng cmake, cái về nhà thì dùng đc

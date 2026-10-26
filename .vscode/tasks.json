@@ -14,9 +14,9 @@
                 "${fileDirname}\\${fileBasenameNoExtension}gcc.exe", //output file name
                 "-D_WIN32_WINNT=0x0501", //define Windows version for compatibility
                 "-ID:\\cryptolib2026\\openssl402\\include", //include directory for OpenSSL headers
-                "-LD:\\cryptolib2026\\openssl402\\lib\\VC\\x64\\MDd", //link with OpenSSL library
-                "-l:libcrypto.lib", //link with OpenSSL crypto library
-                "-l:libssl.lib", //link with OpenSSL SSL library
+                "-LD:\\cryptolib2026\\libs\\openssl\\gcc", //link with OpenSSL library
+                "-l:libcrypto.a", //link with OpenSSL crypto library
+                //"-l:libssl.lib", //link with OpenSSL SSL library
                 "-lpthread", //link with pthread library
                 "-lws2_32", //link with Windows Sockets library
                 "-lcrypt32", //link with Windows Cryptography library
