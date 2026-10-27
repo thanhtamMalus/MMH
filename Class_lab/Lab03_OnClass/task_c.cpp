@@ -334,8 +334,7 @@ static void exC2_bruteforce() {
 }
 
 // Bài 3: giải mã OAEP với hash khác phía mã hóa
-static bool exC3_decryptWith(EVP_PKEY* key, const Bytes& C, const EVP_MD* oaepMd,
-                             const EVP_MD* mgfMd, std::string& err) {
+static bool exC3_decryptWith(EVP_PKEY* key, const Bytes& C, const EVP_MD* oaepMd, const EVP_MD* mgfMd, std::string& err) {
     EVP_PKEY_CTX* ctx = EVP_PKEY_CTX_new_from_pkey(nullptr, key, nullptr);
     NOTNULL(ctx);
     OKPOS(EVP_PKEY_decrypt_init(ctx));
