@@ -20,12 +20,14 @@ function(add_task name)
     add_executable(${name} ${ARGN})
     target_link_libraries(${name} PRIVATE common)
     # Xuất file .exe ra cạnh file .cpp cho giống cách bạn đang để
-    set_target_properties(${name} PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${name})
+    set_target_properties(${name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${name})
 endfunction()
 
 # Mỗi task chỉ cần một dòng
 add_task(task_a task_a/task_a_bignum.cpp)
 add_task(task_b task_b/task_b_rsa_keys.cpp)
-# add_task(task_01 task_01/task_01.cpp)
+add_task(task_c task_c/task_c_oaep.cpp)
+add_task(task_d task_d/task_d_hybrid.cpp)
+add_task(task_e task_e/task_e_kem.cpp)
+
 # add_task(task_c task_c/task_c_xxx.cpp)
