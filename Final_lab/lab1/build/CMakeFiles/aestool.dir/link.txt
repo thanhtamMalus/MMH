@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/aestool.dir/link.d CMakeFiles/aestool.dir/src/main.cpp.o -o bin/aestool  -Wl,-rpath,/home/malus/Github/MMH/Final_lab/lab1/crypto_libs/lib: lib/libaescore_static.a /home/malus/Github/MMH/Final_lab/lab1/crypto_libs/lib/libcryptopp.so

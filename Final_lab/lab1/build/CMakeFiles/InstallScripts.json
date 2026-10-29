@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/malus/Github/MMH/Final_lab/lab1/build/cmake_install.cmake",
+		"/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-build/cmake_install.cmake",
+		"/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

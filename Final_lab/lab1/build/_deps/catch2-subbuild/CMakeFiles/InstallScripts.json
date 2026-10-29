@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

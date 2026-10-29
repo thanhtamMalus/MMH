@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 project(aestool VERSION 1.0.0 LANGUAGES CXX)
 
+if(POLICY CMP0205)
+  cmake_policy(SET CMP0205 NEW)   # file(CREATE_LINK ... COPY_ON_ERROR) copies directory contents
+endif()
+
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 endif()
@@ -12,6 +16,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(AESTOOL_BUILD_TESTS  "Build unit tests (Catch2) and register ctest tests" ON)
 option(AESTOOL_BUILD_SHARED "Also build the shared library (.dll / .so) with C API" ON)
 option(AESTOOL_FETCH_DEPS   "Download Crypto++ / Catch2 if not found on the system (needs git + internet)" ON)
+option(AESTOOL_USE_LOCAL_CRYPTOPP  "Use the prebuilt Crypto++ shipped in ./crypto_libs (include/ + lib/) first" ON)
+option(AESTOOL_CRYPTOPP_PREFER_STATIC "With the local Crypto++: prefer libcryptopp.a over libcryptopp.so (OFF: the shipped libcryptopp.a crashes aestool at run time, use the .so)" OFF)
+set(AESTOOL_LOCAL_CRYPTOPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/crypto_libs" CACHE PATH "Folder that contains include/ and lib/ of a prebuilt Crypto++")
 set(AESTOOL_CRYPTOPP_TAG "CRYPTOPP_8_9_0" CACHE STRING "Crypto++ tag used by the download fallback")
 set(AESTOOL_CRYPTOPP_CMAKE_TAG "CRYPTOPP_8_9_0" CACHE STRING "cryptopp-cmake tag used by the download fallback")
 
@@ -21,6 +28,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
 # ---------------------------------------------------------------------------
 # Locate Crypto++ (the only crypto library allowed by the lab)
+#   0) ./crypto_libs  (prebuilt: include/ + lib/)  <- default, no install needed
 #   1) CMake package config (vcpkg, cryptopp-cmake)
 #   2) plain find_path / find_library (apt: libcrypto++-dev, MSYS2: crypto++)
 #   3) download + build (fallback)
@@ -28,7 +36,51 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 add_library(cryptopp_dep INTERFACE)
 set(_cpp_ok FALSE)
 
-find_package(cryptopp CONFIG QUIET)
+# --- 0) local prebuilt Crypto++ in ./crypto_libs ---------------------------------
+# The headers there may be flat (crypto_libs/include/aes.h) while the sources do
+# #include <cryptopp/aes.h>. In that case a "cryptopp" link/copy is generated in the
+# build tree, so crypto_libs itself never has to be modified.
+if(AESTOOL_USE_LOCAL_CRYPTOPP AND EXISTS "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include")
+  set(_lc_inc "")
+  if(EXISTS "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include/cryptopp/aes.h")
+    set(_lc_inc "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include")
+  elseif(EXISTS "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include/aes.h")
+    set(_lc_inc "${CMAKE_BINARY_DIR}/cryptopp_include")
+    file(MAKE_DIRECTORY "${_lc_inc}")
+    if(NOT EXISTS "${_lc_inc}/cryptopp/aes.h")
+      file(REMOVE_RECURSE "${_lc_inc}/cryptopp")
+      file(CREATE_LINK "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include" "${_lc_inc}/cryptopp"
+           COPY_ON_ERROR SYMBOLIC)
+    endif()
+  endif()
+
+  set(_old_suffixes "${CMAKE_FIND_LIBRARY_SUFFIXES}")
+  if(AESTOOL_CRYPTOPP_PREFER_STATIC)
+    set(CMAKE_FIND_LIBRARY_SUFFIXES .a .lib)
+  endif()
+  # unique cache variable so a stale /usr/local result from an old build dir is never reused
+  find_library(AESTOOL_LOCAL_CRYPTOPP_LIB NAMES cryptopp cryptopp-static crypto++ cryptlib
+               PATHS "${AESTOOL_LOCAL_CRYPTOPP_DIR}/lib" "${AESTOOL_LOCAL_CRYPTOPP_DIR}/lib64"
+               NO_DEFAULT_PATH)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES "${_old_suffixes}")
+
+  if(_lc_inc AND AESTOOL_LOCAL_CRYPTOPP_LIB)
+    target_include_directories(cryptopp_dep INTERFACE "${_lc_inc}")
+    target_link_libraries(cryptopp_dep INTERFACE "${AESTOOL_LOCAL_CRYPTOPP_LIB}")
+    get_filename_component(_lc_libdir "${AESTOOL_LOCAL_CRYPTOPP_LIB}" DIRECTORY)
+    # find libcryptopp.so.8 at run time without LD_LIBRARY_PATH (aestool, tests, libaescore.so, GUI)
+    list(APPEND CMAKE_BUILD_RPATH "${_lc_libdir}")
+    set(CMAKE_INSTALL_RPATH "\$ORIGIN;\$ORIGIN/../lib")
+    set(_cpp_ok TRUE)
+    message(STATUS "Crypto++: local ${AESTOOL_LOCAL_CRYPTOPP_LIB} (headers ${_lc_inc})")
+  else()
+    message(STATUS "Crypto++: ./crypto_libs found but incomplete (need include/*.h and lib/libcryptopp.*) - trying system")
+  endif()
+endif()
+
+if(NOT _cpp_ok)
+  find_package(cryptopp CONFIG QUIET)
+endif()
 foreach(_t cryptopp::cryptopp cryptopp::cryptopp-static cryptopp-static cryptopp::cryptopp-shared cryptopp-shared)
   if(NOT _cpp_ok AND TARGET ${_t})
     target_link_libraries(cryptopp_dep INTERFACE ${_t})
@@ -80,6 +132,7 @@ endif()
 if(NOT _cpp_ok)
   message(FATAL_ERROR
     "Crypto++ was not found.\n"
+    "  Local  : put the prebuilt files in ./crypto_libs/include (*.h) and ./crypto_libs/lib (libcryptopp.so / .a / .lib)\n"
     "  Ubuntu : sudo apt install libcrypto++-dev\n"
     "  MSVC   : vcpkg install cryptopp:x64-windows  and pass -DCMAKE_TOOLCHAIN_FILE=<vcpkg>/scripts/buildsystems/vcpkg.cmake\n"
     "  MinGW  : pacman -S mingw-w64-x86_64-crypto++   (MSYS2 MINGW64 shell)\n"
@@ -88,6 +141,14 @@ endif()
 
 if(WIN32)
   target_link_libraries(cryptopp_dep INTERFACE ws2_32 advapi32)
+endif()
+
+# Windows + local DLL build of Crypto++: put cryptopp*.dll next to the executables
+if(WIN32 AND AESTOOL_USE_LOCAL_CRYPTOPP)
+  file(GLOB _lc_dlls "${AESTOOL_LOCAL_CRYPTOPP_DIR}/lib/*.dll" "${AESTOOL_LOCAL_CRYPTOPP_DIR}/bin/*.dll")
+  if(_lc_dlls)
+    file(COPY ${_lc_dlls} DESTINATION "${CMAKE_BINARY_DIR}/bin")
+  endif()
 endif()
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/aescore_tests.dir/link.d CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.o -o bin/aescore_tests  -Wl,-rpath,/home/malus/Github/MMH/Final_lab/lab1/crypto_libs/lib lib/libaescore_static.a lib/libCatch2Main.a /home/malus/Github/MMH/Final_lab/lab1/crypto_libs/lib/libcryptopp.so lib/libCatch2.a
