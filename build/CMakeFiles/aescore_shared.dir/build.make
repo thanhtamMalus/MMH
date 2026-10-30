@@ -89,7 +89,7 @@ bin/libaescore.dll: CMakeFiles/aescore_obj.dir/src/kat.cpp.obj
 bin/libaescore.dll: CMakeFiles/aescore_obj.dir/src/bench.cpp.obj
 bin/libaescore.dll: CMakeFiles/aescore_obj.dir/src/aescore_capi.cpp.obj
 bin/libaescore.dll: CMakeFiles/aescore_shared.dir/build.make
-bin/libaescore.dll: lib/libcryptopp.a
+bin/libaescore.dll: D:/GitHub/MMH/Final_lab/lab1/crypto_libs/lib/libcryptopp.a
 bin/libaescore.dll: CMakeFiles/aescore_shared.dir/linkLibs.rsp
 bin/libaescore.dll: CMakeFiles/aescore_shared.dir/objects1.rsp
 bin/libaescore.dll: CMakeFiles/aescore_shared.dir/link.txt

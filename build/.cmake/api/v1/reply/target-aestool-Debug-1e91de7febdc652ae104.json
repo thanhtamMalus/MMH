@@ -23,8 +23,7 @@
 		],
 		"files" : 
 		[
-			"CMakeLists.txt",
-			"D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp/CMakeLists.txt"
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -34,71 +33,62 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 141,
+				"line" : 202,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 183,
+				"line" : 244,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 148,
+				"line" : 209,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 142,
+				"line" : 203,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 145,
+				"line" : 206,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 73,
+				"line" : 69,
 				"parent" : 0
 			},
 			{
-				"file" : 1
-			},
-			{
 				"command" : 3,
-				"file" : 1,
-				"line" : 1399,
-				"parent" : 7
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 90,
-				"parent" : 0
-			},
-			{
-				"command" : 5,
 				"file" : 0,
 				"line" : 143,
 				"parent" : 0
 			},
 			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 204,
+				"parent" : 0
+			},
+			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 100,
-				"parent" : 10
+				"line" : 161,
+				"parent" : 8
 			},
 			{
 				"command" : 6,
 				"file" : 0,
-				"line" : 103,
-				"parent" : 10
+				"line" : 164,
+				"parent" : 8
 			}
 		]
 	},
@@ -111,26 +101,26 @@
 					"fragment" : "-g -std=c++17"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 9,
 					"fragment" : "-Wall"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 9,
 					"fragment" : "-Wextra"
 				}
 			],
 			"defines" : 
 			[
 				{
-					"backtrace" : 12,
+					"backtrace" : 10,
 					"define" : "NOMINMAX"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 10,
 					"define" : "WIN32_LEAN_AND_MEAN"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 10,
 					"define" : "_CRT_SECURE_NO_WARNINGS"
 				}
 			],
@@ -142,11 +132,7 @@
 				},
 				{
 					"backtrace" : 4,
-					"path" : "D:/GitHub/MMH/build/_deps/cryptopp_src-src"
-				},
-				{
-					"backtrace" : 4,
-					"path" : "D:/GitHub/MMH/build/_deps"
+					"path" : "D:/GitHub/MMH/build/cryptopp_include"
 				}
 			],
 			"language" : "CXX",
@@ -169,10 +155,6 @@
 		{
 			"backtrace" : 4,
 			"id" : "aescore_core::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 4,
-			"id" : "cryptopp::@a180db1787849b07c483"
 		}
 	],
 	"id" : "aestool::@6890427a1f51a3e7e1df",
@@ -224,21 +206,16 @@
 			},
 			{
 				"backtrace" : 6,
-				"fragment" : "lib\\libcryptopp.a",
+				"fragment" : "D:\\GitHub\\MMH\\Final_lab\\lab1\\crypto_libs\\lib\\libcryptopp.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 8,
-				"fragment" : "-lkernel32",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 9,
+				"backtrace" : 7,
 				"fragment" : "-lws2_32",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 9,
+				"backtrace" : 7,
 				"fragment" : "-ladvapi32",
 				"role" : "libraries"
 			},

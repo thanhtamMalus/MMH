@@ -93,7 +93,7 @@ aestool_EXTERNAL_OBJECTS =
 bin/aestool.exe: CMakeFiles/aestool.dir/src/main.cpp.obj
 bin/aestool.exe: CMakeFiles/aestool.dir/build.make
 bin/aestool.exe: lib/libaescore_static.a
-bin/aestool.exe: lib/libcryptopp.a
+bin/aestool.exe: D:/GitHub/MMH/Final_lab/lab1/crypto_libs/lib/libcryptopp.a
 bin/aestool.exe: CMakeFiles/aestool.dir/linkLibs.rsp
 bin/aestool.exe: CMakeFiles/aestool.dir/objects1.rsp
 bin/aestool.exe: CMakeFiles/aestool.dir/link.txt

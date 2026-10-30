@@ -23,12 +23,27 @@ AESTOOL_BUILD_TESTS:BOOL=ON
 //cryptopp-cmake tag used by the download fallback
 AESTOOL_CRYPTOPP_CMAKE_TAG:STRING=CRYPTOPP_8_9_0
 
+//With the local Crypto++: prefer libcryptopp.a over libcryptopp.so
+// (OFF: the shipped libcryptopp.a crashes aestool at run time,
+// use the .so)
+AESTOOL_CRYPTOPP_PREFER_STATIC:BOOL=OFF
+
 //Crypto++ tag used by the download fallback
 AESTOOL_CRYPTOPP_TAG:STRING=CRYPTOPP_8_9_0
 
 //Download Crypto++ / Catch2 if not found on the system (needs
 // git + internet)
 AESTOOL_FETCH_DEPS:BOOL=ON
+
+//Folder that contains include/ and lib/ of a prebuilt Crypto++
+AESTOOL_LOCAL_CRYPTOPP_DIR:PATH=D:/GitHub/MMH/Final_lab/lab1/crypto_libs
+
+//Path to a library.
+AESTOOL_LOCAL_CRYPTOPP_LIB:FILEPATH=D:/GitHub/MMH/Final_lab/lab1/crypto_libs/lib/libcryptopp.a
+
+//Use the prebuilt Crypto++ shipped in ./crypto_libs (include/
+// + lib/) first
+AESTOOL_USE_LOCAL_CRYPTOPP:BOOL=ON
 
 //Read docs/configuration.md for details
 CATCH_CONFIG_ANDROID_LOGWRITE:BOOL=OFF
@@ -929,7 +944,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

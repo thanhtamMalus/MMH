@@ -1,1 +1,1 @@
- lib/libaescore_static.a -lshell32 lib/libcryptopp.a -lkernel32 -lws2_32 -ladvapi32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+ lib/libaescore_static.a -lshell32 D:/GitHub/MMH/Final_lab/lab1/crypto_libs/lib/libcryptopp.a -lws2_32 -ladvapi32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

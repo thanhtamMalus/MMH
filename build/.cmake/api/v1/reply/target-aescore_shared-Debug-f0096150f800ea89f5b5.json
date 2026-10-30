@@ -1,9 +1,14 @@
 {
-	"archive" : {},
 	"artifacts" : 
 	[
 		{
-			"path" : "lib/libaescore_static.a"
+			"path" : "bin/libaescore.dll"
+		},
+		{
+			"path" : "lib/libaescore.dll.a"
+		},
+		{
+			"path" : "bin/libaescore.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -13,6 +18,7 @@
 		[
 			"add_library",
 			"install",
+			"target_link_options",
 			"target_link_libraries",
 			"target_include_directories"
 		],
@@ -28,25 +34,43 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 123,
+				"line" : 190,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 187,
+				"line" : 246,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 125,
+				"line" : 195,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 124,
+				"line" : 69,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 143,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 191,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 192,
 				"parent" : 0
 			}
 		]
@@ -55,13 +79,9 @@
 	[
 		{
 			"id" : "aescore_obj::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 3,
-			"id" : "cryptopp::@a180db1787849b07c483"
 		}
 	],
-	"id" : "aescore_core::@6890427a1f51a3e7e1df",
+	"id" : "aescore_shared::@6890427a1f51a3e7e1df",
 	"install" : 
 	{
 		"destinations" : 
@@ -69,6 +89,10 @@
 			{
 				"backtrace" : 2,
 				"path" : "lib"
+			},
+			{
+				"backtrace" : 2,
+				"path" : "bin"
 			}
 		],
 		"prefix" : 
@@ -76,8 +100,48 @@
 			"path" : "C:/Program Files (x86)/aestool"
 		}
 	},
-	"name" : "aescore_core",
-	"nameOnDisk" : "libaescore_static.a",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-static-libgcc",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-static-libstdc++",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "D:\\GitHub\\MMH\\Final_lab\\lab1\\crypto_libs\\lib\\libcryptopp.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-lws2_32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-ladvapi32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "aescore_shared",
+	"nameOnDisk" : "libaescore.dll",
 	"paths" : 
 	{
 		"build" : ".",
@@ -144,5 +208,5 @@
 			"sourceGroupIndex" : 0
 		}
 	],
-	"type" : "STATIC_LIBRARY"
+	"type" : "SHARED_LIBRARY"
 }

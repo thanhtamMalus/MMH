@@ -38,6 +38,18 @@
 			"value" : "CRYPTOPP_8_9_0"
 		},
 		{
+			"name" : "AESTOOL_CRYPTOPP_PREFER_STATIC",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "With the local Crypto++: prefer libcryptopp.a over libcryptopp.so (OFF: the shipped libcryptopp.a crashes aestool at run time, use the .so)"
+				}
+			],
+			"type" : "BOOL",
+			"value" : "OFF"
+		},
+		{
 			"name" : "AESTOOL_CRYPTOPP_TAG",
 			"properties" : 
 			[
@@ -56,6 +68,42 @@
 				{
 					"name" : "HELPSTRING",
 					"value" : "Download Crypto++ / Catch2 if not found on the system (needs git + internet)"
+				}
+			],
+			"type" : "BOOL",
+			"value" : "ON"
+		},
+		{
+			"name" : "AESTOOL_LOCAL_CRYPTOPP_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Folder that contains include/ and lib/ of a prebuilt Crypto++"
+				}
+			],
+			"type" : "PATH",
+			"value" : "D:/GitHub/MMH/Final_lab/lab1/crypto_libs"
+		},
+		{
+			"name" : "AESTOOL_LOCAL_CRYPTOPP_LIB",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "D:/GitHub/MMH/Final_lab/lab1/crypto_libs/lib/libcryptopp.a"
+		},
+		{
+			"name" : "AESTOOL_USE_LOCAL_CRYPTOPP",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Use the prebuilt Crypto++ shipped in ./crypto_libs (include/ + lib/) first"
 				}
 			],
 			"type" : "BOOL",
@@ -2159,7 +2207,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "5"
+			"value" : "3"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
