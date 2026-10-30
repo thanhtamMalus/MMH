@@ -1,0 +1,7 @@
+OS: Microsoft Windows 11 Pro 64-bit (Build 10.0.26200)
+CPU: Intel(R) Core(TM) i5-9400F CPU @ 2.90GHz (6 physical cores, 6 logical threads)
+Compiler: MinGW-w64 GCC 16.2.0 (Rev4, Built by MSYS2 project)
+CMake: version 4.4.4
+OpenSSL CLI: OpenSSL 3.6.5 29 Sep 2026
+Build Type: Release (-O3, -Wall -Wextra -Wpedantic, -static -static-libgcc -static-libstdc++)
+Runtime Linked: KERNEL32.dll, bcrypt.dll, msvcrt.dll
