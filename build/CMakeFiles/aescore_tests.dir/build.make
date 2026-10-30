@@ -94,7 +94,7 @@ bin/aescore_tests.exe: CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.obj
 bin/aescore_tests.exe: CMakeFiles/aescore_tests.dir/build.make
 bin/aescore_tests.exe: lib/libaescore_static.a
 bin/aescore_tests.exe: lib/libCatch2Maind.a
-bin/aescore_tests.exe: lib/libcryptopp.a
+bin/aescore_tests.exe: D:/GitHub/MMH/Final_lab/lab1/crypto_libs/lib/libcryptopp.a
 bin/aescore_tests.exe: lib/libCatch2d.a
 bin/aescore_tests.exe: CMakeFiles/aescore_tests.dir/linkLibs.rsp
 bin/aescore_tests.exe: CMakeFiles/aescore_tests.dir/objects1.rsp

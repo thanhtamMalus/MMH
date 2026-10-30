@@ -236,19 +236,6 @@ aescore_tests/fast:
 .PHONY : aescore_tests/fast
 
 #=============================================================================
-# Target rules for targets named cryptopp
-
-# Build rule for target.
-cryptopp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 cryptopp
-.PHONY : cryptopp
-
-# fast build rule for target.
-cryptopp/fast:
-	$(MAKE) $(MAKESILENT) -f _deps\cryptopp_cmake-build\cryptopp\CMakeFiles\cryptopp.dir\build.make _deps/cryptopp_cmake-build/cryptopp/CMakeFiles/cryptopp.dir/build
-.PHONY : cryptopp/fast
-
-#=============================================================================
 # Target rules for targets named Catch2
 
 # Build rule for target.
@@ -510,7 +497,6 @@ help:
 	@echo ... aescore_shared
 	@echo ... aescore_tests
 	@echo ... aestool
-	@echo ... cryptopp
 	@echo ... src/aescore.obj
 	@echo ... src/aescore.i
 	@echo ... src/aescore.s

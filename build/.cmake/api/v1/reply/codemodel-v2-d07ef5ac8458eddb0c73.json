@@ -8,11 +8,10 @@
 					"build" : ".",
 					"childIndexes" : 
 					[
-						1,
-						3
+						1
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-0baf09f64a40288b3b70.json",
+					"jsonFile" : "directory-.-Debug-f7435f9729b0c70dd36e.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -29,40 +28,10 @@
 					]
 				},
 				{
-					"build" : "_deps/cryptopp_cmake-build",
-					"childIndexes" : 
-					[
-						2
-					],
-					"jsonFile" : "directory-_deps.cryptopp_cmake-build-Debug-8df531fb17c3479556f5.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "3.20"
-					},
-					"parentIndex" : 0,
-					"projectIndex" : 1,
-					"source" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src"
-				},
-				{
-					"build" : "_deps/cryptopp_cmake-build/cryptopp",
-					"jsonFile" : "directory-_deps.cryptopp_cmake-build.cryptopp-Debug-8290309ae10b713e784c.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "3.20"
-					},
-					"parentIndex" : 1,
-					"projectIndex" : 1,
-					"source" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-src/cryptopp",
-					"targetIndexes" : 
-					[
-						7
-					]
-				},
-				{
 					"build" : "_deps/catch2-build",
 					"childIndexes" : 
 					[
-						4
+						2
 					],
 					"jsonFile" : "directory-_deps.catch2-build-Debug-9ca1a95104df70568d10.json",
 					"minimumCMakeVersion" : 
@@ -70,7 +39,7 @@
 						"string" : "3.10"
 					},
 					"parentIndex" : 0,
-					"projectIndex" : 2,
+					"projectIndex" : 1,
 					"source" : "D:/GitHub/MMH/build/_deps/catch2-src"
 				},
 				{
@@ -80,8 +49,8 @@
 					{
 						"string" : "3.10"
 					},
-					"parentIndex" : 3,
-					"projectIndex" : 2,
+					"parentIndex" : 1,
+					"projectIndex" : 1,
 					"source" : "D:/GitHub/MMH/build/_deps/catch2-src/src",
 					"targetIndexes" : 
 					[
@@ -96,8 +65,7 @@
 				{
 					"childIndexes" : 
 					[
-						1,
-						2
+						1
 					],
 					"directoryIndexes" : 
 					[
@@ -119,19 +87,6 @@
 						1,
 						2
 					],
-					"name" : "cryptopp-cmake",
-					"parentIndex" : 0,
-					"targetIndexes" : 
-					[
-						7
-					]
-				},
-				{
-					"directoryIndexes" : 
-					[
-						3,
-						4
-					],
 					"name" : "Catch2",
 					"parentIndex" : 0,
 					"targetIndexes" : 
@@ -144,60 +99,53 @@
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 4,
+					"directoryIndex" : 2,
 					"id" : "Catch2::@fa92aa50e9bf5e1a7206",
 					"jsonFile" : "target-Catch2-Debug-24fc6b915a7e574b9689.json",
 					"name" : "Catch2",
-					"projectIndex" : 2
+					"projectIndex" : 1
 				},
 				{
-					"directoryIndex" : 4,
+					"directoryIndex" : 2,
 					"id" : "Catch2WithMain::@fa92aa50e9bf5e1a7206",
 					"jsonFile" : "target-Catch2WithMain-Debug-ea1444c164c0fc4cf955.json",
 					"name" : "Catch2WithMain",
-					"projectIndex" : 2
+					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "aescore_core::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-aescore_core-Debug-4e25b90473186c201620.json",
+					"jsonFile" : "target-aescore_core-Debug-26eb3987a06552f8c281.json",
 					"name" : "aescore_core",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "aescore_obj::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-aescore_obj-Debug-01da863632ca91e4aa50.json",
+					"jsonFile" : "target-aescore_obj-Debug-07cbddd3f433ac5c8032.json",
 					"name" : "aescore_obj",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "aescore_shared::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-aescore_shared-Debug-908e542922c75364f440.json",
+					"jsonFile" : "target-aescore_shared-Debug-f0096150f800ea89f5b5.json",
 					"name" : "aescore_shared",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "aescore_tests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-aescore_tests-Debug-8e6e71aff0d4aaea8c1a.json",
+					"jsonFile" : "target-aescore_tests-Debug-6b3f980b8a1a9a025407.json",
 					"name" : "aescore_tests",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "aestool::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-aestool-Debug-edf6d1404e1dc0ec6516.json",
+					"jsonFile" : "target-aestool-Debug-1e91de7febdc652ae104.json",
 					"name" : "aestool",
 					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 2,
-					"id" : "cryptopp::@a180db1787849b07c483",
-					"jsonFile" : "target-cryptopp-Debug-b653ad52c19140f2b270.json",
-					"name" : "cryptopp",
-					"projectIndex" : 1
 				}
 			]
 		}
