@@ -91,7 +91,7 @@ Nếu như server có public key thì làm sao dùng đc 1 round để gửi c�
 - Dùng thư viện nhưng không dùng cái **có sẵn**
 - Crypto++ vẫn ok nhưng không rcm
 
-> week 7 và 6 bộ sung cho nhau về aes, nhược điểm là tính toán lớn -> week 8 sẽ giúp update cái thuật toán này
+> week 7 và 6 bổ sung cho nhau về aes, nhược điểm là tính toán lớn -> week 8 sẽ giúp update cái thuật toán này
 ## Thực hành week 3: Sử dụng thư viện cho RSA và OpenSSL
 ![](img/labw3.png)
 

@@ -65,7 +65,6 @@ CMAKE_BINARY_DIR = D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build
 all: CMakeFiles/task_a.dir/all
 all: CMakeFiles/task_b.dir/all
 all: CMakeFiles/task_c.dir/all
-all: CMakeFiles/task_d.dir/all
 all: CMakeFiles/task_e.dir/all
 .PHONY : all
 
@@ -73,7 +72,6 @@ all: CMakeFiles/task_e.dir/all
 codegen: CMakeFiles/task_a.dir/codegen
 codegen: CMakeFiles/task_b.dir/codegen
 codegen: CMakeFiles/task_c.dir/codegen
-codegen: CMakeFiles/task_d.dir/codegen
 codegen: CMakeFiles/task_e.dir/codegen
 .PHONY : codegen
 
@@ -85,7 +83,6 @@ preinstall:
 clean: CMakeFiles/task_a.dir/clean
 clean: CMakeFiles/task_b.dir/clean
 clean: CMakeFiles/task_c.dir/clean
-clean: CMakeFiles/task_d.dir/clean
 clean: CMakeFiles/task_e.dir/clean
 .PHONY : clean
 
@@ -186,45 +183,13 @@ CMakeFiles/task_c.dir/clean:
 .PHONY : CMakeFiles/task_c.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/task_d.dir
-
-# All Build rule for target.
-CMakeFiles/task_d.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_d.dir\build.make CMakeFiles/task_d.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_d.dir\build.make CMakeFiles/task_d.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=7,8 "Built target task_d"
-.PHONY : CMakeFiles/task_d.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/task_d.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/task_d.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles 0
-.PHONY : CMakeFiles/task_d.dir/rule
-
-# Convenience name for target.
-task_d: CMakeFiles/task_d.dir/rule
-.PHONY : task_d
-
-# codegen rule for target.
-CMakeFiles/task_d.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_d.dir\build.make CMakeFiles/task_d.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=7,8 "Finished codegen for target task_d"
-.PHONY : CMakeFiles/task_d.dir/codegen
-
-# clean rule for target.
-CMakeFiles/task_d.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_d.dir\build.make CMakeFiles/task_d.dir/clean
-.PHONY : CMakeFiles/task_d.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/task_e.dir
 
 # All Build rule for target.
 CMakeFiles/task_e.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_e.dir\build.make CMakeFiles/task_e.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_e.dir\build.make CMakeFiles/task_e.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=9,10 "Built target task_e"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=7,8 "Built target task_e"
 .PHONY : CMakeFiles/task_e.dir/all
 
 # Build rule for subdir invocation for target.
@@ -241,7 +206,7 @@ task_e: CMakeFiles/task_e.dir/rule
 # codegen rule for target.
 CMakeFiles/task_e.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_e.dir\build.make CMakeFiles/task_e.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=9,10 "Finished codegen for target task_e"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\build\CMakeFiles --progress-num=7,8 "Finished codegen for target task_e"
 .PHONY : CMakeFiles/task_e.dir/codegen
 
 # clean rule for target.

@@ -155,19 +155,6 @@ task_c/fast:
 .PHONY : task_c/fast
 
 #=============================================================================
-# Target rules for targets named task_d
-
-# Build rule for target.
-task_d: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 task_d
-.PHONY : task_d
-
-# fast build rule for target.
-task_d/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_d.dir\build.make CMakeFiles/task_d.dir/build
-.PHONY : task_d/fast
-
-#=============================================================================
 # Target rules for targets named task_e
 
 # Build rule for target.
@@ -252,30 +239,6 @@ task_c/task_c_oaep.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_c.dir\build.make CMakeFiles/task_c.dir/task_c/task_c_oaep.cpp.s
 .PHONY : task_c/task_c_oaep.cpp.s
 
-task_d/task_d_hybrid.obj: task_d/task_d_hybrid.cpp.obj
-.PHONY : task_d/task_d_hybrid.obj
-
-# target to build an object file
-task_d/task_d_hybrid.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_d.dir\build.make CMakeFiles/task_d.dir/task_d/task_d_hybrid.cpp.obj
-.PHONY : task_d/task_d_hybrid.cpp.obj
-
-task_d/task_d_hybrid.i: task_d/task_d_hybrid.cpp.i
-.PHONY : task_d/task_d_hybrid.i
-
-# target to preprocess a source file
-task_d/task_d_hybrid.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_d.dir\build.make CMakeFiles/task_d.dir/task_d/task_d_hybrid.cpp.i
-.PHONY : task_d/task_d_hybrid.cpp.i
-
-task_d/task_d_hybrid.s: task_d/task_d_hybrid.cpp.s
-.PHONY : task_d/task_d_hybrid.s
-
-# target to generate assembly for a file
-task_d/task_d_hybrid.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\task_d.dir\build.make CMakeFiles/task_d.dir/task_d/task_d_hybrid.cpp.s
-.PHONY : task_d/task_d_hybrid.cpp.s
-
 task_e/task_e_kem.obj: task_e/task_e_kem.cpp.obj
 .PHONY : task_e/task_e_kem.obj
 
@@ -311,7 +274,6 @@ help:
 	@echo ... task_a
 	@echo ... task_b
 	@echo ... task_c
-	@echo ... task_d
 	@echo ... task_e
 	@echo ... task_a/task_a_bignum.obj
 	@echo ... task_a/task_a_bignum.i
@@ -322,9 +284,6 @@ help:
 	@echo ... task_c/task_c_oaep.obj
 	@echo ... task_c/task_c_oaep.i
 	@echo ... task_c/task_c_oaep.s
-	@echo ... task_d/task_d_hybrid.obj
-	@echo ... task_d/task_d_hybrid.i
-	@echo ... task_d/task_d_hybrid.s
 	@echo ... task_e/task_e_kem.obj
 	@echo ... task_e/task_e_kem.i
 	@echo ... task_e/task_e_kem.s

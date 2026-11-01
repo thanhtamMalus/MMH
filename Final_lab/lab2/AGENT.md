@@ -110,10 +110,7 @@ Vì lệnh chuẩn không truyền `CMAKE_BUILD_TYPE`, `CMakeLists.txt` phải *
 ## 2. Cấu trúc thư mục yêu cầu
 
 ```
-<repo>/                          # repo có thể chứa nhiều lab (lab1, lab2, ...)
-├── .github/workflows/
-│   └── lab2-ci.yml              # (khuyến nghị) matrix ubuntu + windows
-└── lab2/                        # ← THƯ MỤC GỐC CỦA BÀI LÀM
+ lab2/                        # ← THƯ MỤC GỐC CỦA BÀI LÀM
     ├── CMakeLists.txt           # ← nằm TRONG lab2/ (self-contained)
     ├── CMakePresets.json        # (tùy chọn)
     ├── .gitattributes
