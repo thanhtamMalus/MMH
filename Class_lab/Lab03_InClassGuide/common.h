@@ -86,14 +86,14 @@ inline int g_failures = 0;
 //    - cond sai   -> in [FAIL] và tăng g_failures
 // ---------------------------------------------------------------------------
 #define check(msg, cond)                                      \
-    do {                                                      \
+    do{                                                      \
         if (!(cond)) {                                        \
             std::cout << "[FAIL] " << msg << std::endl;       \
             g_failures++;                                     \
         } else {                                              \
             std::cout << "[PASS] " << msg << std::endl;       \
         }                                                     \
-    } while (0)
+    }while (0)
 
 // ---------------------------------------------------------------------------
 // 6. printBn(): in BIGNUM ở dạng thập phân: "label = 12345..."

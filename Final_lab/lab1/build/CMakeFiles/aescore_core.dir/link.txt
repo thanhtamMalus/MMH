@@ -1,2 +1,2 @@
-/usr/bin/ar qc lib/libaescore_static.a CMakeFiles/aescore_obj.dir/src/aescore.cpp.o CMakeFiles/aescore_obj.dir/src/util.cpp.o CMakeFiles/aescore_obj.dir/src/container.cpp.o CMakeFiles/aescore_obj.dir/src/ops.cpp.o CMakeFiles/aescore_obj.dir/src/kat.cpp.o CMakeFiles/aescore_obj.dir/src/bench.cpp.o CMakeFiles/aescore_obj.dir/src/aescore_capi.cpp.o
-/usr/bin/ranlib lib/libaescore_static.a
+C:\msys64\mingw64\bin\ar.exe qc lib\libaescore_static.a CMakeFiles/aescore_obj.dir/src/aescore.cpp.obj CMakeFiles/aescore_obj.dir/src/util.cpp.obj CMakeFiles/aescore_obj.dir/src/container.cpp.obj CMakeFiles/aescore_obj.dir/src/ops.cpp.obj CMakeFiles/aescore_obj.dir/src/kat.cpp.obj CMakeFiles/aescore_obj.dir/src/bench.cpp.obj CMakeFiles/aescore_obj.dir/src/aescore_capi.cpp.obj
+C:\msys64\mingw64\bin\ranlib.exe lib\libaescore_static.a

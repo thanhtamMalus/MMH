@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/malus/Github/MMH/Final_lab/lab1/src/main.cpp" "CMakeFiles/aestool.dir/src/main.cpp.o" "gcc" "CMakeFiles/aestool.dir/src/main.cpp.o.d"
-  "" "bin/aestool" "gcc" "CMakeFiles/aestool.dir/link.d"
+  "D:/GitHub/MMH/Final_lab/lab1/src/main.cpp" "CMakeFiles/aestool.dir/src/main.cpp.obj" "gcc" "CMakeFiles/aestool.dir/src/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

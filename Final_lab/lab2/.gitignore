@@ -1,0 +1,18 @@
+# Build directories
+build/
+build-*/
+bin/
+out/
+.vs/
+*.user
+
+# Large test/bench files
+*.tmp
+*.bin.large
+bench_temp_*
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*~

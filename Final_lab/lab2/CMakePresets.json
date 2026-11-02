@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "windows-msvc",
+      "displayName": "Windows MSVC Release",
+      "description": "Build with MSVC compiler in Release mode",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build-msvc",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "windows-mingw",
+      "displayName": "Windows MinGW Release",
+      "description": "Build with MinGW-w64 GCC in Release mode",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build-mingw",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "linux-gcc",
+      "displayName": "Linux GCC Release",
+      "description": "Build with GCC on Linux in Release mode",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build-gcc",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    },
+    {
+      "name": "linux-clang",
+      "displayName": "Linux Clang Release",
+      "description": "Build with Clang on Linux in Release mode",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build-clang",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-msvc",
+      "configurePreset": "windows-msvc",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-mingw",
+      "configurePreset": "windows-mingw",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-gcc",
+      "configurePreset": "linux-gcc",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-clang",
+      "configurePreset": "linux-clang",
+      "configuration": "Release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "windows-msvc",
+      "configurePreset": "windows-msvc",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-mingw",
+      "configurePreset": "windows-mingw",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-gcc",
+      "configurePreset": "linux-gcc",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-clang",
+      "configurePreset": "linux-clang",
+      "configuration": "Release"
+    }
+  ]
+}

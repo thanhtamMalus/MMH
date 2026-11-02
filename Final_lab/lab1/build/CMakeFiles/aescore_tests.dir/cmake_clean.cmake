@@ -1,9 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/aescore_tests.dir/link.d"
-  "CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.o"
-  "CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.o.d"
-  "bin/aescore_tests"
+  "CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.obj"
+  "CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.obj.d"
+  "bin/aescore_tests.exe"
+  "bin/aescore_tests.exe.manifest"
   "bin/aescore_tests.pdb"
+  "lib/libaescore_tests.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

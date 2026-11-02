@@ -1,0 +1,53 @@
+{
+  "aes128_block": [
+    {
+      "name": "FIPS-197 C.1",
+      "key": "000102030405060708090a0b0c0d0e0f",
+      "plaintext": "00112233445566778899aabbccddeeff",
+      "ciphertext": "69c4e0d86a7b0430d8cdb78070b4c55a"
+    },
+    {
+      "name": "FIPS-197 B",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "plaintext": "3243f6a8885a308d313198a2e0370734",
+      "ciphertext": "3925841d02dc09fbdc118597196a0b32"
+    }
+  ],
+  "aes128_ctr": [
+    {
+      "name": "NIST SP 800-38A F.5.1 (64 bytes)",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+      "ciphertext": "874d6191b620e3261bef6864990db6ce9806f66b7970fdff8617187bb9fffdff5ae4df3edbd5d35e5b4f09020db03eab1e031dda2fbe03d1792170a0f3009cee"
+    },
+    {
+      "name": "NIST SP 800-38A F.5.1 (1 byte prefix)",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "plaintext": "6b",
+      "ciphertext": "87"
+    },
+    {
+      "name": "NIST SP 800-38A F.5.1 (15 bytes prefix)",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "plaintext": "6bc1bee22e409f96e93d7e11739317",
+      "ciphertext": "874d6191b620e3261bef6864990db6"
+    },
+    {
+      "name": "NIST SP 800-38A F.5.1 (17 bytes prefix)",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "plaintext": "6bc1bee22e409f96e93d7e117393172aae",
+      "ciphertext": "874d6191b620e3261bef6864990db6ce98"
+    },
+    {
+      "name": "NIST SP 800-38A F.5.1 (33 bytes prefix)",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130",
+      "ciphertext": "874d6191b620e3261bef6864990db6ce9806f66b7970fdff8617187bb9fffdff5a"
+    }
+  ]
+}

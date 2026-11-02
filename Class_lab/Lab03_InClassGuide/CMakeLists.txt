@@ -27,7 +27,7 @@ endfunction()
 add_task(task_a task_a/task_a_bignum.cpp)
 add_task(task_b task_b/task_b_rsa_keys.cpp)
 add_task(task_c task_c/task_c_oaep.cpp)
-add_task(task_d task_d/task_d_hybrid.cpp)
+#add_task(task_d task_d/task_d_hybrid.cpp)
 add_task(task_e task_e/task_e_kem.cpp)
 
 # add_task(task_c task_c/task_c_xxx.cpp)
