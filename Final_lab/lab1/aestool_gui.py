@@ -12,10 +12,14 @@ Run:   python3 gui/aestool_gui.py              (after building the project)
 """
 import ctypes
 import os
+import shutil
+import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.dirname(HERE)
+# The script may live in the project root (CMakeLists.txt next to it) or in a gui/ sub-folder.
+ROOT = HERE if os.path.isfile(os.path.join(HERE, "CMakeLists.txt")) else os.path.dirname(HERE)
+
 
 # name -> (is_aead, allowed key sizes in bits, IV/nonce description)
 # Must stay in sync with valid_key_len()/valid_iv_len() in src/aescore.cpp.
@@ -35,25 +39,71 @@ RC_AUTH = 2
 MODE_BY_ID = {1: "ecb", 2: "cbc", 3: "ofb", 4: "cfb", 5: "ctr", 6: "xts", 7: "ccm", 8: "gcm"}  # enum Mode in aescore.h
 
 
-def find_library():
+def _lib_names():
     if os.name == "nt":
-        names = ["aescore.dll", "libaescore.dll"]
-    elif sys.platform == "darwin":
-        names = ["libaescore.dylib"]
-    else:
-        names = ["libaescore.so"]
+        return ["aescore.dll", "libaescore.dll"]
+    if sys.platform == "darwin":
+        return ["libaescore.dylib"]
+    return ["libaescore.so"]
+
+
+def _search_library():
     env = os.environ.get("AESCORE_LIB")
-    if env:
+    if env and os.path.isfile(env):
         return env
-    dirs = [os.path.join(ROOT, "build", "bin", c) for c in ("", "Release", "Debug")]
-    dirs += [os.path.join(ROOT, "bin"), HERE, os.getcwd()]
+    roots = []
+    for r in (ROOT, HERE, os.path.dirname(HERE), os.getcwd()):
+        if r not in roots:
+            roots.append(r)
+    dirs = []
+    for r in roots:
+        dirs += [os.path.join(r, "build", "bin", c) for c in ("", "Release", "Debug")]
+        dirs += [os.path.join(r, "build", c) for c in ("", "Release", "Debug")]
+        dirs += [os.path.join(r, "bin"), r]
     for d in dirs:
-        for n in names:
+        for n in _lib_names():
             p = os.path.join(d, n)
             if os.path.isfile(p):
                 return p
-    raise FileNotFoundError("aescore library not found. Build the project first "
-                            "(cmake -S . -B build && cmake --build build) or set AESCORE_LIB.")
+    return None
+
+
+def _auto_build():
+    """Build the project with CMake the first time the GUI is started."""
+    if not os.path.isfile(os.path.join(ROOT, "CMakeLists.txt")):
+        return
+    cmake = shutil.which("cmake")
+    if not cmake:
+        print("cmake not found in PATH - cannot build automatically.")
+        return
+    build = os.path.join(ROOT, "build")
+    print("aescore library not found - building the project with CMake (first run only)...")
+    cfg = [cmake, "-S", ROOT, "-B", build, "-DAESTOOL_BUILD_TESTS=OFF", "-DAESTOOL_BUILD_SHARED=ON"]
+    if os.name == "nt" and not os.path.isfile(os.path.join(build, "CMakeCache.txt")):
+        # MinGW produces a fully static aescore.dll that Python ctypes can load; MSVC is the fallback.
+        if shutil.which("g++") and shutil.which("mingw32-make"):
+            cfg += ["-G", "MinGW Makefiles"]
+        elif shutil.which("g++") and shutil.which("ninja"):
+            cfg += ["-G", "Ninja"]
+    try:
+        subprocess.run(cfg, check=True)
+        subprocess.run([cmake, "--build", build, "--config", "Release", "--target", "aescore_shared"],
+                       check=True)
+    except (subprocess.CalledProcessError, OSError) as e:
+        print("Automatic build failed:", e)
+
+
+def find_library():
+    p = _search_library()
+    if p:
+        return p
+    _auto_build()
+    p = _search_library()
+    if p:
+        return p
+    raise FileNotFoundError("aescore library not found and the automatic build failed.\n"
+                            "Build manually: cmake -S . -B build && cmake --build build\n"
+                            "or set AESCORE_LIB=<path to aescore.dll / libaescore.so>.")
 
 
 def _preload_cryptopp():
@@ -75,7 +125,7 @@ def _preload_cryptopp():
 def load_lib():
     path = find_library()
     dll_dirs = [os.path.dirname(os.path.abspath(path)), os.path.join(ROOT, "crypto_libs", "lib"),
-                os.path.join(ROOT, "crypto_libs", "bin")]
+                os.path.join(ROOT, "crypto_libs", "bin"), HERE]
     if os.name == "nt" and hasattr(os, "add_dll_directory"):
         for d in dll_dirs:
             if os.path.isdir(d):
