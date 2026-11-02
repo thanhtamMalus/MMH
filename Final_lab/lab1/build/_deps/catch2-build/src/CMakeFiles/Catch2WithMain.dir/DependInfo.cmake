@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-src/src/catch2/internal/catch_main.cpp" "_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o" "gcc" "_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o.d"
+  "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-src/src/catch2/internal/catch_main.cpp" "_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.obj" "gcc" "_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

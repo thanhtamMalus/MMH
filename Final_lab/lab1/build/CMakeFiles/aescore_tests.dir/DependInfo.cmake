@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/malus/Github/MMH/Final_lab/lab1/tests/test_aescore.cpp" "CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.o" "gcc" "CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.o.d"
-  "" "bin/aescore_tests" "gcc" "CMakeFiles/aescore_tests.dir/link.d"
+  "D:/GitHub/MMH/Final_lab/lab1/tests/test_aescore.cpp" "CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.obj" "gcc" "CMakeFiles/aescore_tests.dir/tests/test_aescore.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/malus/Github/MMH/Final_lab/lab1/src/aescore.cpp" "CMakeFiles/aescore_obj.dir/src/aescore.cpp.o" "gcc" "CMakeFiles/aescore_obj.dir/src/aescore.cpp.o.d"
-  "/home/malus/Github/MMH/Final_lab/lab1/src/aescore_capi.cpp" "CMakeFiles/aescore_obj.dir/src/aescore_capi.cpp.o" "gcc" "CMakeFiles/aescore_obj.dir/src/aescore_capi.cpp.o.d"
-  "/home/malus/Github/MMH/Final_lab/lab1/src/bench.cpp" "CMakeFiles/aescore_obj.dir/src/bench.cpp.o" "gcc" "CMakeFiles/aescore_obj.dir/src/bench.cpp.o.d"
-  "/home/malus/Github/MMH/Final_lab/lab1/src/container.cpp" "CMakeFiles/aescore_obj.dir/src/container.cpp.o" "gcc" "CMakeFiles/aescore_obj.dir/src/container.cpp.o.d"
-  "/home/malus/Github/MMH/Final_lab/lab1/src/kat.cpp" "CMakeFiles/aescore_obj.dir/src/kat.cpp.o" "gcc" "CMakeFiles/aescore_obj.dir/src/kat.cpp.o.d"
-  "/home/malus/Github/MMH/Final_lab/lab1/src/ops.cpp" "CMakeFiles/aescore_obj.dir/src/ops.cpp.o" "gcc" "CMakeFiles/aescore_obj.dir/src/ops.cpp.o.d"
-  "/home/malus/Github/MMH/Final_lab/lab1/src/util.cpp" "CMakeFiles/aescore_obj.dir/src/util.cpp.o" "gcc" "CMakeFiles/aescore_obj.dir/src/util.cpp.o.d"
+  "D:/GitHub/MMH/Final_lab/lab1/src/aescore.cpp" "CMakeFiles/aescore_obj.dir/src/aescore.cpp.obj" "gcc" "CMakeFiles/aescore_obj.dir/src/aescore.cpp.obj.d"
+  "D:/GitHub/MMH/Final_lab/lab1/src/aescore_capi.cpp" "CMakeFiles/aescore_obj.dir/src/aescore_capi.cpp.obj" "gcc" "CMakeFiles/aescore_obj.dir/src/aescore_capi.cpp.obj.d"
+  "D:/GitHub/MMH/Final_lab/lab1/src/bench.cpp" "CMakeFiles/aescore_obj.dir/src/bench.cpp.obj" "gcc" "CMakeFiles/aescore_obj.dir/src/bench.cpp.obj.d"
+  "D:/GitHub/MMH/Final_lab/lab1/src/container.cpp" "CMakeFiles/aescore_obj.dir/src/container.cpp.obj" "gcc" "CMakeFiles/aescore_obj.dir/src/container.cpp.obj.d"
+  "D:/GitHub/MMH/Final_lab/lab1/src/kat.cpp" "CMakeFiles/aescore_obj.dir/src/kat.cpp.obj" "gcc" "CMakeFiles/aescore_obj.dir/src/kat.cpp.obj.d"
+  "D:/GitHub/MMH/Final_lab/lab1/src/ops.cpp" "CMakeFiles/aescore_obj.dir/src/ops.cpp.obj" "gcc" "CMakeFiles/aescore_obj.dir/src/ops.cpp.obj.d"
+  "D:/GitHub/MMH/Final_lab/lab1/src/util.cpp" "CMakeFiles/aescore_obj.dir/src/util.cpp.obj" "gcc" "CMakeFiles/aescore_obj.dir/src/util.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

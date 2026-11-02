@@ -16,7 +16,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(AESTOOL_BUILD_TESTS  "Build unit tests (Catch2) and register ctest tests" ON)
 option(AESTOOL_BUILD_SHARED "Also build the shared library (.dll / .so) with C API" ON)
 option(AESTOOL_FETCH_DEPS   "Download Crypto++ / Catch2 if not found on the system (needs git + internet)" ON)
-option(AESTOOL_USE_LOCAL_CRYPTOPP  "Use the prebuilt Crypto++ shipped in ./crypto_libs (include/ + lib/) first" ON)
+option(AESTOOL_USE_LOCAL_CRYPTOPP  "Use the prebuilt Crypto++ shipped in ./crypto_libs (include/ + lib/) first (Linux/macOS only)" ON)
 option(AESTOOL_CRYPTOPP_PREFER_STATIC "With the local Crypto++: prefer libcryptopp.a over libcryptopp.so (OFF: the shipped libcryptopp.a crashes aestool at run time, use the .so)" OFF)
 set(AESTOOL_LOCAL_CRYPTOPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/crypto_libs" CACHE PATH "Folder that contains include/ and lib/ of a prebuilt Crypto++")
 set(AESTOOL_CRYPTOPP_TAG "CRYPTOPP_8_9_0" CACHE STRING "Crypto++ tag used by the download fallback")
@@ -28,7 +28,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
 # ---------------------------------------------------------------------------
 # Locate Crypto++ (the only crypto library allowed by the lab)
-#   0) ./crypto_libs  (prebuilt: include/ + lib/)  <- default, no install needed
+#   0) ./crypto_libs  (prebuilt: include/ + lib/)  <- Linux/macOS only
+#      (the shipped libcryptopp.a/.so are ELF files: MSVC and MinGW cannot use them)
 #   1) CMake package config (vcpkg, cryptopp-cmake)
 #   2) plain find_path / find_library (apt: libcrypto++-dev, MSYS2: crypto++)
 #   3) download + build (fallback)
@@ -40,7 +41,7 @@ set(_cpp_ok FALSE)
 # The headers there may be flat (crypto_libs/include/aes.h) while the sources do
 # #include <cryptopp/aes.h>. In that case a "cryptopp" link/copy is generated in the
 # build tree, so crypto_libs itself never has to be modified.
-if(AESTOOL_USE_LOCAL_CRYPTOPP AND EXISTS "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include")
+if(AESTOOL_USE_LOCAL_CRYPTOPP AND NOT WIN32 AND EXISTS "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include")
   set(_lc_inc "")
   if(EXISTS "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include/cryptopp/aes.h")
     set(_lc_inc "${AESTOOL_LOCAL_CRYPTOPP_DIR}/include")
@@ -132,7 +133,7 @@ endif()
 if(NOT _cpp_ok)
   message(FATAL_ERROR
     "Crypto++ was not found.\n"
-    "  Local  : put the prebuilt files in ./crypto_libs/include (*.h) and ./crypto_libs/lib (libcryptopp.so / .a / .lib)\n"
+    "  Local  : put the prebuilt files in ./crypto_libs/include (*.h) and ./crypto_libs/lib (libcryptopp.so / .a)  (Linux only)\n"
     "  Ubuntu : sudo apt install libcrypto++-dev\n"
     "  MSVC   : vcpkg install cryptopp:x64-windows  and pass -DCMAKE_TOOLCHAIN_FILE=<vcpkg>/scripts/buildsystems/vcpkg.cmake\n"
     "  MinGW  : pacman -S mingw-w64-x86_64-crypto++   (MSYS2 MINGW64 shell)\n"
@@ -141,14 +142,6 @@ endif()
 
 if(WIN32)
   target_link_libraries(cryptopp_dep INTERFACE ws2_32 advapi32)
-endif()
-
-# Windows + local DLL build of Crypto++: put cryptopp*.dll next to the executables
-if(WIN32 AND AESTOOL_USE_LOCAL_CRYPTOPP)
-  file(GLOB _lc_dlls "${AESTOOL_LOCAL_CRYPTOPP_DIR}/lib/*.dll" "${AESTOOL_LOCAL_CRYPTOPP_DIR}/bin/*.dll")
-  if(_lc_dlls)
-    file(COPY ${_lc_dlls} DESTINATION "${CMAKE_BINARY_DIR}/bin")
-  endif()
 endif()
 
 # ---------------------------------------------------------------------------
@@ -192,7 +185,8 @@ if(AESTOOL_BUILD_SHARED)
   target_link_libraries(aescore_shared PUBLIC cryptopp_dep)
   set_target_properties(aescore_shared PROPERTIES OUTPUT_NAME aescore LINKER_LANGUAGE CXX)
   if(MINGW)
-    target_link_options(aescore_shared PRIVATE -static-libgcc -static-libstdc++)
+    # fully static: no libwinpthread-1.dll / libstdc++-6.dll needed (Python ctypes can load it)
+    target_link_options(aescore_shared PRIVATE -static)
   endif()
 endif()
 
@@ -206,7 +200,7 @@ if(WIN32)
   target_link_libraries(aestool PRIVATE shell32)
 endif()
 if(MINGW)
-  target_link_options(aestool PRIVATE -static-libgcc -static-libstdc++)
+  target_link_options(aestool PRIVATE -static)
 endif()
 
 # ---------------------------------------------------------------------------
@@ -230,7 +224,7 @@ if(AESTOOL_BUILD_TESTS)
     target_link_libraries(aescore_tests PRIVATE aescore_core Catch2::Catch2WithMain)
     aestool_target_defaults(aescore_tests)
     if(MINGW)
-      target_link_options(aescore_tests PRIVATE -static-libgcc -static-libstdc++)
+      target_link_options(aescore_tests PRIVATE -static)
     endif()
     add_test(NAME unit_tests COMMAND aescore_tests)
   else()

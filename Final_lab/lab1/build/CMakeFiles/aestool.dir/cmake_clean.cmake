@@ -1,9 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/aestool.dir/link.d"
-  "CMakeFiles/aestool.dir/src/main.cpp.o"
-  "CMakeFiles/aestool.dir/src/main.cpp.o.d"
-  "bin/aestool"
+  "CMakeFiles/aestool.dir/src/main.cpp.obj"
+  "CMakeFiles/aestool.dir/src/main.cpp.obj.d"
+  "bin/aestool.exe"
+  "bin/aestool.exe.manifest"
   "bin/aestool.pdb"
+  "lib/libaestool.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

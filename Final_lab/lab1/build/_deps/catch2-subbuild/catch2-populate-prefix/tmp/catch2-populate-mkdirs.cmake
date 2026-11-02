@@ -6,22 +6,22 @@ cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
 # If CMAKE_DISABLE_SOURCE_CHANGES is set to true and the source directory is an
 # existing directory in our source tree, calling file(MAKE_DIRECTORY) on it
 # would cause a fatal error, even though it would be a no-op.
-if(NOT EXISTS "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-src")
-  file(MAKE_DIRECTORY "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-src")
+if(NOT EXISTS "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-src")
+  file(MAKE_DIRECTORY "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-src")
 endif()
 file(MAKE_DIRECTORY
-  "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-build"
-  "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix"
-  "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/tmp"
-  "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp"
-  "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src"
-  "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp"
+  "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-build"
+  "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix"
+  "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/tmp"
+  "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp"
+  "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src"
+  "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/home/malus/Github/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "D:/GitHub/MMH/Final_lab/lab1/build/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../../../lib/libCatch2Main.a CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o
-/usr/bin/ranlib ../../../lib/libCatch2Main.a
+C:\msys64\mingw64\bin\ar.exe qc ..\..\..\lib\libCatch2Main.a CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.obj
+C:\msys64\mingw64\bin\ranlib.exe ..\..\..\lib\libCatch2Main.a

@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/aescore_shared.dir/link.d"
+  "bin/libaescore.dll"
+  "bin/libaescore.dll.manifest"
   "bin/libaescore.pdb"
-  "bin/libaescore.so"
+  "lib/libaescore.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
