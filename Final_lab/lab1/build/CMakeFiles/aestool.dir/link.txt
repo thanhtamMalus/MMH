@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\aestool.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\aestool.dir/objects.a @CMakeFiles\aestool.dir\objects1.rsp
-C:\msys64\mingw64\bin\c++.exe -O3 -DNDEBUG -static -Wl,--whole-archive CMakeFiles\aestool.dir/objects.a -Wl,--no-whole-archive -o bin\aestool.exe -Wl,--out-implib,lib\libaestool.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\aestool.dir\linkLibs.rsp

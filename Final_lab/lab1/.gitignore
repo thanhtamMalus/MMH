@@ -1,0 +1,29 @@
+# Build (mọi thư mục build*, build-linux, build-win...)
+build*/
+cmake-build-*/
+
+# Python
+__pycache__/
+*.pyc
+
+# File sinh ra khi chạy thử
+key*.bin
+key*.hex
+xts.key
+msg.txt
+out.txt
+bad.txt
+tampered.bin
+big.bin
+ct.*
+plots/
+bench_*.csv
+
+# Editor / OS (gộp của cả hai hệ điều hành)
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
+*~
+*.swp
