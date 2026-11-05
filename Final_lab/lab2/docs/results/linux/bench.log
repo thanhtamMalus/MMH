@@ -1,0 +1,64 @@
+========================================================
+AES-128 CTR Mode Benchmark Suite
+OS: Linux | Compiler: GCC 15.2.0 | Build Type: Release
+Runs: 20 | Working Dir: /tmp/aesbench
+========================================================
+
+>>> Running Compute-Only (in-memory) | S-Box: table | Size: 1024 MiB (1073741824 bytes) <<<
+  [Warm-up] ... ========================================================
+AES-128 CTR Mode Benchmark Suite
+OS: Linux | Compiler: GCC 15.2.0 | Build Type: Release
+Runs: 20 | Working Dir: /tmp/aesbench
+========================================================
+
+>>> Running Compute-Only (in-memory) | S-Box: table | Size: 1024 MiB (1073741824 bytes) <<<
+  [Warm-up] ... Done.
+  Run 1/20: 32.4558 s | 31.55 MiB/s
+  Run 2/20: 32.4338 s | 31.57 MiB/s
+  Run 3/20: 32.6319 s | 31.38 MiB/s
+  Run 4/20: 32.8323 s | 31.19 MiB/s
+  Run 5/20: 32.8316 s | 31.19 MiB/s
+  Run 6/20: 32.7455 s | 31.27 MiB/s
+  Run 7/20: 32.4966 s | 31.51 MiB/s
+  Run 8/20: 32.7582 s | 31.26 MiB/s
+  Run 9/20: 32.9243 s | 31.10 MiB/s
+  Run 10/20: 32.8315 s | 31.19 MiB/s
+  Run 11/20: 32.7935 s | 31.23 MiB/s
+  Run 12/20: 32.8417 s | 31.18 MiB/s
+  Run 13/20: 32.8403 s | 31.18 MiB/s
+  Run 14/20: 32.6563 s | 31.36 MiB/s
+  Run 15/20: 32.5669 s | 31.44 MiB/s
+  Run 16/20: 32.4231 s | 31.58 MiB/s
+  Run 17/20: 32.5188 s | 31.49 MiB/s
+  Run 18/20: 32.6316 s | 31.38 MiB/s
+  Run 19/20: 32.6606 s | 31.35 MiB/s
+  Run 20/20: 32.9455 s | 31.08 MiB/s
+  Summary Compute: Median: 31.27 MiB/s | Min: 31.08 MiB/s | Max: 31.58 MiB/s
+
+>>> Running End-to-End (file -> file) | S-Box: table | Size: 1024 MiB (1073741824 bytes) <<<
+  Creating test file (1024 MiB) ... Done.
+  [Warm-up] ... Done.
+  Run 1/20: 33.1945 s | 30.85 MiB/s
+  Run 2/20: 32.9526 s | 31.07 MiB/s
+  Run 3/20: 33.0271 s | 31.00 MiB/s
+  Run 4/20: 32.9935 s | 31.04 MiB/s
+  Run 5/20: 33.1290 s | 30.91 MiB/s
+  Run 6/20: 33.1761 s | 30.87 MiB/s
+  Run 7/20: 33.0349 s | 31.00 MiB/s
+  Run 8/20: 33.0993 s | 30.94 MiB/s
+  Run 9/20: 33.3674 s | 30.69 MiB/s
+  Run 10/20: 33.2198 s | 30.82 MiB/s
+  Run 11/20: 33.6688 s | 30.41 MiB/s
+  Run 12/20: 33.4322 s | 30.63 MiB/s
+  Run 13/20: 33.5309 s | 30.54 MiB/s
+  Run 14/20: 33.3619 s | 30.69 MiB/s
+  Run 15/20: 33.3515 s | 30.70 MiB/s
+  Run 16/20: 33.3511 s | 30.70 MiB/s
+  Run 17/20: 33.2816 s | 30.77 MiB/s
+  Run 18/20: 33.3427 s | 30.71 MiB/s
+  Run 19/20: 33.4068 s | 30.65 MiB/s
+  Run 20/20: 33.0626 s | 30.97 MiB/s
+  Summary E2E: Median: 30.77 MiB/s | Min: 30.41 MiB/s | Max: 31.07 MiB/s
+
+>>> Running Compute-Only (in-memory) | S-Box: computed | Size: 1024 MiB (1073741824 bytes) <<<
+  [Warm-up] ... 
