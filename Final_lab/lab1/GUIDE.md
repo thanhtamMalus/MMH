@@ -28,8 +28,8 @@ C:\vcpkg\vcpkg install cryptopp:x64-windows catch2:x64-windows
 
 cd aestool
 mkdir build; cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
-cmake --build . --config Release
+cmake -B build -S . -DAESTOOL_BUILD_TESTS=ON -DAESTOOL_FETCH_DEPS=ON
+cmake --build build --config Release
 ctest -C Release --output-on-failure
 
 .\bin\Release\aestool.exe help
