@@ -1,0 +1,26 @@
+# Default: treat as text, normalize LF on checkin
+* text=auto
+
+# Binary and crypto artifacts – never mangle
+*.bin  -text
+*.der  -text
+*.pem  -text
+
+# Shell scripts must have LF line endings
+*.sh   text eol=lf
+
+# PowerShell scripts must have CRLF line endings
+*.ps1  text eol=crlf
+
+# Python scripts
+*.py   text eol=lf
+
+# Compiled objects and executables
+*.o    binary
+*.obj  binary
+*.a    binary
+*.lib  binary
+*.so   binary
+*.dll  binary
+*.exe  binary
+

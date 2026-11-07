@@ -8,16 +8,18 @@
 - Luôn mang máy tính đi học
 # Week 01: Introduction
 *Bữa này tôi cúp*
+
 ![](img/week1.png)
 
 Chung quy là tìm hiểu và thử decode vài mật mã dựa trên web hoặc trình code nào đó(?)
 # Week 02: Cryptanalysis SPN ciphers
 ![](img/week02.png)
+
 Chung quy hôm này thì ae sẽ được code của anh Tự, tìm hiểu về tần suất các chữ cái -> giải mã
 
 Cơ chế giải mã của tuần này là dạng ánh xạ nên dựa vào tần suất sẽ giải ra được, còn how to tính tần suất và cách dùng thì rcm nghe anh Tự nha. Có thể check sơ bằng web [Dcode](https://www.dcode.fr/en)
 
-BTVN week 2 của anh Tự giao tui nà: [BTVNWeek02](Class\Week02\25521638_MaHoaTiengViet.md)
+BTVN week 2 của anh Tự giao tui nà: [BTVNWeek02](Class/Week02/25521638_MaHoaTiengViet.md)
 
 # Week 03: Stream Ciphers - Algorithms and Cryptanalysis
 Cài PyQt6 cho python để chạy demo cho buổi học
@@ -35,6 +37,7 @@ Tuần này sẽ cần thư viện OpenSSL để encode và decode text,file. Ch
 ## Thực hành Week 1: cài đặt môi trường
 - Hãy cài đặt trước mingw, visual code (tím), docker (nếu được), **Dual boot (bắt buộc)**
 - Thư viện mật mã thì nên kiếm cái mới nhất mà cài, hoặc là không cài và đợi thầy
+
 **Bonus**: Docker
 
 # Week 04: Modern Symmetric Ciphers – AES
@@ -49,6 +52,7 @@ Có thể là làm task mã hóa và phân tích hiệu năng các mode AES.
 
 ## Thực hành week 2: AES
 ![](img/aes.png)
+
 # Week 06: RSA and Cryptanalysis
 ![](img/week06.png)
 ![](img/week06_1.png)

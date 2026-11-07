@@ -1,0 +1,98 @@
+name: CI — Build and Test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-linux:
+    name: Linux (Ubuntu 22.04, GCC)
+    runs-on: ubuntu-latest
+    env:
+      OPENSSL_ROOT_DIR: /opt/openssl4
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ninja-build perl nasm
+
+      - name: Cache OpenSSL 4 build
+        id: cache-openssl
+        uses: actions/cache@v4
+        with:
+          path: /opt/openssl4
+          key: openssl4-ubuntu-${{ hashFiles('.openssl-version') }}
+
+      - name: Build OpenSSL 4
+        if: steps.cache-openssl.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch openssl-4.0.0 \
+              https://github.com/openssl/openssl.git openssl_src
+          cd openssl_src
+          ./Configure --prefix=/opt/openssl4 --libdir=lib linux-x86_64
+          make -j$(nproc)
+          sudo make install
+
+      - name: Configure
+        run: |
+          cmake -S rsatool -B build/linux-release \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DOPENSSL_ROOT_DIR=/opt/openssl4 \
+            -GNinja
+
+      - name: Build
+        run: cmake --build build/linux-release --config Release
+
+      - name: Test
+        run: ctest --test-dir build/linux-release --output-on-failure -C Release
+
+  build-windows:
+    name: Windows (MSVC 2022)
+    runs-on: windows-latest
+    env:
+      OPENSSL_ROOT_DIR: C:\openssl4
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Strawberry Perl and NASM
+        run: |
+          choco install strawberryperl nasm -y
+          echo "C:\Strawberry\c\bin;C:\Strawberry\perl\bin;C:\Program Files\NASM" >> $env:GITHUB_PATH
+
+      - name: Cache OpenSSL 4 build
+        id: cache-openssl-win
+        uses: actions/cache@v4
+        with:
+          path: C:\openssl4
+          key: openssl4-windows-${{ hashFiles('.openssl-version') }}
+
+      - name: Build OpenSSL 4 (Windows)
+        if: steps.cache-openssl-win.outputs.cache-hit != 'true'
+        shell: cmd
+        run: |
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          git clone --depth 1 --branch openssl-4.0.0 https://github.com/openssl/openssl.git openssl_src
+          cd openssl_src
+          perl Configure VC-WIN64A --prefix=C:\openssl4 --openssldir=C:\openssl4\ssl
+          nmake
+          nmake install
+
+      - name: Configure
+        run: |
+          cmake -S rsatool -B build/windows-release `
+            -G "Visual Studio 17 2022" -A x64 `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DOPENSSL_ROOT_DIR="C:/openssl4"
+
+      - name: Build
+        run: cmake --build build/windows-release --config Release
+
+      - name: Test
+        run: ctest --test-dir build/windows-release --output-on-failure -C Release
+

@@ -1,0 +1,40 @@
+# Build directories
+build/
+cmake-build-*/
+
+# Generated key & envelope files (from demo/tests)
+*.pem
+*.der
+meta.json
+*.enc
+*.dec
+
+# Benchmark results (keep placeholder)
+bench/results/*.csv
+bench/results/*.png
+
+# IDE
+.vscode/
+.idea/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.cmake
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+CTestTestfile.cmake
+_deps/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
+
