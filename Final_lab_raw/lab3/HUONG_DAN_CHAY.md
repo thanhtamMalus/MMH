@@ -66,7 +66,7 @@ cmake --build build/linux-release --config Release -j$(nproc)
 
 ### Windows (PowerShell)
 ```powershell
-# Build qua script (tự dò OpenSSL 4, tự chọn bản Visual Studio đang cài)
+# Build qua script (tự dò OpenSSL 4, tự chọn bản Visual Studio đang cài, dùng vs bản config = msvc, có .lib)
 .\scripts\build.ps1
 
 # Hoặc thủ công (không cần -DOPENSSL_ROOT_DIR):
