@@ -1,4 +1,4 @@
-// test_negative.cpp — Negative tests: all must fail closed with no output file
+// test_negative.cpp - Negative tests: all must fail closed with no output file
 #include <catch2/catch_test_macros.hpp>
 #include <rsatool/keys.hpp>
 #include <rsatool/oaep.hpp>

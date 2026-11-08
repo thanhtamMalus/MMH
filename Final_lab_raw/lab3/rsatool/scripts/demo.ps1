@@ -55,7 +55,7 @@ Write-Host ""
 
 # ── Step 4: Verify ────────────────────────────────────────────────────────────
 Write-Host "--- Step 4: Verify (fc /b) ---" -ForegroundColor Yellow
-$fcResult = & fc /b "$TmpDir\small.bin" "$TmpDir\small.dec" 2>&1
+$fcResult = & fc.exe /b "$TmpDir\small.bin" "$TmpDir\small.dec" 2>&1
 if ($LASTEXITCODE -eq 0) {
     Write-Host "PASS: Decrypted file is byte-identical to original." -ForegroundColor Green
 } else {
@@ -67,7 +67,8 @@ Write-Host ""
 # ── Step 5: Hybrid encrypt ────────────────────────────────────────────────────
 Write-Host "--- Step 5: Hybrid encrypt (1 KiB random data) ---" -ForegroundColor Yellow
 $randBytes = New-Object byte[] 1024
-[System.Security.Cryptography.RandomNumberGenerator]::Fill($randBytes)
+$rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+try { $rng.GetBytes($randBytes) } finally { $rng.Dispose() }
 [System.IO.File]::WriteAllBytes("$TmpDir\large.bin", $randBytes)
 
 & $Tool encrypt `
@@ -88,12 +89,13 @@ Write-Host "--- Step 6: Decrypt hybrid ---" -ForegroundColor Yellow
 Write-Host ""
 
 # ── Step 7: Verify hybrid ─────────────────────────────────────────────────────
-Write-Host "--- Step 7: Verify hybrid (fc /b) ---" -ForegroundColor Yellow
-$fcResult2 = & fc /b "$TmpDir\large.bin" "$TmpDir\large.dec" 2>&1
-if ($LASTEXITCODE -eq 0) {
+Write-Host "--- Step 7: Verify hybrid (SHA-256) ---" -ForegroundColor Yellow
+$h1 = (Get-FileHash "$TmpDir\large.bin" -Algorithm SHA256).Hash
+$h2 = (Get-FileHash "$TmpDir\large.dec" -Algorithm SHA256).Hash
+if ($h1 -eq $h2) {
     Write-Host "PASS: Hybrid decrypted file is byte-identical." -ForegroundColor Green
 } else {
-    Write-Error "FAIL: Hybrid files differ!`n$fcResult2"
+    Write-Host "FAIL: Hybrid files differ!`n  orig: $h1`n  dec : $h2" -ForegroundColor Red
     exit 1
 }
 Write-Host ""
@@ -106,21 +108,25 @@ Write-Host "--- Step 8: Wrong label test (must fail) ---" -ForegroundColor Yello
     --out   "$TmpDir\labeled.enc" `
     --label "correct-label" `
     --mode  direct
-
-$decFailed = $false
-try {
-    & $Tool decrypt `
-        --in    "$TmpDir\labeled.enc" `
-        --priv  "$TmpDir\priv.pem" `
-        --out   "$TmpDir\labeled.dec" `
-        --label "wrong-label"
-} catch {
-    $decFailed = $true
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "FAIL: encrypt with label failed unexpectedly." -ForegroundColor Red
+    exit 1
 }
-if ($LASTEXITCODE -ne 0 -or $decFailed) {
+
+$prevEAP = $ErrorActionPreference
+$ErrorActionPreference = "Continue"   # cho phép exe ghi stderr mà không dừng script
+$null = & $Tool decrypt `
+    --in    "$TmpDir\labeled.enc" `
+    --priv  "$TmpDir\priv.pem" `
+    --out   "$TmpDir\labeled.dec" `
+    --label "wrong-label" 2>&1
+$decExit = $LASTEXITCODE
+$ErrorActionPreference = $prevEAP
+
+if ($decExit -ne 0 -and -not (Test-Path "$TmpDir\labeled.dec")) {
     Write-Host "PASS: Wrong label correctly rejected." -ForegroundColor Green
 } else {
-    Write-Error "FAIL: Wrong label should have failed!"
+    Write-Host "FAIL: Wrong label should have failed!" -ForegroundColor Red
     exit 1
 }
 Write-Host ""

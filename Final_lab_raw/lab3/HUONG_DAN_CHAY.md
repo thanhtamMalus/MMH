@@ -70,9 +70,9 @@ cmake --build build/linux-release --config Release -j$(nproc)
 .\scripts\build.ps1
 
 # Hoặc thủ công (không cần -DOPENSSL_ROOT_DIR):
-cmake -S . -B build/windows-release `
-      -G "Visual Studio 17 2022" -A x64 `
-      -DCMAKE_BUILD_TYPE=Release
+cmake -S . -B build/mingw-release -G Ninja -DCMAKE_BUILD_TYPE=Release `
+  -DOPENSSL_ROOT_DIR="D:/cryptolibrary/openssl403"
+cmake --build build/mingw-release
 cmake --build build/windows-release --config Release
 ```
 

@@ -1,6 +1,6 @@
 // bench.cpp — Benchmarks for RSA keygen, OAEP encrypt/decrypt, AES-GCM throughput
 // Outputs CSV to bench/results/. Build in Release (-O2).
-// Warm-up: 3 reps. Main: >= 30 reps for fast ops, >= 10 for slow (RSA keygen/100MiB).
+// Warm-up: 3 reps. Main: >= 100 reps for fast ops, 100 for slow (RSA keygen/100MiB).
 #include <rsatool/keys.hpp>
 #include <rsatool/oaep.hpp>
 #include <rsatool/hybrid.hpp>

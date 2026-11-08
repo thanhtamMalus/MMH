@@ -1,4 +1,4 @@
-// test_hybrid.cpp — Positive tests for hybrid envelope round trips
+// test_hybrid.cpp - Positive tests for hybrid envelope round trips
 #include <catch2/catch_test_macros.hpp>
 #include <rsatool/keys.hpp>
 #include <rsatool/hybrid.hpp>
@@ -14,6 +14,7 @@
 #include <functional>
 #include <algorithm>
 #include <stdexcept>
+#include <iterator>
 
 using namespace rsatool;
 
@@ -24,7 +25,7 @@ static std::vector<uint8_t> rand_vec(std::size_t n) {
     return v;
 }
 
-TEST_CASE("Hybrid AES-GCM round trip — 1 KiB", "[hybrid][aes]") {
+TEST_CASE("Hybrid AES-GCM round trip - 1 KiB", "[hybrid][aes]") {
     auto pt = rand_vec(1024);
     std::vector<uint8_t> aad = {0x01, 0x02, 0x03};  // some AAD
 
@@ -41,7 +42,7 @@ TEST_CASE("Hybrid AES-GCM round trip — 1 KiB", "[hybrid][aes]") {
     REQUIRE(std::equal(dec.begin(), dec.end(), pt.begin()));
 }
 
-TEST_CASE("Hybrid AES-GCM round trip — 1 MiB", "[hybrid][aes]") {
+TEST_CASE("Hybrid AES-GCM round trip - 1 MiB", "[hybrid][aes]") {
     auto pt = rand_vec(1024 * 1024);
     std::vector<uint8_t> aad(32, 0xAA);
 
@@ -54,7 +55,7 @@ TEST_CASE("Hybrid AES-GCM round trip — 1 MiB", "[hybrid][aes]") {
     REQUIRE(std::equal(dec.begin(), dec.end(), pt.begin()));
 }
 
-TEST_CASE("Full hybrid envelope round trip — mLen+1 triggers hybrid auto", "[hybrid][envelope]") {
+TEST_CASE("Full hybrid envelope round trip - mLen+1 triggers hybrid auto", "[hybrid][envelope]") {
     namespace fs = std::filesystem;
     auto tmpdir = fs::temp_directory_path() / "rsatool_test_hybrid";
     fs::create_directories(tmpdir);
@@ -88,18 +89,21 @@ TEST_CASE("Full hybrid envelope round trip — mLen+1 triggers hybrid auto", "[h
     REQUIRE(fs::exists(out_file));
 
     // Compare
-    std::ifstream ofs(out_file, std::ios::binary);
-    std::vector<uint8_t> dec_data(
-        (std::istreambuf_iterator<char>(ofs)),
-        std::istreambuf_iterator<char>());
+    std::vector<uint8_t> dec_data;
+    {
+        std::ifstream ifs(out_file, std::ios::binary);
+        dec_data.assign(std::istreambuf_iterator<char>(ifs),
+                        std::istreambuf_iterator<char>());
+    }   // ifs đóng ở đây, trước khi xóa thư mục
 
     REQUIRE(dec_data.size() == pt.size());
     REQUIRE(std::equal(dec_data.begin(), dec_data.end(), pt.begin()));
 
-    fs::remove_all(tmpdir);
+    std::error_code ec;
+    fs::remove_all(tmpdir, ec);
 }
 
-TEST_CASE("Full hybrid envelope round trip — 1 KiB forced hybrid", "[hybrid][envelope]") {
+TEST_CASE("Full hybrid envelope round trip - 1 KiB forced hybrid", "[hybrid][envelope]") {
     namespace fs = std::filesystem;
     auto tmpdir = fs::temp_directory_path() / "rsatool_test_hybrid2";
     fs::create_directories(tmpdir);
@@ -124,18 +128,21 @@ TEST_CASE("Full hybrid envelope round trip — 1 KiB forced hybrid", "[hybrid][e
     envelope::encrypt_file(in_file, ct_file, pub_pem, "", "raw", "hybrid");
     envelope::decrypt_file(ct_file, out_file, priv_pem, "", "raw");
 
-    std::ifstream ifs(out_file, std::ios::binary);
-    std::vector<uint8_t> dec_data(
-        (std::istreambuf_iterator<char>(ifs)),
-        std::istreambuf_iterator<char>());
+    std::vector<uint8_t> dec_data;
+    {
+        std::ifstream ifs(out_file, std::ios::binary);
+        dec_data.assign(std::istreambuf_iterator<char>(ifs),
+                        std::istreambuf_iterator<char>());
+    }   // ifs đóng ở đây, trước khi xóa thư mục
 
     REQUIRE(dec_data.size() == pt.size());
     REQUIRE(std::equal(dec_data.begin(), dec_data.end(), pt.begin()));
 
-    fs::remove_all(tmpdir);
+    std::error_code ec;
+    fs::remove_all(tmpdir, ec);
 }
 
-TEST_CASE("Direct OAEP envelope round trip — small message", "[direct][envelope]") {
+TEST_CASE("Direct OAEP envelope round trip - small message", "[direct][envelope]") {
     namespace fs = std::filesystem;
     auto tmpdir = fs::temp_directory_path() / "rsatool_test_direct";
     fs::create_directories(tmpdir);
@@ -160,14 +167,17 @@ TEST_CASE("Direct OAEP envelope round trip — small message", "[direct][envelop
     envelope::encrypt_file(in_file, ct_file, pub_pem, "", "raw", "direct");
     envelope::decrypt_file(ct_file, out_file, priv_pem, "", "raw");
 
-    std::ifstream ifs(out_file, std::ios::binary);
-    std::vector<uint8_t> dec_data(
-        (std::istreambuf_iterator<char>(ifs)),
-        std::istreambuf_iterator<char>());
+    std::vector<uint8_t> dec_data;
+    {
+        std::ifstream ifs(out_file, std::ios::binary);
+        dec_data.assign(std::istreambuf_iterator<char>(ifs),
+                        std::istreambuf_iterator<char>());
+    }   // ifs đóng ở đây, trước khi xóa thư mục
 
     REQUIRE(dec_data.size() == pt.size());
     REQUIRE(std::equal(dec_data.begin(), dec_data.end(), pt.begin()));
 
-    fs::remove_all(tmpdir);
+    std::error_code ec;
+    fs::remove_all(tmpdir, ec);
 }
 

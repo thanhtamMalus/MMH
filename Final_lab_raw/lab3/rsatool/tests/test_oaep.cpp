@@ -1,4 +1,4 @@
-// test_oaep.cpp — Positive tests for RSA-OAEP round trips
+// test_oaep.cpp - Positive tests for RSA-OAEP round trips
 #include <catch2/catch_test_macros.hpp>
 #include <rsatool/keys.hpp>
 #include <rsatool/oaep.hpp>
@@ -10,9 +10,11 @@
 #include <string>
 
 #include <fstream>
+#include <filesystem>
 #include <functional>
 #include <algorithm>
 #include <stdexcept>
+#include <iterator>
 
 using namespace rsatool;
 
@@ -32,7 +34,7 @@ static UniqueEVPPKEY make_key_4096() {
     return keys::generate_key(4096);
 }
 
-TEST_CASE("RSA-3072 OAEP round trip — 0 bytes, no label", "[oaep][3072]") {
+TEST_CASE("RSA-3072 OAEP round trip - 0 bytes, no label", "[oaep][3072]") {
     auto key = make_key_3072();
     std::vector<uint8_t> pt;  // empty
 
@@ -42,7 +44,7 @@ TEST_CASE("RSA-3072 OAEP round trip — 0 bytes, no label", "[oaep][3072]") {
     REQUIRE(dec.size() == 0);
 }
 
-TEST_CASE("RSA-3072 OAEP round trip — 1 byte, no label", "[oaep][3072]") {
+TEST_CASE("RSA-3072 OAEP round trip - 1 byte, no label", "[oaep][3072]") {
     auto key = make_key_3072();
     std::vector<uint8_t> pt = {0xAB};
 
@@ -53,7 +55,7 @@ TEST_CASE("RSA-3072 OAEP round trip — 1 byte, no label", "[oaep][3072]") {
     REQUIRE(dec[0] == 0xAB);
 }
 
-TEST_CASE("RSA-3072 OAEP round trip — exactly mLen bytes, no label", "[oaep][3072]") {
+TEST_CASE("RSA-3072 OAEP round trip - exactly mLen bytes, no label", "[oaep][3072]") {
     auto key = make_key_3072();
     std::size_t mLen = oaep::max_plaintext_len(3072);
     auto pt = rand_vec(mLen);
@@ -65,7 +67,7 @@ TEST_CASE("RSA-3072 OAEP round trip — exactly mLen bytes, no label", "[oaep][3
     REQUIRE(std::equal(dec.begin(), dec.end(), pt.begin()));
 }
 
-TEST_CASE("RSA-3072 OAEP round trip — with label", "[oaep][3072][label]") {
+TEST_CASE("RSA-3072 OAEP round trip - with label", "[oaep][3072][label]") {
     auto key = make_key_3072();
     std::vector<uint8_t> pt = rand_vec(64);
     std::string label = "test-label-2025";
@@ -76,7 +78,7 @@ TEST_CASE("RSA-3072 OAEP round trip — with label", "[oaep][3072][label]") {
     REQUIRE(std::equal(dec.begin(), dec.end(), pt.begin()));
 }
 
-TEST_CASE("RSA-3072 OAEP round trip — empty label explicit", "[oaep][3072][label]") {
+TEST_CASE("RSA-3072 OAEP round trip - empty label explicit", "[oaep][3072][label]") {
     auto key = make_key_3072();
     auto pt = rand_vec(100);
 
@@ -86,7 +88,7 @@ TEST_CASE("RSA-3072 OAEP round trip — empty label explicit", "[oaep][3072][lab
     REQUIRE(std::equal(dec.begin(), dec.end(), pt.begin()));
 }
 
-TEST_CASE("RSA-4096 OAEP round trip — 0 bytes, no label", "[oaep][4096]") {
+TEST_CASE("RSA-4096 OAEP round trip - 0 bytes, no label", "[oaep][4096]") {
     auto key = make_key_4096();
     std::vector<uint8_t> pt;
 
@@ -96,7 +98,7 @@ TEST_CASE("RSA-4096 OAEP round trip — 0 bytes, no label", "[oaep][4096]") {
     REQUIRE(dec.size() == 0);
 }
 
-TEST_CASE("RSA-4096 OAEP round trip — 1 byte, no label", "[oaep][4096]") {
+TEST_CASE("RSA-4096 OAEP round trip - 1 byte, no label", "[oaep][4096]") {
     auto key = make_key_4096();
     std::vector<uint8_t> pt = {0xCD};
 
@@ -107,7 +109,7 @@ TEST_CASE("RSA-4096 OAEP round trip — 1 byte, no label", "[oaep][4096]") {
     REQUIRE(dec[0] == 0xCD);
 }
 
-TEST_CASE("RSA-4096 OAEP round trip — exactly mLen bytes, no label", "[oaep][4096]") {
+TEST_CASE("RSA-4096 OAEP round trip - exactly mLen bytes, no label", "[oaep][4096]") {
     auto key = make_key_4096();
     std::size_t mLen = oaep::max_plaintext_len(4096);
     auto pt = rand_vec(mLen);
@@ -118,7 +120,7 @@ TEST_CASE("RSA-4096 OAEP round trip — exactly mLen bytes, no label", "[oaep][4
     REQUIRE(std::equal(dec.begin(), dec.end(), pt.begin()));
 }
 
-TEST_CASE("RSA-4096 OAEP round trip — with label", "[oaep][4096][label]") {
+TEST_CASE("RSA-4096 OAEP round trip - with label", "[oaep][4096][label]") {
     auto key = make_key_4096();
     auto pt = rand_vec(100);
     std::string label = "lab3-oaep-test";
@@ -167,15 +169,18 @@ TEST_CASE("Key generation produces valid PEM, DER, and metadata", "[keygen]") {
     REQUIRE(keys::key_bits(priv3.get()) == 3072);
 
     // Check meta.json contains expected fields
-    std::ifstream mf(meta);
-    REQUIRE(mf.is_open());
-    std::string contents((std::istreambuf_iterator<char>(mf)),
-                          std::istreambuf_iterator<char>());
-    REQUIRE(contents.find("\"modulus_bits\": 3072") != std::string::npos);
-    REQUIRE(contents.find("\"hash\": \"SHA-256\"") != std::string::npos);
-    REQUIRE(contents.find("\"creation_time\"") != std::string::npos);
+    {
+        std::ifstream mf(meta, std::ios::binary);
+        REQUIRE(mf.is_open());
+        std::string contents((std::istreambuf_iterator<char>(mf)),
+                              std::istreambuf_iterator<char>());
+        REQUIRE(contents.find("\"modulus_bits\": 3072") != std::string::npos);
+        REQUIRE(contents.find("\"hash\": \"SHA-256\"") != std::string::npos);
+        REQUIRE(contents.find("\"creation_time\"") != std::string::npos);
+    }   // mf đóng ở đây, trước khi xóa thư mục
 
     // Cleanup
-    fs::remove_all(tmpdir);
+    std::error_code ec;
+    fs::remove_all(tmpdir, ec);
 }
 

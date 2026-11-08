@@ -29,7 +29,7 @@ if (-not (Get-Command cmake -ErrorAction SilentlyContinue)) {
 
 # ── Chọn generator Visual Studio theo bản đang cài (không ép VS 2022) ────────
 if (-not $Generator) {
-    $Generator = "Visual Studio 17 2022"
+    $Generator = "Visual Studio 18 2026"
     $vswhere = Join-Path ${env:ProgramFiles(x86)} "Microsoft Visual Studio\Installer\vswhere.exe"
     if (Test-Path $vswhere) {
         $major = & $vswhere -latest -products * -property installationVersion 2>$null
