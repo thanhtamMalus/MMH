@@ -102,3 +102,5 @@ Nếu như server có public key thì làm sao dùng đc 1 round để gửi c�
 ![](img/labw3.png)
 
 Chủ yếu là làm quen với task.json, cmake, lệnh của OpenSSL.
+# Week 08: Elliptic-Curve Cryptography and Cryptanalysis
+![](img/week08.png)
