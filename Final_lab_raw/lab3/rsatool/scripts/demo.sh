@@ -7,9 +7,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 BUILD_DIR="$PROJECT_DIR/build/linux-release"
 TOOL="$BUILD_DIR/rsatool"
-TMPDIR="$(mktemp -d /tmp/rsatool_demo.XXXXXX)"
+WORK_DIR="$(mktemp -d "${TMPDIR:-/tmp}/rsatool_demo.XXXXXX")"
 
-cleanup() { rm -rf "$TMPDIR"; }
+cleanup() { rm -rf "$WORK_DIR"; }
 trap cleanup EXIT
 
 if [[ ! -x "$TOOL" ]]; then
@@ -19,7 +19,7 @@ fi
 
 echo "========================================================"
 echo "  rsatool End-to-End Demo"
-echo "  Temp directory: $TMPDIR"
+echo "  Temp directory: $WORK_DIR"
 echo "========================================================"
 echo ""
 
@@ -27,31 +27,31 @@ echo ""
 echo "--- Step 1: Key generation (RSA-3072) ---"
 "$TOOL" keygen \
     --bits 3072 \
-    --pub  "$TMPDIR/pub.pem" \
-    --priv "$TMPDIR/priv.pem"
+    --pub  "$WORK_DIR/pub.pem" \
+    --priv "$WORK_DIR/priv.pem"
 echo ""
 
 # ── Direct OAEP (small message) ───────────────────────────────────────────────
 echo "--- Step 2: Direct RSA-OAEP encrypt (small message, 32 bytes) ---"
-echo -n "Hello RSA-OAEP World! This is 32b" > "$TMPDIR/small.bin"
+echo -n "Hello RSA-OAEP World! This is 32b" > "$WORK_DIR/small.bin"
 "$TOOL" encrypt \
-    --in    "$TMPDIR/small.bin" \
-    --pub   "$TMPDIR/pub.pem" \
-    --out   "$TMPDIR/small.enc" \
+    --in    "$WORK_DIR/small.bin" \
+    --pub   "$WORK_DIR/pub.pem" \
+    --out   "$WORK_DIR/small.enc" \
     --mode  direct \
     --encode base64
 echo ""
 
 echo "--- Step 3: Decrypt ---"
 "$TOOL" decrypt \
-    --in    "$TMPDIR/small.enc" \
-    --priv  "$TMPDIR/priv.pem" \
-    --out   "$TMPDIR/small.dec" \
+    --in    "$WORK_DIR/small.enc" \
+    --priv  "$WORK_DIR/priv.pem" \
+    --out   "$WORK_DIR/small.dec" \
     --encode base64
 echo ""
 
 echo "--- Step 4: Verify (should produce no output = files identical) ---"
-if cmp -s "$TMPDIR/small.bin" "$TMPDIR/small.dec"; then
+if cmp -s "$WORK_DIR/small.bin" "$WORK_DIR/small.dec"; then
     echo "PASS: Decrypted file is byte-identical to original."
 else
     echo "FAIL: Files differ!"
@@ -61,25 +61,25 @@ echo ""
 
 # ── Hybrid (large message) ────────────────────────────────────────────────────
 echo "--- Step 5: Hybrid encrypt (1 KiB random data) ---"
-dd if=/dev/urandom of="$TMPDIR/large.bin" bs=1024 count=1 2>/dev/null
+dd if=/dev/urandom of="$WORK_DIR/large.bin" bs=1024 count=1 2>/dev/null
 "$TOOL" encrypt \
-    --in    "$TMPDIR/large.bin" \
-    --pub   "$TMPDIR/pub.pem" \
-    --out   "$TMPDIR/large.enc" \
+    --in    "$WORK_DIR/large.bin" \
+    --pub   "$WORK_DIR/pub.pem" \
+    --out   "$WORK_DIR/large.enc" \
     --mode  hybrid \
     --encode hex
 echo ""
 
 echo "--- Step 6: Decrypt hybrid ---"
 "$TOOL" decrypt \
-    --in    "$TMPDIR/large.enc" \
-    --priv  "$TMPDIR/priv.pem" \
-    --out   "$TMPDIR/large.dec" \
+    --in    "$WORK_DIR/large.enc" \
+    --priv  "$WORK_DIR/priv.pem" \
+    --out   "$WORK_DIR/large.dec" \
     --encode hex
 echo ""
 
 echo "--- Step 7: Verify (cmp) ---"
-if cmp -s "$TMPDIR/large.bin" "$TMPDIR/large.dec"; then
+if cmp -s "$WORK_DIR/large.bin" "$WORK_DIR/large.dec"; then
     echo "PASS: Hybrid decrypted file is byte-identical."
 else
     echo "FAIL: Hybrid files differ!"
@@ -90,16 +90,16 @@ echo ""
 # ── Wrong label -> must fail ──────────────────────────────────────────────────
 echo "--- Step 8: Wrong label test (must fail with exit code != 0) ---"
 "$TOOL" encrypt \
-    --in    "$TMPDIR/small.bin" \
-    --pub   "$TMPDIR/pub.pem" \
-    --out   "$TMPDIR/labeled.enc" \
+    --in    "$WORK_DIR/small.bin" \
+    --pub   "$WORK_DIR/pub.pem" \
+    --out   "$WORK_DIR/labeled.enc" \
     --label "correct-label" \
     --mode  direct
 set +e
 "$TOOL" decrypt \
-    --in    "$TMPDIR/labeled.enc" \
-    --priv  "$TMPDIR/priv.pem" \
-    --out   "$TMPDIR/labeled.dec" \
+    --in    "$WORK_DIR/labeled.enc" \
+    --priv  "$WORK_DIR/priv.pem" \
+    --out   "$WORK_DIR/labeled.dec" \
     --label "wrong-label"
 RC=$?
 set -e

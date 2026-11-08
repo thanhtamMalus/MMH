@@ -10,24 +10,32 @@
 |---|---|
 | C++ Compiler | MSVC 2022 (Windows) hoặc GCC >= 11 (Linux) |
 | CMake | >= 3.20 |
-| OpenSSL | **>= 4.0** (bắt buộc, không dùng 3.x) |
-| Ninja | Khuyến nghị (Linux) |
+| OpenSSL | **>= 4.0** (CMake tự tìm; không dùng 3.x) |
+| Ninja | Không bắt buộc |
 | Python 3 | Chỉ cần cho plot benchmark |
 
 > **QUAN TRỌNG:** OpenSSL 4.0 **chưa được cài sẵn** trên hầu hết hệ thống. Xem `docs/INSTALL_OPENSSL.md` trong project để hướng dẫn build từ source.
 
 ---
 
-## Bước 0: Kiểm Tra OpenSSL
+## Bước 0: OpenSSL (tự động, thường không cần làm gì)
+
+CMake **tự tìm** OpenSSL >= 4.0 trên máy (xem `rsatool/README.md`), nên bạn **không cần** `export`/đặt
+`OPENSSL_ROOT_DIR`. Lệnh `openssl version` của hệ thống có thể là 3.x — không sao, bản đó bị bỏ qua.
+
+Chỉ khi CMake báo "Không tìm thấy OpenSSL >= 4.0" mới cần chọn 1 trong 3 cách:
 
 ```bash
-# Linux
-openssl version
-# Phải hiện: OpenSSL 4.0.x ...
-
-# Windows (PowerShell) — dùng openssl của bạn
-& "D:\cryptolibrary\openssl403\bin\openssl.exe" version
-# Phải hiện: OpenSSL 4.0.3 ...
+# A) OpenSSL 4 đã cài ở thư mục lạ → chỉ đường dẫn
+bash scripts/build.sh /duong/dan/openssl4
+# B) Chưa cài → tự tải & build (cần git, perl, make, internet)
+bash scripts/build.sh --auto-openssl
+```
+```powershell
+# A) Windows
+.\scripts\build.ps1 -OpenSSLRoot "D:/duong/dan/openssl4"
+# B) Windows, trong "x64 Native Tools Command Prompt for VS"
+.\scripts\build.ps1 -AutoBuildOpenSSL
 ```
 
 ---
@@ -48,30 +56,23 @@ cd D:\GitHub\MMH\Final_lab_raw\lab3\rsatool
 
 ### Linux (Bash)
 ```bash
-# Đặt đường dẫn OpenSSL 4
-export OPENSSL_ROOT_DIR=/opt/openssl4
-
-# Build qua script
+# Build qua script (tự dò OpenSSL 4)
 bash scripts/build.sh
 
-# Hoặc thủ công:
-cmake -S . -B build/linux-release \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DOPENSSL_ROOT_DIR=/opt/openssl4 \
-      -GNinja
+# Hoặc thủ công (không cần -DOPENSSL_ROOT_DIR):
+cmake -S . -B build/linux-release -DCMAKE_BUILD_TYPE=Release
 cmake --build build/linux-release --config Release -j$(nproc)
 ```
 
 ### Windows (PowerShell)
 ```powershell
-# Build qua script (thay đường dẫn OpenSSL cho phù hợp)
-.\scripts\build.ps1 -OpenSSLRoot "D:/cryptolibrary/openssl403"
+# Build qua script (tự dò OpenSSL 4, tự chọn bản Visual Studio đang cài)
+.\scripts\build.ps1
 
-# Hoặc thủ công:
+# Hoặc thủ công (không cần -DOPENSSL_ROOT_DIR):
 cmake -S . -B build/windows-release `
       -G "Visual Studio 17 2022" -A x64 `
-      -DCMAKE_BUILD_TYPE=Release `
-      -DOPENSSL_ROOT_DIR="D:/cryptolibrary/openssl403"
+      -DCMAKE_BUILD_TYPE=Release
 cmake --build build/windows-release --config Release
 ```
 
@@ -83,7 +84,7 @@ OpenSSL include : /opt/openssl4/include
 [100%] Linking CXX executable rsatool
 ```
 
-> **Lưu ý:** Nếu CMake tìm thấy OpenSSL 3.x, build sẽ **FAIL** ngay — set `OPENSSL_ROOT_DIR` đúng vào OpenSSL 4.
+> **Lưu ý:** OpenSSL 3.x bị bỏ qua tự động. Nếu máy không có OpenSSL 4 nào, CMake dừng và in 3 cách khắc phục.
 
 ---
 

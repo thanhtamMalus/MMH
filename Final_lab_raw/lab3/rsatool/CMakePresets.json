@@ -8,12 +8,10 @@
   "configurePresets": [
     {
       "name": "linux-release",
-      "displayName": "Linux Release (GCC/Clang)",
-      "generator": "Ninja",
+      "displayName": "Linux Release (GCC/Clang, tự dò OpenSSL >= 4.0)",
       "binaryDir": "${sourceDir}/build/linux-release",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "OPENSSL_ROOT_DIR": "$env{OPENSSL_ROOT_DIR}"
+        "CMAKE_BUILD_TYPE": "Release"
       },
       "condition": {
         "type": "equals",
@@ -23,13 +21,12 @@
     },
     {
       "name": "windows-release",
-      "displayName": "Windows Release (MSVC 2022)",
+      "displayName": "Windows Release (MSVC 2022, tự dò OpenSSL >= 4.0)",
       "generator": "Visual Studio 17 2022",
       "architecture": "x64",
       "binaryDir": "${sourceDir}/build/windows-release",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "OPENSSL_ROOT_DIR": "$env{OPENSSL_ROOT_DIR}"
+        "CMAKE_BUILD_TYPE": "Release"
       },
       "condition": {
         "type": "equals",
@@ -69,4 +66,3 @@
     }
   ]
 }
-

@@ -9,6 +9,11 @@
 #include <vector>
 #include <string>
 
+#include <fstream>
+#include <functional>
+#include <algorithm>
+#include <stdexcept>
+
 using namespace rsatool;
 
 // Helper: generate random bytes
@@ -20,10 +25,10 @@ static std::vector<uint8_t> rand_vec(std::size_t n) {
 }
 
 // Helper: generate key (slow, cache between tests)
-static keys::UniqueEVPPKEY make_key_3072() {
+static UniqueEVPPKEY make_key_3072() {
     return keys::generate_key(3072);
 }
-static keys::UniqueEVPPKEY make_key_4096() {
+static UniqueEVPPKEY make_key_4096() {
     return keys::generate_key(4096);
 }
 

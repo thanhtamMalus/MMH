@@ -8,9 +8,12 @@
 
 #include <algorithm>
 #include <cctype>
+#include <cstdint>
 #include <cstring>
 #include <memory>
 #include <sstream>
+#include <string>
+#include <vector>
 
 namespace rsatool::codec {
 
@@ -60,8 +63,6 @@ static std::vector<uint8_t> from_hex(const std::string& text) {
 
 static std::string to_base64(const uint8_t* data, std::size_t len) {
     // Use OpenSSL BIO chain for encoding
-    struct BUFMEMDeleter { void operator()(BUF_MEM* p) { BUF_MEM_free(p); } };
-    
     BIO* b64 = BIO_new(BIO_f_base64());
     BIO* mem = BIO_new(BIO_s_mem());
     if (!b64 || !mem) {
@@ -73,8 +74,11 @@ static std::string to_base64(const uint8_t* data, std::size_t len) {
     BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL);
     BIO* chain = BIO_push(b64, mem);
 
-    BIO_write(chain, data, static_cast<int>(len));
-    BIO_flush(chain);
+    if (BIO_write(chain, data, static_cast<int>(len)) < 0 ||
+        BIO_flush(chain) <= 0) {
+        BIO_free_all(chain);
+        throw CryptoError("error: base64 encode failed");
+    }
 
     BUF_MEM* bptr = nullptr;
     BIO_get_mem_ptr(chain, &bptr);
@@ -82,6 +86,32 @@ static std::string to_base64(const uint8_t* data, std::size_t len) {
     std::string result(bptr->data, bptr->length);
     BIO_free_all(chain);
     return result;
+}
+
+// Strict RFC 4648 validation: alphabet only, length % 4 == 0,
+// '=' only as 1-2 trailing characters. Returns the padding count.
+static std::size_t validate_base64(const std::string& s) {
+    if (s.size() % 4 != 0) {
+        throw FormatError("error: malformed envelope (base64 length must be a multiple of 4)");
+    }
+
+    std::size_t pad = 0;
+    for (std::size_t i = 0; i < s.size(); ++i) {
+        const unsigned char c = static_cast<unsigned char>(s[i]);
+        const bool is_data = (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') ||
+                             (c >= '0' && c <= '9') || c == '+' || c == '/';
+        if (is_data) {
+            if (pad != 0)
+                throw FormatError("error: malformed envelope (base64 data after padding)");
+        } else if (c == '=') {
+            if (i + 2 < s.size())  // '=' allowed only in the last two positions
+                throw FormatError("error: malformed envelope (base64 padding misplaced)");
+            ++pad;
+        } else {
+            throw FormatError("error: malformed envelope (invalid base64 character)");
+        }
+    }
+    return pad;
 }
 
 static std::vector<uint8_t> from_base64(const std::string& text) {
@@ -93,24 +123,21 @@ static std::vector<uint8_t> from_base64(const std::string& text) {
     }
     if (text.empty()) return {};
 
-    BIO* b64 = BIO_new(BIO_f_base64());
-    BIO* mem = BIO_new_mem_buf(text.data(), static_cast<int>(text.size()));
-    if (!b64 || !mem) {
-        BIO_free(b64);
-        BIO_free(mem);
-        throw CryptoError("error: base64 decode failed");
-    }
-    BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL);
-    BIO* chain = BIO_push(b64, mem);
+    const std::size_t pad = validate_base64(text);
 
-    std::vector<uint8_t> out(text.size());  // upper bound
-    int decoded = BIO_read(chain, out.data(), static_cast<int>(out.size()));
-    BIO_free_all(chain);
-
-    if (decoded < 0) {
+    std::vector<uint8_t> out((text.size() / 4) * 3);
+    int n = EVP_DecodeBlock(out.data(),
+                            reinterpret_cast<const unsigned char*>(text.data()),
+                            static_cast<int>(text.size()));
+    if (n < 0) {
         throw FormatError("error: malformed envelope (base64 decode failed)");
     }
-    out.resize(static_cast<std::size_t>(decoded));
+    // EVP_DecodeBlock counts padding bytes in its result; strip them.
+    const std::size_t decoded = static_cast<std::size_t>(n);
+    if (decoded < pad) {
+        throw FormatError("error: malformed envelope (base64 decode failed)");
+    }
+    out.resize(decoded - pad);
     return out;
 }
 
@@ -149,4 +176,3 @@ std::vector<uint8_t> decode(const std::vector<uint8_t>& raw_data, Encoding enc) 
 }
 
 } // namespace rsatool::codec
-

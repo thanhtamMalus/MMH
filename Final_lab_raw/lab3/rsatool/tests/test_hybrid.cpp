@@ -11,6 +11,10 @@
 #include <fstream>
 #include <vector>
 
+#include <functional>
+#include <algorithm>
+#include <stdexcept>
+
 using namespace rsatool;
 
 static std::vector<uint8_t> rand_vec(std::size_t n) {

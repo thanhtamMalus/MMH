@@ -14,6 +14,12 @@
 #include <vector>
 #include <cstring>
 
+#include <functional>
+#include <algorithm>
+#include <stdexcept>
+#include <functional>
+#include <nlohmann/json.hpp>
+
 using namespace rsatool;
 namespace fs = std::filesystem;
 

@@ -15,13 +15,16 @@ RSATool là công cụ dòng lệnh (CLI) viết bằng C++17, sử dụng OpenS
 |------------|-------------------|
 | C++ Standard | C++17 |
 | CMake | ≥ 3.20 |
-| OpenSSL | ≥ 4.0 (xem [INSTALL_OPENSSL.md](docs/INSTALL_OPENSSL.md)) |
+| OpenSSL | ≥ 4.0 — **CMake tự tìm**, không cần đặt đường dẫn (xem [INSTALL_OPENSSL.md](docs/INSTALL_OPENSSL.md)) |
 | **Windows** | MSVC 2022 (Visual Studio 2022), x64 |
 | **Linux** | GCC ≥ 11, Ubuntu 22.04+ |
 
-> **Vị trí OpenSSL mặc định:**
-> - Windows: `D:/cryptolibrary/openssl403`
-> - Linux: `/opt/openssl4`
+> **OpenSSL được tự động tìm trên mọi máy** (`cmake/RsatoolOpenSSL.cmake`).
+> Không cần sửa `CMakeLists.txt`, không cần đường dẫn cố định. Thứ tự tìm:
+> `-DOPENSSL_ROOT_DIR` → biến môi trường `OPENSSL_ROOT_DIR` → thư mục trong `PATH` / `LD_LIBRARY_PATH`
+> → các thư mục cài đặt quen thuộc (`/opt/openssl*`, `~/openssl*`, `D:/cryptolibrary/openssl*`,
+> `C:/Program Files/OpenSSL*`, vcpkg, Homebrew…) → (tuỳ chọn) tự tải & build.
+> OpenSSL 3.x / 1.1.x trên hệ thống bị **bỏ qua**, không bao giờ bị chọn nhầm.
 
 ---
 
@@ -66,16 +69,28 @@ cd rsatool
 
 ---
 
-### Bước 2 — Chỉ định đường dẫn OpenSSL
+### Bước 2 — (Không bắt buộc) Chỉ định đường dẫn OpenSSL
+
+Thường **bỏ qua bước này**: CMake tự tìm. Chỉ cần khi OpenSSL 4 nằm ở thư mục "lạ":
 
 **Linux (bash)**
 ```bash
-export OPENSSL_ROOT_DIR=/opt/openssl4
+export OPENSSL_ROOT_DIR=/duong/dan/openssl4      # hoặc truyền: ./scripts/build.sh /duong/dan/openssl4
 ```
 
 **Windows (PowerShell)**
 ```powershell
-$env:OPENSSL_ROOT_DIR = "D:/cryptolibrary/openssl403"
+$env:OPENSSL_ROOT_DIR = "D:/duong/dan/openssl4"  # hoặc: .\scripts\build.ps1 -OpenSSLRoot "D:/duong/dan/openssl4"
+```
+
+Máy chưa có OpenSSL 4 và có internet + git + perl? Để CMake tự tải & build (vài phút, chỉ lần đầu,
+kết quả lưu ở `.deps/` và được dùng lại):
+
+```bash
+./scripts/build.sh --auto-openssl                 # Linux
+```
+```powershell
+.\scripts\build.ps1 -AutoBuildOpenSSL             # Windows — chạy trong "x64 Native Tools Command Prompt for VS"
 ```
 
 ---
@@ -84,15 +99,27 @@ $env:OPENSSL_ROOT_DIR = "D:/cryptolibrary/openssl403"
 
 **Linux (bash)**
 ```bash
+./scripts/build.sh
+# hoặc thủ công:
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
 ```
 
-**Windows (PowerShell — chạy trong "x64 Native Tools Command Prompt for VS 2022")**
+**Windows (PowerShell)**
 ```powershell
+.\scripts\build.ps1
+# hoặc thủ công:
 cmake -B build -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release
 cmake --build build --config Release
 ```
+
+CMake in ra OpenSSL nào được chọn, ví dụ:
+```
+-- RSATool: tự tìm thấy OpenSSL 4.0.3 tại /opt/openssl4
+-- OpenSSL version : 4.0.3
+-- OpenSSL root    : /opt/openssl4
+```
+(thêm `--verbose` / `-VerboseSearch` để xem các bản bị bỏ qua)
 
 ---
 

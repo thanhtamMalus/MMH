@@ -4,12 +4,15 @@
 #include <rsatool/keys.hpp>
 #include <rsatool/oaep.hpp>
 #include <rsatool/hybrid.hpp>
+#include <rsatool/envelope.hpp>
 #include <rsatool/secure.hpp>
 #include <rsatool/errors.hpp>
+#include <rsatool/envelope.hpp>
 
 #include <openssl/rand.h>
 
 #include <chrono>
+#include <cmath>
 #include <cstdio>
 #include <filesystem>
 #include <fstream>
@@ -18,6 +21,8 @@
 #include <numeric>
 #include <string>
 #include <vector>
+
+using namespace rsatool;   // keys::, oaep::, hybrid::, envelope::
 
 using Clock = std::chrono::steady_clock;
 using Dur   = std::chrono::duration<double, std::micro>;  // microseconds
@@ -94,8 +99,8 @@ int main() {
 
     // ── RSA key generation ────────────────────────────────────────────────────
     for (int bits : {3072, 4096}) {
-        std::cout << "RSA-" << bits << " keygen (10 reps, slow)...\n";
-        auto times = run_bench([&]{ keys::generate_key(bits); }, 1, 10);
+        std::cout << "RSA-" << bits << " keygen (100 reps, slow)...\n";
+        auto times = run_bench([&]{ keys::generate_key(bits); }, 1, 100);
         double m = mean(times), ci = ci95(times, m);
         csv.write("keygen", 0, bits, m, ci);
         std::cout << "  mean=" << m/1000.0 << " ms  CI95±" << ci/1000.0 << " ms\n";
@@ -103,14 +108,14 @@ int main() {
 
     // ── RSA-OAEP encrypt & decrypt ────────────────────────────────────────────
     for (int bits : {3072, 4096}) {
-        std::cout << "\nRSA-" << bits << " OAEP encrypt/decrypt (30 reps)...\n";
+        std::cout << "\nRSA-" << bits << " OAEP encrypt/decrypt (100 reps)...\n";
         auto key = keys::generate_key(bits);
         auto pt  = rand_vec(32);  // small plaintext
 
         // Encrypt
         auto enc_times = run_bench([&]{
             oaep::encrypt(key.get(), pt.data(), pt.size());
-        }, 3, 30);
+        }, 3, 100);
         double em = mean(enc_times), eci = ci95(enc_times, em);
         csv.write("oaep_encrypt", pt.size(), bits, em, eci);
         std::cout << "  encrypt: mean=" << em << " µs  CI95±" << eci << " µs\n";
@@ -121,7 +126,7 @@ int main() {
         // Decrypt
         auto dec_times = run_bench([&]{
             oaep::decrypt(key.get(), ct.data(), ct.size());
-        }, 3, 30);
+        }, 3, 100);
         double dm = mean(dec_times), dci = ci95(dec_times, dm);
         csv.write("oaep_decrypt", pt.size(), bits, dm, dci);
         std::cout << "  decrypt: mean=" << dm << " µs  CI95±" << dci << " µs\n";
@@ -131,9 +136,9 @@ int main() {
     // ── AES-256-GCM throughput ────────────────────────────────────────────────
     struct SizeCase { const char* label; std::size_t bytes; int reps; };
     SizeCase cases[] = {
-        {"aes_gcm_1KiB",   1024,                30},
-        {"aes_gcm_1MiB",   1024*1024,            30},
-        {"aes_gcm_100MiB", 100ull*1024*1024,     10},
+        {"aes_gcm_1KiB",   1024,                100},
+        {"aes_gcm_1MiB",   1024*1024,            100},
+        {"aes_gcm_100MiB", 100ull*1024*1024,     100},
     };
 
     std::vector<uint8_t> aad = {0xAA, 0xBB, 0xCC};
@@ -156,9 +161,9 @@ int main() {
     // ── Hybrid total time ─────────────────────────────────────────────────────
     struct HybridCase { const char* label; std::size_t bytes; int reps; };
     HybridCase hcases[] = {
-        {"hybrid_1KiB",   1024,            30},
-        {"hybrid_1MiB",   1024*1024,       30},
-        {"hybrid_100MiB", 100ull*1024*1024, 10},
+        {"hybrid_1KiB",   1024,            100},
+        {"hybrid_1MiB",   1024*1024,       100},
+        {"hybrid_100MiB", 100ull*1024*1024, 100},
     };
 
     auto key3072 = keys::generate_key(3072);

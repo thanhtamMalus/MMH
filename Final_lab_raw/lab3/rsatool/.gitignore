@@ -1,5 +1,7 @@
 # Build directories
 build/
+# OpenSSL tự build (RSATOOL_AUTO_BUILD_OPENSSL)
+.deps/
 cmake-build-*/
 
 # Generated key & envelope files (from demo/tests)

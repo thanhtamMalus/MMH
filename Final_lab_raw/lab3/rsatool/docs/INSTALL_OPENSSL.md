@@ -5,7 +5,7 @@
 2. [Kiểm tra phiên bản hiện tại](#kiểm-tra-phiên-bản-hiện-tại)
 3. [Build từ source trên Linux](#build-từ-source-trên-linux)
 4. [Build từ source trên Windows](#build-từ-source-trên-windows)
-5. [Tích hợp với CMake qua OPENSSL_ROOT_DIR](#tích-hợp-với-cmake-qua-openssl_root_dir)
+5. [CMake tự tìm OpenSSL như thế nào](#cmake-tự-tìm-openssl-như-thế-nào)
 6. [Xác nhận DLL / shared library được load đúng](#xác-nhận-dll--shared-library-được-load-đúng)
 
 ---
@@ -65,7 +65,7 @@ make -j$(nproc)
 sudo make install
 ```
 
-### Thiết lập biến môi trường
+### Thiết lập biến môi trường (KHÔNG bắt buộc — CMake tự tìm; chỉ cần nếu cài ở thư mục lạ)
 
 Thêm vào `~/.bashrc` hoặc `~/.zshrc`:
 
@@ -115,7 +115,7 @@ nmake
 nmake install
 ```
 
-### Thiết lập biến môi trường (PowerShell)
+### Thiết lập biến môi trường (PowerShell, KHÔNG bắt buộc)
 
 Tạm thời (cho session hiện tại):
 ```powershell
@@ -142,40 +142,59 @@ Kiểm tra:
 
 ---
 
-## Tích hợp với CMake qua OPENSSL_ROOT_DIR
+## CMake tự tìm OpenSSL như thế nào
 
-RSATool dùng `find_package(OpenSSL REQUIRED)` trong `CMakeLists.txt`. CMake tìm OpenSSL theo biến `OPENSSL_ROOT_DIR`.
+RSATool dùng module `cmake/RsatoolOpenSSL.cmake`. Nó **đọc `opensslv.h`** của từng ứng viên (không chạy
+chương trình nào) và chỉ chọn bản >= 4.0 có đủ `libcrypto`, theo thứ tự ưu tiên:
 
-**Cách truyền khi configure:**
+| # | Nguồn | Ghi chú |
+|---|-------|---------|
+| 1 | `-DOPENSSL_ROOT_DIR=...` | Chỉ định rõ; sai thì **dừng và báo lỗi** |
+| 2 | Biến môi trường `OPENSSL_ROOT_DIR`, `OPENSSL_DIR`, `OPENSSL_HOME`, `OPENSSL4_ROOT_DIR` | Sai/cũ thì cảnh báo rồi tự dò tiếp |
+| 3 | Lần tìm trước (cache) và `.deps/openssl-*` (do auto-build) | |
+| 4 | Thư mục trong `PATH`, `LD_LIBRARY_PATH`, `CMAKE_PREFIX_PATH` (và thư mục cha) | Ví dụ `D:\x\openssl\bin` trong PATH → root là `D:\x\openssl` |
+| 5 | Vị trí quen thuộc | `/opt/openssl*`, `/usr/local/openssl*`, `~/openssl*`, Homebrew `openssl@4`, vcpkg, `C:..H:/cryptolibrary/openssl*`, `X:/openssl*`, `X:/Program Files/OpenSSL*` |
+| 6 | `/usr/local`, `/usr` | Thường là 3.x → bị loại |
+| 7 | Tự tải & build (chỉ khi `-DRSATOOL_AUTO_BUILD_OPENSSL=ON`) | Cần git, perl, make (Windows: nmake) |
+
+Sau khi chọn, CMake kiểm tra chéo rằng `include` và `libcrypto` mà `FindOpenSSL` trả về nằm đúng trong thư mục
+đã chọn (tránh lẫn header 4.x với `libcrypto.so.3` hệ thống).
+
+**Các tuỳ chọn:**
+
+| Option | Mặc định | Ý nghĩa |
+|--------|----------|---------|
+| `RSATOOL_AUTO_BUILD_OPENSSL` | OFF | Không tìm thấy → tải & build OpenSSL ngay lúc configure |
+| `RSATOOL_OPENSSL_BUILD_TAG` | `openssl-4.0.3` | Tag git dùng cho auto-build |
+| `RSATOOL_OPENSSL_STATIC` | OFF | Liên kết tĩnh `libcrypto` (không cần `.so`/`.dll` khi chạy) |
+| `RSATOOL_OPENSSL_VERBOSE` | OFF | In các ứng viên bị bỏ qua |
+| `RSATOOL_OPENSSL_MIN_VERSION` | `4.0` | Phiên bản tối thiểu |
+
+**Ví dụ:**
 
 ```bash
-# Linux
-cmake -B build -DOPENSSL_ROOT_DIR=/opt/openssl4 -DCMAKE_BUILD_TYPE=Release
+# Linux — để CMake tự tìm
+cmake -B build -DCMAKE_BUILD_TYPE=Release
 
-# Windows (PowerShell)
-cmake -B build -G "Visual Studio 17 2022" -A x64 `
-      -DOPENSSL_ROOT_DIR="D:/cryptolibrary/openssl403" `
-      -DCMAKE_BUILD_TYPE=Release
+# Linux — chỉ đường dẫn
+cmake -B build -DOPENSSL_ROOT_DIR=/duong/dan/openssl4 -DCMAKE_BUILD_TYPE=Release
+```
+```powershell
+# Windows — để CMake tự tìm
+cmake -B build -G "Visual Studio 17 2022" -A x64
+
+# Windows — chỉ đường dẫn (dùng dấu / )
+cmake -B build -G "Visual Studio 17 2022" -A x64 -DOPENSSL_ROOT_DIR="D:/duong/dan/openssl4"
 ```
 
-Hoặc thiết lập biến môi trường trước khi chạy CMake (cách khuyến nghị):
-
-```bash
-# Linux
-export OPENSSL_ROOT_DIR=/opt/openssl4
-cmake -B build
-
-# Windows
-$env:OPENSSL_ROOT_DIR = "D:/cryptolibrary/openssl403"
-cmake -B build
+CMake in ra bản được chọn:
+```
+-- RSATool: tự tìm thấy OpenSSL 4.0.3 tại /opt/openssl4
+-- Found OpenSSL: /opt/openssl4/lib/libcrypto.so (found suitable version "4.0.3", minimum required is "4.0")
+-- OpenSSL root    : /opt/openssl4
 ```
 
-CMake sẽ in ra phiên bản tìm được:
-```
--- Found OpenSSL: D:/cryptolibrary/openssl403/lib/libssl.lib (found version "4.0.0")
-```
-
-Nếu in `3.x` hoặc `1.1.x` → xem [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+Nếu in ra `3.x` hoặc `1.1.x` → xem [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
 
 ---
 

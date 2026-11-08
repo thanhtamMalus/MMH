@@ -6,7 +6,7 @@ Tài liệu này liệt kê các vấn đề thường gặp khi build và chạ
 
 ## Mục lục
 
-1. [CMake tìm thấy OpenSSL 3.x thay vì 4.x](#1-cmake-tìm-thấy-openssl-3x-thay-vì-4x)
+1. [CMake báo "Không tìm thấy OpenSSL >= 4.0"](#1-cmake-báo-không-tìm-thấy-openssl--40)
 2. [`cannot find libcrypto` / Missing DLL trên Windows](#2-cannot-find-libcrypto--missing-dll-trên-windows)
 3. [LNK2019 / Library mismatch (Windows)](#3-lnk2019--library-mismatch-windows)
 4. [OPENSSL_ROOT_DIR dùng backslash trên Windows](#4-openssl_root_dir-dùng-backslash-trên-windows)
@@ -16,52 +16,61 @@ Tài liệu này liệt kê các vấn đề thường gặp khi build và chạ
 
 ---
 
-## 1. CMake tìm thấy OpenSSL 3.x thay vì 4.x
+## 1. CMake báo "Không tìm thấy OpenSSL >= 4.0"
 
 ### Triệu chứng
 
 ```
--- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libssl.so (found version "3.0.2")
+CMake Error at cmake/RsatoolOpenSSL.cmake:...
+  Không tìm thấy OpenSSL >= 4.0 trên máy này.
+  Đã thấy nhưng BỎ QUA (quá cũ / thiếu thư viện):
+      - /usr  (OpenSSL 3.0.13 < 4.0)
 ```
-
-Hoặc lỗi compile về API không tồn tại.
 
 ### Nguyên nhân
 
-CMake tìm OpenSSL theo thứ tự mặc định của hệ thống, và OpenSSL 3.x hệ thống (`/usr/lib`) được tìm thấy trước phiên bản 4.x bạn đã build.
+Từ phiên bản này CMake **tự dò** OpenSSL (xem `cmake/RsatoolOpenSSL.cmake`) và chỉ chấp nhận bản
+>= 4.0 có đủ header + `libcrypto`. OpenSSL 3.x của hệ điều hành bị bỏ qua có chủ đích, nên nếu máy
+chưa có OpenSSL 4 ở nơi nào CMake nhìn thấy, build dừng và báo như trên.
 
-### Khắc phục
+### Khắc phục (chọn 1)
 
-**Linux:**
+**A) Đã cài OpenSSL 4 ở thư mục lạ → chỉ đường dẫn**
 ```bash
-export OPENSSL_ROOT_DIR=/opt/openssl4
-cmake -B build -DCMAKE_BUILD_TYPE=Release
+# Linux
+cmake -B build -DOPENSSL_ROOT_DIR=/duong/dan/openssl4 -DCMAKE_BUILD_TYPE=Release
 ```
-
-Hoặc truyền trực tiếp:
-```bash
-cmake -B build \
-      -DOPENSSL_ROOT_DIR=/opt/openssl4 \
-      -DCMAKE_BUILD_TYPE=Release
-```
-
-**Windows (PowerShell):**
 ```powershell
-$env:OPENSSL_ROOT_DIR = "D:/cryptolibrary/openssl403"
-cmake -B build -G "Visual Studio 17 2022" -A x64
+# Windows (dùng dấu / )
+cmake -B build -DOPENSSL_ROOT_DIR="D:/duong/dan/openssl4"
+```
+Thư mục phải chứa `include/openssl/opensslv.h` (bản 4.x) và `lib/libcrypto*`.
+
+**B) Chưa cài → tự tải & build** (cần git, perl, make/nmake, internet; chỉ lần đầu)
+```bash
+cmake -B build -DRSATOOL_AUTO_BUILD_OPENSSL=ON      # hoặc: ./scripts/build.sh --auto-openssl
+```
+Kết quả lưu ở `.deps/openssl-<ver>/`, các lần sau tự dùng lại. Trên Windows phải chạy trong
+"x64 Native Tools Command Prompt for VS" (cần `nmake`, `cl`).
+
+**C) Tự cài** theo [INSTALL_OPENSSL.md](INSTALL_OPENSSL.md).
+
+### Muốn biết CMake đã xem những đâu?
+
+```bash
+cmake -B build -DRSATOOL_OPENSSL_VERBOSE=ON
 ```
 
-### Xác nhận
+### Lỗi `OPENSSL_ROOT_DIR='...' không dùng được`
 
-Sau khi configure lại, CMake phải in:
-```
--- Found OpenSSL: /opt/openssl4/lib/libssl.so (found version "4.0.0")
-```
+Bạn đã chỉ định `-DOPENSSL_ROOT_DIR` nhưng thư mục đó không phải OpenSSL >= 4.0 (thường là trỏ nhầm vào
+OpenSSL 3.x, hoặc trỏ vào thư mục `bin/`/`lib/` thay vì thư mục gốc). Biến môi trường `OPENSSL_ROOT_DIR`
+sai/cũ thì chỉ bị cảnh báo rồi CMake tự dò tiếp.
 
-> **Lưu ý:** Luôn xóa thư mục `build/` cũ trước khi configure lại để tránh cache cũ:
-> ```bash
-> rm -rf build/ && cmake -B build ...
-> ```
+### Lỗi `CMakeCache.txt directory ... is different than the directory ...`
+
+Thư mục `build/` được copy từ máy/đường dẫn khác. `scripts/build.sh` và `build.ps1` tự phát hiện và xoá
+build cũ; nếu chạy `cmake` thủ công thì `rm -rf build` (Windows: `Remove-Item -Recurse -Force build`).
 
 ---
 
@@ -83,18 +92,11 @@ Trên Windows, `.exe` tìm DLL trong thư mục của nó trước, sau đó tro
 
 ### Khắc phục (Windows)
 
-**Cách 1 — Post-build copy (tự động, đã được cấu hình trong CMakeLists.txt):**
+**Cách 1 — Post-build copy (tự động):**
 
-`CMakeLists.txt` đã có lệnh copy DLL sau khi build:
-```cmake
-add_custom_command(TARGET rsatool POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "$<TARGET_FILE:OpenSSL::SSL>"
-        "$<TARGET_FILE:OpenSSL::Crypto>"
-        "$<TARGET_FILE_DIR:rsatool>"
-)
-```
-Nếu DLL vẫn thiếu, kiểm tra `OPENSSL_ROOT_DIR` trỏ đúng.
+Module `cmake/RsatoolOpenSSL.cmake` tự tìm `libcrypto*.dll` trong `<OpenSSL root>/bin` và copy cạnh
+`rsatool.exe`, `test_rsatool.exe`, `bench_rsatool.exe`. CMake in dòng `OpenSSL DLL : ...` khi configure.
+Nếu thấy cảnh báo "Không thấy libcrypto*.dll", hãy dùng Cách 2 hoặc 3.
 
 **Cách 2 — Copy thủ công:**
 ```powershell
@@ -109,13 +111,18 @@ $env:PATH = "D:\cryptolibrary\openssl403\bin;" + $env:PATH
 
 ### Khắc phục (Linux)
 
+File chạy đã được gắn `RUNPATH` = `$ORIGIN` + thư mục `lib` của OpenSSL lúc build (kiểm tra:
+`readelf -d build/linux-release/rsatool | grep RUNPATH`), nên thường không cần `LD_LIBRARY_PATH`.
+Nếu copy file chạy sang máy khác, hoặc OpenSSL bị di chuyển, dùng một trong các cách sau, hoặc
+build với `--static` (`-DRSATOOL_OPENSSL_STATIC=ON`) để không phụ thuộc `libcrypto.so`:
+
 ```bash
-export LD_LIBRARY_PATH=/opt/openssl4/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/duong/dan/openssl4/lib:$LD_LIBRARY_PATH
 ```
 
 Hoặc cấu hình `ldconfig`:
 ```bash
-echo "/opt/openssl4/lib" | sudo tee /etc/ld.so.conf.d/openssl4.conf
+echo "/duong/dan/openssl4/lib" | sudo tee /etc/ld.so.conf.d/openssl4.conf
 sudo ldconfig
 ```
 
