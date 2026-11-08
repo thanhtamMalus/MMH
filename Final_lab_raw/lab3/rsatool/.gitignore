@@ -40,3 +40,6 @@ Thumbs.db
 __pycache__/
 *.pyc
 
+!lab3/rsatool/bench/results/
+!lab3/rsatool/bench/results/*.png
+!lab3/rsatool/bench/results/*.csv
