@@ -1,0 +1,2 @@
+C:\msys64\ucrt64\bin\ar.exe qc lib\libaescore_static.a CMakeFiles/aescore_obj.dir/src/aescore.cpp.obj CMakeFiles/aescore_obj.dir/src/util.cpp.obj CMakeFiles/aescore_obj.dir/src/container.cpp.obj CMakeFiles/aescore_obj.dir/src/ops.cpp.obj CMakeFiles/aescore_obj.dir/src/kat.cpp.obj CMakeFiles/aescore_obj.dir/src/bench.cpp.obj CMakeFiles/aescore_obj.dir/src/aescore_capi.cpp.obj
+C:\msys64\ucrt64\bin\ranlib.exe lib\libaescore_static.a

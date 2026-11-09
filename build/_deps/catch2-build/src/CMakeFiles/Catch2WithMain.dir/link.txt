@@ -1,0 +1,2 @@
+C:\msys64\ucrt64\bin\ar.exe qc ..\..\..\lib\libCatch2Maind.a CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.obj
+C:\msys64\ucrt64\bin\ranlib.exe ..\..\..\lib\libCatch2Maind.a
