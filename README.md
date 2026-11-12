@@ -8,16 +8,18 @@
 - Luôn mang máy tính đi học
 # Week 01: Introduction
 *Bữa này tôi cúp*
+
 ![](img/week1.png)
 
 Chung quy là tìm hiểu và thử decode vài mật mã dựa trên web hoặc trình code nào đó(?)
 # Week 02: Cryptanalysis SPN ciphers
 ![](img/week02.png)
+
 Chung quy hôm này thì ae sẽ được code của anh Tự, tìm hiểu về tần suất các chữ cái -> giải mã
 
 Cơ chế giải mã của tuần này là dạng ánh xạ nên dựa vào tần suất sẽ giải ra được, còn how to tính tần suất và cách dùng thì rcm nghe anh Tự nha. Có thể check sơ bằng web [Dcode](https://www.dcode.fr/en)
 
-BTVN week 2 của anh Tự giao tui nà: [BTVNWeek02](Class\Week02\25521638_MaHoaTiengViet.md)
+BTVN week 2 của anh Tự giao tui nà: [BTVNWeek02](Class/Week02/25521638_MaHoaTiengViet.md)
 
 # Week 03: Stream Ciphers - Algorithms and Cryptanalysis
 Cài PyQt6 cho python để chạy demo cho buổi học
@@ -100,3 +102,90 @@ Nếu như server có public key thì làm sao dùng đc 1 round để gửi c�
 ![](img/labw3.png)
 
 Chủ yếu là làm quen với task.json, cmake, lệnh của OpenSSL.
+# Week 08: Elliptic-Curve Cryptography and Cryptanalysis
+![](img/week08.png)
+
+**Tuần sau báo cáo, MỖI NHÓM 3 PHÚT**
+```
+Chiều dki đồ án, tuần sau báo cáo proposal
+Đồ án -> 3 góc nhìn:
+- Secure Communication
+- Secure Storage
+- Secure process logics
+Đồ án fail? Why ?
+Ko xác định dc system ? rủi ro where ?
+Weakness: Process Logic
+Breakdown --> Problem? Solution?
+
+Vẽ 2 hình quan trọng?
+- system ontology
+- implement ontology
+
+Bám sát nội dung:
+slide 1: câu chuyện ? rủi ro ? giải pháp
+slide 2: triển khai ? kiến trúc ?
+slide 3: phân phối
+```
+RSA, FF DHE đã được thay thế bởi ECS
+
+Cách xem public key của web.
+
+![alt text](img/uitkey.png)
+![alt text](img/uitkey2.png)
+
+Lí do ECS được dùng: chi phí tính toán nhẹ hơn.
+
+Thuật toán Eculid
+- Sau này sẽ code trực tiếp từ thư viện
+- Phần [ECC dưới](Class\Week08\Week08_Codes\ECC_Cryptanalysis) tự học ở nhà.
+
+![](img/point.png)
+Dk: 
+- luôn luôn có 2 nhánh vô cực. P+Q =T đối xứng xxuống dưới mới ra tổng
+- Đường cong trơn luôn luôn khả vi
+- Lưu ý: P+P viết tắt thành 2P
+
+> Infinity(O)? Why, where? Nhưng mà đối xứng xuống vẫn cứu đc
+
+![](img/infinity.png)
+
+P=(x,y)
+
+p'=(x,-y) = -p
+
+p+p' = O
+
+p+O=p -> vì o vs p cắt điểm trên mà k lấy điểm trên, đối xuống -> b
+
+O+p=p
+
+Vai trò nó na ná số 0 nhưng nó không phải số 0.
+
+Dựa vào model mà nó sẽ có nhiều cách thay đổi
+
+![](img/model.png)
+
+![](img/thuattoan.png)
+
+-> Công trừ giao hoán được, có đối được, có cả identity O (không ảnh hưởng tới phép tính)
+
+![](img/thuantoan.png)
+Elliptic group
+- Cái hay là nó ranodm, khó và gần như k thể biết được. tập cần đủ lớn để giấu d
+- n phải lớn, phải chọn G sao nó k biết thành 1 vòng lập lại
+
+[secure curve](https://safecurves.cr.yp.to/) công bố về curve, nên xem qua.
+curve225519, $2^255$-19
+> Triển khai chuẩn kháng lượng tử
+
+Chốt: 
+- d là secret
+- Q= G+G+G...+G (cộng d lần)
+
+![](img/chotbang.png)
+
+task:
+thỏa thuận curve, gửi public key, tính z có cùng k
+tình khóa k cho aes
+> về nhà làm task 3ng
+> từ tạo ra đến an toàn -> câu chuyện khác

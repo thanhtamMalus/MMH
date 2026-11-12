@@ -33,10 +33,10 @@ def get_binary_path(binary_name):
             return p
     return None
 
-def execute_cmd(cmd, cwd=None):
+def execute_cmd(cmd, cwd=None, ok_codes=(0,)):
     print(f"\n[RUNNING] {' '.join(cmd) if isinstance(cmd, list) else cmd}")
     res = subprocess.run(cmd, cwd=cwd or get_script_dir(), shell=isinstance(cmd, str))
-    if res.returncode != 0:
+    if res.returncode not in ok_codes:
         print(f"[ERROR] Command exited with code {res.returncode}", file=sys.stderr)
         return False
     return True
@@ -99,7 +99,7 @@ def cmd_kat():
     cmd = [aestool, "--kat", vector_file]
     return execute_cmd(cmd)
 
-def cmd_cross_val():
+def cmd_cross_val(openssl=None, min_version="4.0"):
     script_dir = get_script_dir()
     aestool = get_binary_path("aestool")
     if not aestool:
@@ -107,8 +107,12 @@ def cmd_cross_val():
         return False
 
     script_path = os.path.join(script_dir, "scripts", "cross_validate.py")
-    cmd = [sys.executable, script_path, "--aestool", aestool]
-    return execute_cmd(cmd)
+    cmd = [sys.executable, script_path, "--aestool", aestool, "--min-version", min_version]
+    if openssl:
+        cmd += ["--openssl", openssl]
+    # Exit code 77 = SKIPPED (no OpenSSL >= min_version). Accept it here but the
+    # script already printed a clear [SKIP] message, so it is never silent.
+    return execute_cmd(cmd, ok_codes=(0, 77))
 
 def cmd_bench(sizes="1MiB,100MiB", runs=5, sbox="both"):
     script_dir = get_script_dir()
@@ -251,7 +255,9 @@ def main():
 
     subparsers.add_parser("test", help="Run unit tests via ctest")
     subparsers.add_parser("kat", help="Run KAT known answer tests")
-    subparsers.add_parser("cross-val", help="Run OpenSSL cross-validation")
+    xval_p = subparsers.add_parser("cross-val", help="Run OpenSSL (>= 4.0) cross-validation")
+    xval_p.add_argument("--openssl", default=None, help="Path to openssl / openssl.exe (default: auto-detect)")
+    xval_p.add_argument("--min-version", default="4.0", help="Minimum OpenSSL version (default: 4.0)")
 
     bench_p = subparsers.add_parser("bench", help="Run benchmark suite")
     bench_p.add_argument("--sizes", default="1MiB,100MiB", help="Comma-separated sizes (e.g. 1MiB,100MiB,1GiB)")
@@ -274,7 +280,7 @@ def main():
     elif args.command == "kat":
         return 0 if cmd_kat() else 1
     elif args.command == "cross-val":
-        return 0 if cmd_cross_val() else 1
+        return 0 if cmd_cross_val(openssl=args.openssl, min_version=args.min_version) else 1
     elif args.command == "bench":
         return 0 if cmd_bench(sizes=args.sizes, runs=args.runs, sbox=args.sbox) else 1
     elif args.command == "demo":

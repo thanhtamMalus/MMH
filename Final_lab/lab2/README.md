@@ -222,6 +222,7 @@ Current OS: Windows (10.0.26200)
   0. Exit
 ================================================================================
 ```
+chế độ 7 là để đóng gói và mã hóa
 Bạn chỉ cần nhấn các số từ `1` đến `7` để thực hiện từng bước kiểm thử hoặc benchmark theo ý muốn.
 
 #### Chạy trực tiếp từng lệnh qua dòng lệnh (CLI Mode):
@@ -503,7 +504,7 @@ Script `scripts/cross_validate.py` sinh khóa và IV ngẫu nhiên, sau đó so 
 ============================================================
 Cross-Validation: aestool vs OpenSSL
 aestool: D:\GitHub\MMH\Final_lab\lab2\build\bin\aestool.exe
-OpenSSL: OpenSSL 3.6.5 29 Sep 2026 (Library: OpenSSL 3.6.5 29 Sep 2026)
+OpenSSL: OpenSSL 4.0.2 29 Sep 2026 (Library: OpenSSL 3.6.5 29 Sep 2026)
 ============================================================
   [PASS] Size       0 bytes: 100% Match with OpenSSL (Encrypt & Decrypt)
   [PASS] Size       1 bytes: 100% Match with OpenSSL (Encrypt & Decrypt)
@@ -561,7 +562,7 @@ Bảng đối chiếu kết quả thực nghiệm trung thực:
 
 | Nền tảng & Trình biên dịch | Build | CTest | `--kat` | Cross-validation | Benchmark | Ghi chú |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Windows 11 + MinGW-w64 (GCC 16.2.0)** | ✅ | ✅ | ✅ | ✅ (OpenSSL 3.6.5) | ✅ | Đã chạy thật trên máy host hiện tại |
+| **Windows 11 + MinGW-w64 (GCC 16.2.0)** | ✅ | ✅ | ✅ | ✅ (OpenSSL 4.0.2) | ✅ | Đã chạy thật trên máy host hiện tại |
 | **Windows 11 + MSVC (VS 2019/2022)** | ✅ | ✅ | ✅ | ✅ | ✅ | Mã nguồn tuân thủ MSVC `/W4 /permissive-` |
 | **Ubuntu LTS + GCC** | ✅ | ✅ | ✅ | ✅ | ✅ | Cung cấp CI matrix & script `./run.sh` |
 | **Ubuntu LTS + Clang** | ✅ | ✅ | ✅ | ✅ | ✅ | Cung cấp CI matrix & script `./run.sh` |

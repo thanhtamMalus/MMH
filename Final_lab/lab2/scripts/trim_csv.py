@@ -10,6 +10,7 @@ Vi du:
 
 Chi cat mot so nhom (cac nhom khac giu nguyen), vi du chi computed 1GiB:
     python3 scripts/trim_csv.py bench.csv --n 30 --sbox computed --size 1GiB
+    python scripts/trim_csv.py docs/results/windows/bench.csv --n 30 --dry-run
 
 File goc duoc sao luu thanh <file>.bak (neu chua co) truoc khi ghi de.
 """

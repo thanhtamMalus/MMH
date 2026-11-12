@@ -121,6 +121,12 @@ def main():
     markers = ["o", "s", "^", "D", "v", "P"]
     lstyle = {sb: ("-" if i == 0 else "--") for i, sb in enumerate(sboxes)}
 
+    # Ky hieu theo S-box: table = hinh vuong, computed = hinh tron
+    SBOX_MARKER = {"table": "s", "computed": "o"}
+
+    def mk(sb):
+        return SBOX_MARKER.get(sb, "^")
+
     def has(lb, sb, m, sz):
         return (lb, sb, m, sz) in S
 
@@ -155,7 +161,7 @@ def main():
                     med = [S[(lb, sb, m, s)][kind]["median"] * scale for s in xs]
                     lo = [S[(lb, sb, m, s)][kind]["p5"] * scale for s in xs]
                     hi = [S[(lb, sb, m, s)][kind]["p95"] * scale for s in xs]
-                    ax.plot(xs, med, marker=markers[i % 6], ls=lstyle[sb], color=colors[lb],
+                    ax.plot(xs, med, marker=mk(sb), ls=lstyle[sb], color=colors[lb],
                             label=f"{lb} / {sb}", ms=4)
                     ax.fill_between(xs, lo, hi, color=colors[lb], alpha=0.12)
             setup_x(ax)
@@ -177,7 +183,7 @@ def main():
                 xs = [s for s in sizes if has(lb, "table", m, s) and has(lb, "computed", m, s)]
                 ys = [S[(lb, "table", m, s)]["tp"]["median"] / S[(lb, "computed", m, s)]["tp"]["median"]
                       for s in xs]
-                ax.plot(xs, ys, marker=markers[i % 6], color=colors[lb], label=lb, ms=4)
+                ax.plot(xs, ys, marker="D", color=colors[lb], label=lb, ms=4)
                 ratios += [("table_over_computed", lb, "", m, s, y) for s, y in zip(xs, ys)]
             ax.axhline(1, color="gray", lw=0.8)
             setup_x(ax)
@@ -195,7 +201,7 @@ def main():
                 xs = [s for s in sizes if has(lb, sb, "e2e", s) and has(lb, sb, "compute", s)]
                 ys = [100 * S[(lb, sb, "e2e", s)]["tp"]["median"] / S[(lb, sb, "compute", s)]["tp"]["median"]
                       for s in xs]
-                ax.plot(xs, ys, marker=markers[i % 6], color=colors[lb], label=lb, ms=4)
+                ax.plot(xs, ys, marker=mk(sb), color=colors[lb], label=lb, ms=4)
                 ratios += [("e2e_over_compute_pct", lb, sb, "", s, y) for s, y in zip(xs, ys)]
             ax.axhline(100, color="gray", lw=0.8)
             setup_x(ax)
@@ -217,7 +223,7 @@ def main():
                     xs = [s for s in sizes if has(lb, sb, m, s) and has(baseline, sb, m, s)]
                     ys = [S[(lb, sb, m, s)]["tp"]["median"] / S[(baseline, sb, m, s)]["tp"]["median"]
                           for s in xs]
-                    ax.plot(xs, ys, marker=markers[i % 6], color=colors[lb], label=lb, ms=4)
+                    ax.plot(xs, ys, marker=mk(sb), color=colors[lb], label=lb, ms=4)
                     ratios += [("vs_baseline:" + baseline, lb, sb, m, s, y) for s, y in zip(xs, ys)]
                 ax.axhline(1, color="gray", lw=0.8)
                 setup_x(ax)

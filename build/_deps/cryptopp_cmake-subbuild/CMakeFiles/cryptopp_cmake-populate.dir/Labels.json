@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/CMakeFiles/cryptopp_cmake-populate"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/CMakeFiles/cryptopp_cmake-populate.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/CMakeFiles/cryptopp_cmake-populate-complete.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/cryptopp_cmake-populate-prefix/src/cryptopp_cmake-populate-stamp/cryptopp_cmake-populate-build.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/cryptopp_cmake-populate-prefix/src/cryptopp_cmake-populate-stamp/cryptopp_cmake-populate-configure.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/cryptopp_cmake-populate-prefix/src/cryptopp_cmake-populate-stamp/cryptopp_cmake-populate-download.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/cryptopp_cmake-populate-prefix/src/cryptopp_cmake-populate-stamp/cryptopp_cmake-populate-install.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/cryptopp_cmake-populate-prefix/src/cryptopp_cmake-populate-stamp/cryptopp_cmake-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/cryptopp_cmake-populate-prefix/src/cryptopp_cmake-populate-stamp/cryptopp_cmake-populate-patch.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/cryptopp_cmake-populate-prefix/src/cryptopp_cmake-populate-stamp/cryptopp_cmake-populate-test.rule"
+		},
+		{
+			"file" : "D:/GitHub/MMH/build/_deps/cryptopp_cmake-subbuild/cryptopp_cmake-populate-prefix/src/cryptopp_cmake-populate-stamp/cryptopp_cmake-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"cryptopp_cmake-populate"
+		],
+		"name" : "cryptopp_cmake-populate"
+	}
+}
