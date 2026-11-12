@@ -53,11 +53,11 @@ Có thể là làm task mã hóa và phân tích hiệu năng các mode AES.
 ## Thực hành week 2: AES
 ![](img/aes.png)
 
+**Bonus**: Docker, guii, dynamic aes
 # Week 06: RSA and Cryptanalysis
 ![](img/week06.png)
 ![](img/week06_1.png)
 -> Tạo key đóng gói (pub) để giải (private)
-**Bonus**: Docker, guii, dynamic aes
 
 # Week 07: Discrete-Logarithm Cryptography and Cryptanalysis
 ![sơ lược bài học week 7](img/week7.png)
