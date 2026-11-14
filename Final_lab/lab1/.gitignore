@@ -17,7 +17,6 @@ tampered.bin
 big.bin
 ct.*
 plots/
-bench_*.csv
 
 # Editor / OS (gộp của cả hai hệ điều hành)
 .vscode/
