@@ -104,9 +104,9 @@
 &emsp;[9.3. Cơ chế liên kết giữa GUI và thư viện AES](#93-cơ-chế-liên-kết-giữa-gui-và-thư-viện-aes)
 
 
-[11. Kết luận (Conclusion)](#10-kết-luận-conclusion)
+[10. Kết luận (Conclusion)](#10-kết-luận-conclusion)
 
-[12. Tài liệu tham khảo (References)](#11-tài-liệu-tham-khảo-references)
+[11. Tài liệu tham khảo (References)](#11-tài-liệu-tham-khảo-references)
 
 [PHỤ LỤC](#phụ-lục)
 
@@ -1323,7 +1323,6 @@ Throughput (MB/s), giá trị trung bình của 1.000 lần đo.
 ## Phụ lục B – Bộ kiểm thử KAT và Negative Tests
 
 ### B.1. KAT
-
 
 |STT| Test vector | Mode | Khóa | Kết quả |
 |---|---|---|---|---|
