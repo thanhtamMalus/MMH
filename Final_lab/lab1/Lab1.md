@@ -1083,21 +1083,20 @@ Môi trường nguồn: Ubuntu 22.04.3 LTS, g++ 11.4.0, CMake 3.21.3, Crypto++ 8
 
 ```bash
 cmake -S . -B build
-cmake --build build -j"$(nproc)"
-./build/<target-path>/aestool help
+cmake --build build 
+./build/bin/aestool help
 ```
-
-[Ảnh minh chứng: terminal Linux configure/build thành công]
+![](img/makelinux.png)
 
 ## 8.4. Hướng dẫn sử dụng và triển khai
 
 Quy trình: cài compiler/CMake/Crypto++; configure; build; sinh khóa; chọn mode; mã hóa và lưu metadata; giải mã bằng đúng khóa; chạy KAT sau build. Ví dụ:
 
 ```bash
-aestool keygen --bits 256 --out key.bin
-aestool encrypt --mode gcm --key key.bin --in plaintext.bin --out ciphertext.aest
-aestool decrypt --key key.bin --in ciphertext.aest --out recovered.bin
-aestool --kat vectors/nist_vectors.json
+./build/bin/aestool keygen --bits 256 --out key.bin
+./build/bin/aestool encrypt --mode gcm --key key.bin --in plaintext.bin --out ciphertext.aest
+./build/bin/aestool decrypt --key key.bin --in ciphertext.aest --out recovered.bin
+./build/bin/aestool --kat vectors/nist_vectors.json
 ```
 ![](img/aeshelp.png)
 
@@ -1106,11 +1105,11 @@ aestool --kat vectors/nist_vectors.json
 
 ## 9.1. Xây dựng thư viện động (DLL/SO)
 
-Tài liệu thiết kế có thành phần `aescore_capi.*` nhằm cung cấp C API để chương trình bên ngoài gọi lõi AES. Mục tiêu là tạo giao diện ổn định cho Python, tránh phụ thuộc trực tiếp vào lớp C++ của Crypto++ và chuẩn hóa kiểu dữ liệu/mã lỗi.
+1) Window:
 
-Tuy nhiên, `report_lab1.md` ghi DLL/SO + GUI chưa thực hiện. Vì vậy, nội dung này được xem là kiến trúc dự kiến, không phải kết quả đã xác nhận.
+2) Linux:
 
-[thiếu dữ liệu: DLL/SO thực tế, export symbols, lệnh build target và log C API]
+![](img/linuxcryp.png)
 
 ## 9.2. Tích hợp giao diện đồ họa (GUI)
 
@@ -1133,64 +1132,7 @@ Python GUI (tkinter)
         |
      Crypto++
 ```
-
-Cần quy định rõ ownership buffer, cấp phát/giải phóng, kiểu dữ liệu, độ dài buffer, mã lỗi, hành vi khi tag sai và cách nạp DLL/SO.
-
-[Ảnh minh chứng: sơ đồ gọi hàm Python $\rightarrow$ C API $\rightarrow$ aescore]
-
-## 9.4. Kiểm thử và đánh giá phần mở rộng
-
-| Kiểm thử | Tiêu chí |
-|---|---|
-| Nạp DLL/SO | GUI nạp đúng thư viện |
-| Gọi C API | ABI và kiểu dữ liệu đúng |
-| Round-trip | Plaintext phục hồi giống ban đầu |
-| AEAD tamper | Tag sai không trả plaintext |
-| File lớn | Không rò rỉ bộ nhớ/treo giao diện |
-| Thiếu thư viện | Thông báo lỗi rõ ràng |
-| Đa nền tảng | Kiểm tra Windows và Linux |
-
-[thiếu dữ liệu: log kiểm thử GUI/C API và ảnh kết quả]
-
----
-
-# 10. Hạn chế và hướng phát triển (Limitations & Future Work)
-
-## 10.1. Những hạn chế hiện tại
-
-1. **Thiếu metadata key size:** CSV benchmark không có cột `key_bits`, nên không xác nhận được từng dòng thuộc AES-128/192/256.
-2. **Thiếu AES-192:** nguồn ghi chưa có benchmark AES-192; KAT được liệt kê cũng chưa thể hiện đầy đủ AES-192.
-3. **Mâu thuẫn CTR Linux:** 1 MB có cả 909,69 và 3.137,30 MB/s trong cùng báo cáo.
-4. **Latency chưa rõ đơn vị:** giá trị latency không tương thích trực tiếp với throughput nếu đọc là ms/op.
-5. **Phần cứng khác nhau:** hai OS được thử trên CPU khác nhau, không cô lập riêng ảnh hưởng hệ điều hành.
-6. **Bonus chưa có minh chứng:** tài liệu report ghi DLL/SO và GUI chưa thực hiện.
-7. **Thiếu log kiểm thử:** chưa có log đầy đủ cho Catch2, edge cases và round-trip toàn bộ mode.
-
-## 10.2. Các vấn đề chưa giải quyết
-
-- [thiếu dữ liệu: CSV có `key_bits`, mode, direction, payload, run ID và thời gian từng lần chạy].
-- [thiếu dữ liệu: xác minh CTR Linux 1 MB: 909,69 hay 3.137,30 MB/s].
-- [thiếu dữ liệu: xác minh latency là µs/op hay ms/op].
-- [thiếu dữ liệu: benchmark AES-192].
-- [thiếu dữ liệu: benchmark AES-256 cho toàn bộ mode, cả enc/dec].
-- [thiếu dữ liệu: log Catch2 và edge cases].
-- [thiếu dữ liệu: log build sạch trên Windows/Linux].
-- [thiếu dữ liệu: xác nhận DLL/SO và GUI].
-
-## 10.3. Hướng phát triển trong tương lai
-
-- Thêm `key_bits`, `direction`, payload và metadata môi trường vào CSV.
-- Lưu dữ liệu thô từng lần chạy; chuẩn hóa MB/MiB và µs/ms.
-- Benchmark riêng AES-128/192/256 trên cùng phần cứng và cấu hình.
-- Bổ sung KAT AES-192, round-trip toàn bộ mode và edge cases.
-- Fuzz parser container/sidecar.
-- Xây bộ cấp nonce có trạng thái bền vững cho đa tiến trình/đa máy.
-- Hoàn thiện C API, DLL/SO, GUI và kiểm thử trên môi trường sạch.
-- Viết hướng dẫn đóng gói, quản lý khóa và xoay vòng khóa.
-
----
-
-# 11. Kết luận (Conclusion)
+# 10. Kết luận (Conclusion)
 
 Lab 1 xây dựng nền tảng công cụ mã hóa đối xứng dựa trên AES và Crypto++. Phạm vi thiết kế gồm nhiều mode, AES-128/192/256, CLI, quản lý IV/nonce, container, xử lý lỗi và benchmark. Bảng KAT nguồn ghi nhận 12/12 vector PASS; Negative Tests minh họa các tình huống sai khóa, sai IV, sửa ciphertext và tag, đồng thời cho thấy khác biệt giữa non-AEAD và AEAD.
 
@@ -1200,26 +1142,20 @@ Về an toàn, lựa chọn mode và quản lý nonce quan trọng không kém �
 
 Ưu tiên hoàn thiện là chuẩn hóa dữ liệu benchmark, bổ sung AES-192, xác minh kết quả Linux, hoàn thiện edge tests và cung cấp minh chứng build/triển khai.
 
----
 
-# 12. Tài liệu tham khảo (References)
+# 11. Tài liệu tham khảo (References)
 
 1. NIST, **FIPS PUB 197 – Advanced Encryption Standard (AES)**, 2001; cập nhật 2023.
 2. NIST, **SP 800-38A – Recommendation for Block Cipher Modes of Operation: Methods and Techniques**, 2001.
 3. NIST, **SP 800-38C – Recommendation for Block Cipher Modes of Operation: The CCM Mode for Authentication and Confidentiality**, 2004.
 4. NIST, **SP 800-38D – Recommendation for Block Cipher Modes of Operation: Galois/Counter Mode (GCM) and GMAC**, 2007.
 5. NIST, **SP 800-38E – Recommendation for Block Cipher Modes of Operation: The XTS-AES Mode for Confidentiality on Storage Devices**, 2010.
-6. Crypto++ Library, **Crypto++ Documentation and Source Code**, phiên bản 8.9.0. [Bổ sung URL/ngày truy cập].
-7. IEEE, **IEEE Std 1619 – Standard for Cryptographic Protection of Data on Block-Oriented Storage Devices**. [Bổ sung năm/phiên bản].
-8. Kitware, **CMake Documentation**. [Bổ sung URL/ngày truy cập].
-9. `BaoCaoLab1.md`, tài liệu thiết kế và mô tả triển khai Lab 1 do nhóm cung cấp.
-10. `report_lab1.md`, tài liệu kiểm thử, môi trường thực nghiệm và benchmark Lab 1 do nhóm cung cấp.
+6. Crypto++ Library, **Crypto++ Documentation and Source Code**, phiên bản 8.9.0.
+7. IEEE, **IEEE Std 1619 – Standard for Cryptographic Protection of Data on Block-Oriented Storage Devices**.
 
 ---
 
 # PHỤ LỤC
-
-## Phụ lục A – Bảng kết quả benchmark chi tiết
 ## Phụ lục A – Bảng kết quả benchmark chi tiết
 
 Throughput (MB/s), giá trị trung bình của 1.000 lần đo.
@@ -1308,7 +1244,17 @@ Throughput (MB/s), giá trị trung bình của 1.000 lần đo.
 | CCM | 450,02 | 689,39 | 786,79 | 432,22 | 393,35 | 319,13 |
 | GCM | 658,64 | 1.468,26 | 1.967,54 | 2.139,39 | 1.856,89 | 413,76 |
 
-**Giải mã:** chưa có dữ liệu (`bench_linux_192.csv` chỉ có hướng mã hóa).
+**Giải mã** (không có XTS)
+
+| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
+|---|---:|---:|---:|---:|---:|---:|
+| ECB | 1.098,68 | 2.473,50 | 3.324,34 | 3.493,82 | 3.360,27 | 1.501,54 |
+| CBC | 922,04 | 2.248,25 | 3.146,93 | 3.418,59 | 3.172,16 | 1.251,78 |
+| OFB | 554,77 | 843,40 | 940,63 | 959,77 | 916,00 | 721,23 |
+| CFB | 814,57 | 1.774,03 | 2.216,34 | 2.378,53 | 2.110,42 | 1.151,06 |
+| CTR | 920,90 | 2.295,05 | 3.146,17 | 3.487,90 | 3.411,10 | 1.511,51 |
+| CCM | 343,10 | 618,62 | 759,92 | 814,21 | 747,85 | 626,19 |
+| GCM | 463,02 | 1.198,36 | 1.913,64 | 2.264,64 | 2.145,68 | 1.245,72 |
 
 ### A.5. AES-256 – Windows
 
@@ -1430,18 +1376,18 @@ cmake -S . -B build
 cmake --build build -j"$(nproc)"
 ```
 
-[Ảnh minh chứng: build thành công trên Linux]
+![Ảnh minh chứng: build thành công trên Linux](img/makelinux.png)
 
 ### C.3. Lệnh sử dụng
 
 ```bash
-aestool keygen --bits 256 --out key.bin
-aestool encrypt --mode gcm --key key.bin --in plaintext.bin --out ciphertext.aest
-aestool decrypt --key key.bin --in ciphertext.aest --out recovered.bin
-aestool --kat vectors/nist_vectors.json --verbose
-aestool bench --modes gcm,ctr,cbc --sizes 1k,4k,16k,256k,1m,8m --runs 1000 --bits 256 --dir both
+./build/bin/aestool keygen --bits 256 --out key.bin
+./build/bin/aestool encrypt --mode gcm --key key.bin --in plaintext.bin --out ciphertext.aest
+./build/bin/aestool decrypt --key key.bin --in ciphertext.aest --out recovered.bin
+./build/bin/aestool --kat vectors/nist_vectors.json --verbose
+./build/bin/aestool bench --modes gcm,ctr,cbc --sizes 1k,4k,16k,256k,1m,8m --runs 1000 --bits 256 --dir both
 ```
-
+./build/bin/aestool.exe nếu chạy trên OS Window.
 
 
 ## Phụ lục D – Bảng tự đánh giá (Self-grade Rubric)
@@ -1457,18 +1403,5 @@ aestool bench --modes gcm,ctr,cbc --sizes 1k,4k,16k,256k,1m,8m --runs 1000 --bit
 | Report Quality | 20 | 20 | Bảng, biểu đồ, nhận xét |
 | Bonus | +5 | 5 |aes_gui.py |
 | **Tổng** | **100 (+5)** | **100** | **Tự đánh giá theo tài liệu nguồn** |
-
-### D.1. Checklist trước khi nộp
-
-- [ ] Điền họ tên, MSSV, lớp, giảng viên và ngày.
-- [ ] Xác nhận benchmark theo key size; bổ sung `key_bits`.
-- [ ] Bổ sung benchmark AES-192 nếu yêu cầu.
-- [ ] Giải quyết CTR Linux 1 MB: 909,69 hay 3.137,30 MB/s.
-- [ ] Xác minh đơn vị latency.
-- [ ] Bổ sung log KAT/Catch2 và edge cases.
-- [ ] Bổ sung ảnh build Windows/Linux.
-- [ ] Xác nhận trạng thái DLL/SO và GUI.
-- [ ] Bổ sung URL/ngày truy cập cho references.
-- [ ] Kiểm tra lại đường dẫn ảnh trong Markdown.
 
 *Kết thúc báo cáo Lab 1 – Symmetric Encryption with Crypto++*
