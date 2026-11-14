@@ -21,7 +21,7 @@
 #include <iterator>
 #include <string>
 #include <vector>
-#include "common.h"
+#include "Lab03_InClassGuide\common.h"
 
 // ==========================================================================
 // RSA-OAEP key wrapping (from Task C)

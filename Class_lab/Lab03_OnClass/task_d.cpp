@@ -21,7 +21,7 @@
 #include <iterator>
 #include <string>
 #include <vector>
-#include "common.h"
+#include "helper.h"
 
 // ==========================================================================
 // RSA-OAEP key wrapping (from Task C)
@@ -116,7 +116,7 @@ static bool gcmDecrypt(const Bytes& key, const Bytes& nonce, const Bytes& aad, c
 // ==========================================================================
 static void putU16(Bytes& b, uint16_t v) { b.push_back(v >> 8); b.push_back(v & 0xff); }
 static void putU64(Bytes& b, uint64_t v) { for (int s = 56; s >= 0; s -= 8) b.push_back((v >> s) & 0xff); }
-static uint16_t getU16(const unsigned char* p) { return (uint16_t)(p << 8 | p); }
+static uint16_t getU16(const unsigned char* p) { return (uint16_t)((p[0] << 8) | p[1]); }
 static uint64_t getU64(const unsigned char* p) { uint64_t v = 0; for (int i = 0; i < 8; ++i) v = v << 8 | p[i]; return v; }
 
 static Bytes sealPackage(EVP_PKEY* recipientPub, const Bytes& plaintext) {
@@ -150,10 +150,10 @@ static bool openPackage(EVP_PKEY* priv, const Bytes& pkg, Bytes& plaintext, std:
     const size_t k = (size_t)EVP_PKEY_get_size(priv);
     if (pkg.size() < 10) { why = "too short"; return false; }
     if (std::memcmp(pkg.data(), "L2PK", 4) != 0) { why = "bad magic"; return false; }
-    if (pkg != 0x01) { why = "unsupported version"; return false; }
-    if (pkg != 0x01) { why = "unexpected mode"; return false; }
-    if (strict && getU16(&pkg) != 0) { why = "reserved bytes not zero"; return false; }
-    size_t klen = getU16(&pkg);
+    if (pkg[4] != 0x01) { why = "unsupported version"; return false; }
+    if (pkg[5] != 0x01) { why = "unexpected mode"; return false; }
+    if (strict && getU16(&pkg[6]) != 0) { why = "reserved bytes not zero"; return false; }
+    size_t klen = getU16(&pkg[8]);
     if (klen != k) { why = "klen does not match key size"; return false; }
     size_t headerLen = 10 + klen + 12 + 8;
     if (pkg.size() < headerLen + 16) { why = "truncated"; return false; }
@@ -200,9 +200,9 @@ int main(int argc, char** argv) {
     EVP_PKEY *pub, *priv;
     Bytes message;
     if (argc == 4) {
-        pub = loadPem(argv, false);
-        priv = loadPem(argv, true);
-        std::ifstream f(argv, std::ios::binary);
+        pub = loadPem(argv[1], false);
+        priv = loadPem(argv[2], true);
+        std::ifstream f(argv[3], std::ios::binary);
         if (!f) die("cannot open input file");
         message.assign(std::istreambuf_iterator<char>(f), {});
     } else {

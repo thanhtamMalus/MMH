@@ -26,43 +26,6 @@
 
 // ===== Minimal helpers =====================================================
 using Bytes = std::vector<unsigned char>;
-static int g_failures = 0;
-
-[[noreturn]] static void die(const char* what) {
-    std::fprintf(stderr, "FAILED: %s\n", what);
-    ERR_print_errors_fp(stderr); // OpenSSL's reason strings
-    std::exit(1);
-}
-
-#define OK1(call) do { if ((call) != 1) die(#call); } while (0)
-#define OKPOS(call) do { if ((call) <= 0) die(#call); } while (0)
-#define NOTNULL(ptr) do { if ((ptr) == nullptr) die(#ptr " is NULL"); } while (0)
-
-[[maybe_unused]] static void printHex(const char* label, const unsigned char* p, size_t n, size_t maxShown = 24) {
-    std::printf(" %-16s", label);
-    for (size_t i = 0; i < n && i < maxShown; ++i) std::printf("%02x", p[i]);
-    if (n > maxShown) std::printf("... (%zu bytes)", n);
-    std::printf("\n");
-}
-
-[[maybe_unused]] static void printBn(const char* label, const BIGNUM* x) {
-    char* s = BN_bn2dec(x);
-    NOTNULL(s);
-    std::printf(" %-16s%s\n", label, s);
-    OPENSSL_free(s);
-}
-
-[[maybe_unused]] static void printBnBits(const char* label, const BIGNUM* x) {
-    char* s = BN_bn2hex(x);
-    NOTNULL(s);
-    std::printf(" %-16s%d bits, 0x%.24s...\n", label, BN_num_bits(x), s);
-    OPENSSL_free(s);
-}
-
-[[maybe_unused]] static void check(const char* name, bool ok) {
-    std::printf(" [%s] %s\n", ok ? "PASS" : "FAIL", name);
-    if (!ok) ++g_failures;
-}
 
 // ==========================================================================
 static Bytes i2osp(const BIGNUM* x, size_t len) {
@@ -337,7 +300,7 @@ static void part3Profile(EVP_PKEY* key) {
 
     // Context binding: a different key ID gives a different key
     Bytes id2 = id;
-    id2 = id2 ^ 0x01;
+    id2[0] ^= 0x01;
     check("different key ID -> different AES key", evpHkdf(Z, {}, buildInfo(id2, enc.kemCt), 32) != kRecv);
 
     // Using Z directly as the key is forbidden; Z is k bytes anyway, not 32.

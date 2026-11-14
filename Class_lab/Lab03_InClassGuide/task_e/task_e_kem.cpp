@@ -22,7 +22,7 @@
 #include <cstring>
 #include <string>
 #include <vector>
-#include "D:\GitHub\MMH\Class_lab\Lab03_InClassGuide\common.h"
+#include "Lab03_InClassGuide\common.h"
 
 // ===== Minimal helpers =====================================================
 using Bytes = std::vector<unsigned char>;
