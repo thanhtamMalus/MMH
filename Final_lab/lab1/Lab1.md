@@ -1,17 +1,17 @@
 # LAB 1 - Symmetric Encryption with Crypto++
 
 ## MỤC LỤC
-[Lời cam kết học thuật (Academic Integrity & Ethics Statement)](#lời-cam-kết-học-thuật-academic-integrity--ethics-statement)
+[Lời cam kết học thuật (Academic Integrity & Ethics Statement)](#lời-cam-kết-học-thuật)
 
-[Tóm tắt kết quả chính (Executive Summary)](#tóm-tắt-kết-quả-chính-executive-summary)
+[Tóm tắt kết quả chính ](#tóm-tắt-kết-quả-chính)
 
-[1. Mục tiêu và phạm vi kỹ thuật (Objectives & Technical Scope)](#1-mục-tiêu-và-phạm-vi-kỹ-thuật-objectives--technical-scope)
+[1. Mục tiêu và phạm vi kỹ thuật ](#1-mục-tiêu-và-phạm-vi-kỹ-thuật)
 
 &emsp;[1.1. Bối cảnh và mục tiêu dự án](#11-bối-cảnh-và-mục-tiêu-dự-án)
 
 &emsp;[1.2. Phạm vi chức năng](#12-phạm-vi-chức-năng)
 
-[2. Cơ sở lý thuyết (Theoretical Background)](#2-cơ-sở-lý-thuyết-theoretical-background)
+[2. Cơ sở lý thuyết ](#2-cơ-sở-lý-thuyết)
 
 &emsp;[2.1. Tổng quan về thuật toán AES](#21-tổng-quan-về-thuật-toán-aes)
 
@@ -23,11 +23,11 @@
 
 &emsp;[2.5. Đặc điểm và yêu cầu an toàn của từng chế độ](#25-đặc-điểm-và-yêu-cầu-an-toàn-của-từng-chế-độ)
 
-[3. Thiết kế và hiện thực công cụ AES (System Design & Implementation)](#3-thiết-kế-và-hiện-thực-công-cụ-aes-system-design--implementation)
+[3. Thiết kế và hiện thực công cụ AES](#3-thiết-kế-và-hiện-thực-công-cụ-aes)
 
 &emsp;[3.1. Kiến trúc tổng thể của hệ thống](#31-kiến-trúc-tổng-thể-của-hệ-thống)
 
-&emsp;[3.2. Cấu trúc thư mục mã nguồn (Project Structure)](#32-cấu-trúc-thư-mục-mã-nguồn-project-structure)
+&emsp;[3.2. Cấu trúc thư mục mã nguồn ](#32-cấu-trúc-thư-mục-mã-nguồn)
 
 &emsp;[3.3. Thiết kế giao diện dòng lệnh (CLI – aestool)](#33-thiết-kế-giao-diện-dòng-lệnh-cli--aestool)
 
@@ -37,7 +37,7 @@
 
 &emsp;[3.6. Quy trình xử lý dữ liệu và quản lý khóa](#36-quy-trình-xử-lý-dữ-liệu-và-quản-lý-khóa)
 
-[4. Kiểm thử tính đúng đắn (Correctness & Security Testing)](#4-kiểm-thử-tính-đúng-đắn-correctness--security-testing)
+[4. Kiểm thử tính đúng đắn](#4-kiểm-thử-tính-đúng-đắn)
 
 &emsp;[4.1. Known Answer Tests (KATs)](#41-known-answer-tests-kats)
 
@@ -49,7 +49,7 @@
 
 &emsp;[4.5. Tổng hợp kết quả kiểm thử](#45-tổng-hợp-kết-quả-kiểm-thử)
 
-[5. Môi trường và phương pháp thực nghiệm (Experimental Setup & Methodology)](#5-môi-trường-và-phương-pháp-thực-nghiệm-experimental-setup--methodology)
+[5. Môi trường và phương pháp thực nghiệm](#5-môi-trường-và-phương-pháp-thực-nghiệm)
 
 &emsp;[5.1. Cấu hình phần cứng](#51-cấu-hình-phần-cứng)
 
@@ -61,7 +61,7 @@
 
 &emsp;[5.5. Độ tin cậy và khoảng tin cậy 95%](#55-độ-tin-cậy-và-khoảng-tin-cậy-95)
 
-[6. Kết quả và phân tích hiệu năng (Performance Evaluation & Analysis)](#6-kết-quả-và-phân-tích-hiệu-năng-performance-evaluation--analysis)
+[6. Kết quả và phân tích hiệu năng ](#6-kết-quả-và-phân-tích-hiệu-năng)
 
 &emsp;[6.1. Kết quả benchmark trên Windows](#61-kết-quả-benchmark-trên-windows)
 
@@ -75,7 +75,7 @@
 
 &emsp;[6.6. Nhận xét và đánh giá tổng hợp](#66-nhận-xét-và-đánh-giá-tổng-hợp)
 
-[7. Phân tích an toàn mật mã (Cryptographic Security Analysis)](#7-phân-tích-an-toàn-mật-mã-cryptographic-security-analysis)
+[7. Phân tích an toàn mật mã ](#7-phân-tích-an-toàn-mật-mã)
 
 &emsp;[7.1. Đánh giá đặc điểm an toàn của từng chế độ](#71-đánh-giá-đặc-điểm-an-toàn-của-từng-chế-độ)
 
@@ -85,7 +85,7 @@
 
 &emsp;[7.4. Các giới hạn an toàn của công cụ](#74-các-giới-hạn-an-toàn-của-công-cụ)
 
-[8. Build và triển khai đa nền tảng (Cross-platform Build & Deployment)](#8-build-và-triển-khai-đa-nền-tảng-cross-platform-build--deployment)
+[8. Build và triển khai đa nền tảng ](#8-build-và-triển-khai-đa-nền-tảng)
 
 &emsp;[8.1. Cấu hình CMake](#81-cấu-hình-cmake)
 
@@ -95,7 +95,7 @@
 
 &emsp;[8.4. Hướng dẫn sử dụng và triển khai](#84-hướng-dẫn-sử-dụng-và-triển-khai)
 
-[9. Mở rộng hệ thống – Bonus (Extended Features)](#9-mở-rộng-hệ-thống--bonus-extended-features)
+[9. Mở rộng hệ thống](#9-extended-features)
 
 &emsp;[9.1. Xây dựng thư viện động (DLL/SO)](#91-xây-dựng-thư-viện-động-dllso)
 
@@ -103,19 +103,10 @@
 
 &emsp;[9.3. Cơ chế liên kết giữa GUI và thư viện AES](#93-cơ-chế-liên-kết-giữa-gui-và-thư-viện-aes)
 
-&emsp;[9.4. Kiểm thử và đánh giá phần mở rộng](#94-kiểm-thử-và-đánh-giá-phần-mở-rộng)
 
-[10. Hạn chế và hướng phát triển (Limitations & Future Work)](#10-hạn-chế-và-hướng-phát-triển-limitations--future-work)
+[11. Kết luận (Conclusion)](#10-kết-luận-conclusion)
 
-&emsp;[10.1. Những hạn chế hiện tại](#101-những-hạn-chế-hiện-tại)
-
-&emsp;[10.2. Các vấn đề chưa giải quyết](#102-các-vấn-đề-chưa-giải-quyết)
-
-&emsp;[10.3. Hướng phát triển trong tương lai](#103-hướng-phát-triển-trong-tương-lai)
-
-[11. Kết luận (Conclusion)](#11-kết-luận-conclusion)
-
-[12. Tài liệu tham khảo (References)](#12-tài-liệu-tham-khảo-references)
+[12. Tài liệu tham khảo (References)](#11-tài-liệu-tham-khảo-references)
 
 [PHỤ LỤC](#phụ-lục)
 
@@ -125,15 +116,13 @@
 
 &emsp;[Phụ lục C – Hướng dẫn build và sử dụng](#phụ-lục-c--hướng-dẫn-build-và-sử-dụng)
 
-&emsp;[Phụ lục D – Bảng tự đánh giá (Self-grade Rubric)](#phụ-lục-d--bảng-tự-đánh-giá-self-grade-rubric)
 
-
-## Lời cam kết học thuật (Academic Integrity & Ethics Statement)
+## Lời cam kết học thuật
 Các số liệu thực nghiệm được giữ theo nguồn; những điểm chưa có bằng chứng hoặc có mâu thuẫn được đánh dấu rõ ràng. Người thực hiện cam kết trình bày trung thực quá trình thiết kế, hiện thực, kiểm thử và benchmark; không tự tạo log, ảnh chụp, số liệu hoặc kết quả build; phân biệt kết quả quan sát với nhận định và giả thuyết; sử dụng công cụ trong phạm vi học tập, nghiên cứu được phép.
 
 **Ngày viết báo cáo:** 14/11/2026
 
-## Tóm tắt kết quả chính (Executive Summary)
+## Tóm tắt kết quả chính 
 
 Đề tài xây dựng công cụ `aestool` sử dụng Crypto++ để mã hóa và giải mã AES ở nhiều chế độ. Kiến trúc được mô tả gồm lõi `aescore`, tầng điều phối thao tác, định dạng container `AEST`, sidecar JSON và giao diện CLI. Các mode trong phạm vi gồm ECB, CBC, CFB, OFB, CTR, XTS, CCM và GCM. Công cụ hướng đến AES-128/192/256; báo cáo này lấy AES-256 làm trọng tâm.
 
@@ -145,7 +134,7 @@ Các số liệu thực nghiệm được giữ theo nguồn; những điểm ch
 - GCM và CCM có xác thực (AEAD); ECB, CBC, CFB, OFB, CTR và XTS không có xác thực tích hợp.
 
 
-## 1. Mục tiêu và phạm vi kỹ thuật (Objectives & Technical Scope)
+## 1. Mục tiêu và phạm vi kỹ thuật
 
 ### 1.1. Bối cảnh và mục tiêu dự án
 
@@ -194,7 +183,7 @@ Các mục tiêu cụ thể:
 - Hỗ trợ AAD và tag với CCM/GCM.
 - Chạy KAT và benchmark.
 
-# 2. Cơ sở lý thuyết (Theoretical Background)
+# 2. Cơ sở lý thuyết 
 
 ## 2.1. Tổng quan về thuật toán AES
 
@@ -304,7 +293,7 @@ XTS được thiết kế cho mã hóa dữ liệu lưu trữ, ví dụ sector. 
 | CCM | Không | Phần CTR song song, phần CBC-MAC tuần tự | Có | Tái sử dụng nonce làm mất an toàn. Cần biết trước độ dài dữ liệu. | AEAD, nonce duy nhất |
 | GCM | Không | Enc/dec song song | Có | Tái sử dụng nonce làm lộ P₁ ⊕ P₂ và khóa GHASH, cho phép giả mạo tag. | AEAD, quản lý nonce chặt (ưu tiên nonce 96-bit) |
 
-# 3. Thiết kế và hiện thực công cụ AES (System Design & Implementation)
+# 3. Thiết kế và hiện thực công cụ AES 
 
 ## 3.1. Kiến trúc tổng thể của hệ thống
 
@@ -639,7 +628,7 @@ Tài liệu mô tả `KeyGuard` theo RAII, `secure_wipe` ghi đè vùng nhớ nh
 
 Khóa cần được lưu riêng, không commit vào repository, không truyền qua command line trong môi trường thật và không lưu cùng ciphertext ở nơi không kiểm soát. 
 
-# 4. Kiểm thử tính đúng đắn (Correctness & Security Testing)
+# 4. Kiểm thử tính đúng đắn
 
 ## 4.1. Known Answer Tests (KATs)
 
@@ -887,6 +876,7 @@ Ví dụ với CTR, payload 1 MB:
 | CCM | 386,25 | 725,58 |
 | GCM | 644,64 | 2.122,44 |
 
+![](result\compare\compare_bars_1MB.png)
 Theo bảng này, CTR nhanh nhất ở cả hai hệ thống tại 1 MB. GCM có chi phí xác thực nhưng cung cấp integrity; CCM thấp hơn GCM trong dữ liệu được cung cấp. XTS dành cho lưu trữ; ECB không nên được chọn chỉ vì tốc độ.
 
 ### Stream-like/block
@@ -926,6 +916,9 @@ Latency 1 MB, trung bình, đơn vị µs (Linux/Windows nhỏ hơn 1 nghĩa là
 | GCM | AEAD | 1630,89 | 494,25 | 0,30 |
 | CCM | AEAD | 2716,23 | 1445,27 | 0,53 |
 
+![](result\compare\mode_cmp\windows_gcc_aead_vs_non_dec.png)
+
+![](result\compare\mode_cmp\ubuntu_gcc_aead_vs_non_dec.png)
 **Hướng giải mã**
 
 | Mode | Nhóm | Windows (µs) | Linux (µs) | Linux/Windows |
@@ -933,6 +926,10 @@ Latency 1 MB, trung bình, đơn vị µs (Linux/Windows nhỏ hơn 1 nghĩa là
 | CTR | Non-AEAD | 1201,55 | 327,06 | 0,27 |
 | GCM | AEAD | 1288,83 | 474,27 | 0,37 |
 | CCM | AEAD | 2395,59 | 1418,53 | 0,59 |
+
+![](result\compare\mode_cmp\windows_gcc_aead_vs_non_dec.png)
+
+![](result\compare\mode_cmp\ubuntu_gcc_aead_vs_non_enc.png)
 
 $\Rightarrow$ GCM tăng latency so với CTR: mã hóa 37,2% (Windows) và 47,8% (Linux), giải mã 7,3% (Windows) và 45,0% (Linux). GCM có thêm GHASH, CCM dùng CBC-MAC và có quy trình xử lý khác. Không thể kết luận một mode luôn nhanh hơn mode kia trong mọi kích thước dữ liệu.
 
@@ -1009,8 +1006,7 @@ Vì hai hệ thống dùng phần cứng khác nhau, không thể quy toàn bộ
 CTR thường nổi bật trong bảng throughput. GCM có overhead nhưng mang lại xác thực. 
 
 
-# 7. Phân tích an toàn mật mã (Cryptographic Security Analysis)
-
+# 7. Phân tích an toàn mật mã 
 ## 7.1. Đánh giá đặc điểm an toàn của từng chế độ
 
 - **ECB:** làm lộ mẫu, không xác thực; không dùng cho dữ liệu thực.
@@ -1053,7 +1049,7 @@ Các biện pháp được mô tả:
 6. Đầy đủ giới hạn nonce/tag và giới hạn độ dài thông điệp AEAD.
 
 
-# 8. Build và triển khai đa nền tảng (Cross-platform Build & Deployment)
+# 8. Build và triển khai đa nền tảng
 
 ## 8.1. Cấu hình CMake
 
@@ -1106,19 +1102,31 @@ Quy trình: cài compiler/CMake/Crypto++; configure; build; sinh khóa; chọn m
 ## 9.1. Xây dựng thư viện động (DLL/SO)
 
 1) Window:
+![](img/crypWin.png)
 
 2) Linux:
-
 ![](img/linuxcryp.png)
 
 ## 9.2. Tích hợp giao diện đồ họa (GUI)
 
-T`aestool_gui.py` dùng tkinter và ctypes. GUI dự kiến cho phép chọn file, mode, khóa, IV/nonce, thực hiện encrypt/decrypt, hiển thị trạng thái và lỗi xác thực. Khóa không nên hiển thị rõ sau khi nạp.
+File `aestool_gui.py` dùng tkinter và ctypes. GUI dự kiến cho phép chọn file, mode, khóa, IV/nonce, thực hiện encrypt/decrypt, hiển thị trạng thái và lỗi xác thực. Khóa không nên hiển thị rõ sau khi nạp.
+
+1) Giao diện và self test
 
 ![](img/gui.png)
 
 
 ![](img/xts.png)
+
+**Lí do XTS bị Pass 1 test:**
+Test bị SKIP do chế độ AES-XTS sử dụng hai khóa AES độc lập (K1 và K2), mỗi khóa 256-bit, nên tổng độ dài khóa là 512-bit. Đây không phải AES-512 mà là AES-256-XTS với combined key 512-bit. Do độ dài khóa này không tương thích với các chế độ AES khác trong bài kiểm thử, chương trình không thể thực hiện phép thử giải mã chéo chế độ (wrong mode), vì vậy test được đánh dấu SKIP thay vì FAIL.
+
+2) Chức năng mã hóa
+![](img/enc.png)
+
+3) Chức năng giải mã
+![](img/dec.png)
+
 ## 9.3. Cơ chế liên kết giữa GUI và thư viện AES
 
 ```text
