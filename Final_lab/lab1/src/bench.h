@@ -11,7 +11,17 @@ struct BenchConfig {
   double warmup_sec = 1.0;                         // warm-up per (mode,size)
   size_t batch_bytes = 16ull * 1024 * 1024;        // target bytes per timed block
   size_t max_ops = 1000;                           // ops_per_block cap (1000 for small payloads)
-  size_t key_bits = 256;
+  #ifdef _WIN32
+    const std::string os = "windows";
+  #else
+    const std::string os = "linux";
+  #endif
+
+  for (size_t kb : {128, 192, 256}) {
+    cfg.key_bits = kb;
+    cfg.csv_path = "result/bench_" + os + "_" + std::to_string(kb) + ".csv";
+    run_bench(cfg);
+  }
   bool do_enc = true;                              // run dir=enc tasks
   bool do_dec = true;                              // run dir=dec tasks (after all enc tasks of the mode)
   bool with_io = false;                            // enc only: include file read/write per op
