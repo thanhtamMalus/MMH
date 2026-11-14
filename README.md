@@ -38,7 +38,7 @@ Tuần này sẽ cần thư viện OpenSSL để encode và decode text,file. Ch
 - Hãy cài đặt trước mingw, visual code (tím), docker (nếu được), **Dual boot (bắt buộc)**
 - Thư viện mật mã thì nên kiếm cái mới nhất mà cài, hoặc là không cài và đợi thầy
 
-**Bonus**: Docker
+**Bonus**: Docker ✅
 
 # Week 04: Modern Symmetric Ciphers – AES
 ![](img/week04.png)
@@ -58,6 +58,7 @@ Có thể là làm task mã hóa và phân tích hiệu năng các mode AES.
 ![](img/week06.png)
 ![](img/week06_1.png)
 -> Tạo key đóng gói (pub) để giải (private)
+**Bonus**: Docker, guii, dynamic aes ✅
 
 # Week 07: Discrete-Logarithm Cryptography and Cryptanalysis
 ![sơ lược bài học week 7](img/week7.png)
@@ -100,6 +101,8 @@ Nếu như server có public key thì làm sao dùng đc 1 round để gửi c�
 > week 7 và 6 bổ sung cho nhau về aes, nhược điểm là tính toán lớn -> week 8 sẽ giúp update cái thuật toán này
 ## Thực hành week 3: Sử dụng thư viện cho RSA và OpenSSL
 ![](img/labw3.png)
+
+Làm 5 task trong file ✅
 
 Chủ yếu là làm quen với task.json, cmake, lệnh của OpenSSL.
 # Week 08: Elliptic-Curve Cryptography and Cryptanalysis
