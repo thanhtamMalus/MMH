@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 #include <string>
 #include <vector>
 
@@ -11,17 +12,7 @@ struct BenchConfig {
   double warmup_sec = 1.0;                         // warm-up per (mode,size)
   size_t batch_bytes = 16ull * 1024 * 1024;        // target bytes per timed block
   size_t max_ops = 1000;                           // ops_per_block cap (1000 for small payloads)
-  #ifdef _WIN32
-    const std::string os = "windows";
-  #else
-    const std::string os = "linux";
-  #endif
-
-  for (size_t kb : {128, 192, 256}) {
-    cfg.key_bits = kb;
-    cfg.csv_path = "result/bench_" + os + "_" + std::to_string(kb) + ".csv";
-    run_bench(cfg);
-  }
+  size_t key_bits = 256;                           // AES key size: 128, 192 or 256
   bool do_enc = true;                              // run dir=enc tasks
   bool do_dec = true;                              // run dir=dec tasks (after all enc tasks of the mode)
   bool with_io = false;                            // enc only: include file read/write per op
@@ -29,6 +20,15 @@ struct BenchConfig {
   std::string tmp_dir;
   bool verbose = false;
 };
+
+// Tên OS dùng để đặt tên file kết quả, ví dụ: result/bench_windows_256.csv
+inline const char* bench_os_name() {
+#ifdef _WIN32
+  return "windows";
+#else
+  return "linux";
+#endif
+}
 
 std::vector<aescore::Mode> bench_all_modes();
 std::vector<size_t> bench_default_sizes();   // 1K 4K 16K 256K 1M 8M
