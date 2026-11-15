@@ -18,24 +18,16 @@
 
 [7. Phân tích an toàn mật mã ](#7-phân-tích-an-toàn-mật-mã)
 
-[8. Build và triển khai đa nền tảng ](#8-build-và-triển-khai-đa-nền-tảng)
+[8. Mở rộng hệ thống](#8-extended-features)
 
-[9. Mở rộng hệ thống](#9-extended-features)
-
-[10. Kết luận](#10-kết-luận-conclusion)
-
-[Phụ lục A – Bảng kết quả benchmark chi tiết](#phụ-lục-a--bảng-kết-quả-benchmark-chi-tiết)
-
-[Phụ lục B – Bộ kiểm thử KAT và Negative Tests](#phụ-lục-b--bộ-kiểm-thử-kat-và-negative-tests)
-
-[Phụ lục C – Hướng dẫn build và sử dụng](#phụ-lục-c--hướng-dẫn-build-và-sử-dụng)
+[9. Kết luận](#9-kết-luận)
 
 ## Tóm tắt kết quả chính 
 
-Đề tài xây dựng công cụ `aestool` sử dụng Crypto++ để mã hóa và giải mã AES ở nhiều chế độ. Kiến trúc được mô tả gồm lõi `aescore`, tầng điều phối thao tác, định dạng container `AEST`, sidecar JSON và giao diện CLI. Các mode trong phạm vi gồm ECB, CBC, CFB, OFB, CTR, XTS, CCM và GCM. Công cụ hướng đến AES-128/192/256, báo cáo này lấy AES-256 làm trọng tâm.
+Đề tài xây dựng công cụ `aestool` sử dụng Crypto++ để mã hóa và giải mã AES ở nhiều chế độ. Công cụ gồm lõi `aescore`, tầng điều phối thao tác, định dạng container `AEST`, sidecar JSON và giao diện CLI. Các mode trong phạm vi gồm ECB, CBC, CFB, OFB, CTR, XTS, CCM và GCM. Công cụ hướng đến AES-128/192/256, báo cáo này lấy AES-256 làm trọng tâm.
 
 **Cụ thể:**
-- Bảng KAT ghi nhận 12/12 vector PASS. 
+- Bảng KAT ghi nhận 34/34 vector PASS. 
 - Bảng Negative Tests có 6 kịch bản. Các tình huống IV sai độ dài, sửa ciphertext/tag GCM và sai khóa được mô tả; CBC bị sửa ciphertext minh họa rằng mode non-AEAD không tự bảo vệ tính toàn vẹn.
 - Benchmark được mô tả với 6 payload (1 KB, 4 KB, 16 KB, 256 KB, 1 MB, 8 MB), N=1000, warm-up và các thống kê Mean, Median, SD, CI 95%.
 - CSV benchmark được lưu trữ trong `lab1\result\bench` gồm đẩy đủ AES-128/192/256 của hai hệ điều hành Window và Linux. AES 192 không bao gồm mode XTS vì XTS chỉ định nghĩa cho khóa AES-128 và AES-256 theo chuẩn.
@@ -169,7 +161,7 @@ lab1/
 │   ├── aescore_capi.* #C API cho thư viện động
 │   └── main.cpp #CLI `aestool`
 ├── tests/test_aescore.cpp #Unit tests Catch2
-├── vectors/nist_vectors.json
+├── vectors/vectors.json
 ├── result/ #Kết quả chạy, ảnh so sánh thống kê
 │   ├── bench/* #CSV của các lần chạy
 │   └── img/*
@@ -184,7 +176,7 @@ lab1/
 | `encrypt` | `aestool encrypt --mode MODE (--key FILE \| --key-hex HEX) (--in FILE \| --text STR) [--out FILE] [--iv FILE\|HEX \| --nonce FILE\|HEX] [--aad FILE \| --aad-text STR] [--aead] [--tag-len N] [--encode hex\|base64\|raw] [--sidecar FILE.json] [--ledger FILE] [--allow-ecb] [--verbose]` | Mã hóa bản rõ (plaintext) theo chế độ chỉ định. Khối mã 128-bit (16 byte). Có thể xuất ra file, hex/Base64 hoặc raw. | • `--mode` bắt buộc (`ecb`, `cbc`, `ofb`, `ctr`, `xts`, `ccm`, `gcm`).<br>• Khóa nhập từ file (`--key FILE`) hoặc hex (`--key-hex HEX`).<br>• IV/nonce bắt buộc với chế độ CTR/CCM/GCM.<br>• `--aead` chỉ dùng cho CCM/GCM.<br>• `--sidecar` tạo file JSON chứa metadata (IV, tag, key-id, ...). |
 | `decrypt` | `aestool decrypt [--mode MODE] (--key FILE \| --key-hex HEX) (--in FILE \| --text ENCODED) [--out FILE] [--iv ...] [--nonce ...] [--aad ...] [--encode hex\|base64] [--sidecar FILE.json]` | Giải mã ciphertext về plaintext. Nếu bỏ `--mode`, chế độ được đọc từ header container AEST. | • Khi không có `--mode`, file đầu vào phải là container AEST (bắt đầu bằng `AEST`).<br>• `--encode` chỉ áp dụng với đầu ra stdout (hex/base64).<br>• `--sidecar` đọc sidecar JSON nếu có. |
 | `keygen` | `aestool keygen [--bits 128\|192\|256\|512] [--format raw\|hex] [--out FILE] [--force]` | Tạo khóa AES ngẫu nhiên. Kích thước khóa: 128/192/256 bit; 512 bit dành cho XTS (đôi khi được hỗ trợ). | • Mặc định xuất khóa ra stdout (hex).<br>• `--out FILE` ghi khóa vào file.<br>• `--force` cho phép ghi đè file đã tồn tại. |
-| `kat` | `aestool --kat vectors.json [--verbose]` | Chạy bộ kiểm tra NIST Known-Answer-Tests (GCM, CCM, ...). File `vectors.json` chứa các test vector chuẩn. | • Giúp xác minh tính đúng đắn của mã hóa/giải mã.<br>• `--verbose` in thêm thông tin chi tiết từng test. |
+| `kat` | `aestool --kat vectors/vectors.json [--verbose]` | Chạy bộ kiểm tra NIST Known-Answer-Tests (GCM, CCM, ...). File `vectors.json` chứa các test vector chuẩn. | • Giúp xác minh tính đúng đắn của mã hóa/giải mã.<br>• `--verbose` in thêm thông tin chi tiết từng test. |
 | `bench` | `aestool bench [--modes gcm,ctr,...] [--sizes 1k,4k,16k,256k,1m,8m] [--runs 1000] [--warmup 1.0] [--bits 256] [--dir enc\|dec\|both] [--with-io] [--csv FILE] [--quick]` | Đo throughput (MB/s) và latency (µs) cho các chế độ/kích thước đã chọn. | • `--modes` chỉ định một hoặc nhiều chế độ (cách nhau bằng dấu phẩy).<br>• `--sizes` kích thước dữ liệu test (kilobyte/megabyte).<br>• `--dir` chạy mã hóa, giải mã hoặc cả hai.<br>• `--quick` giảm số lần lặp (20 runs, warm-up 0.2 s).<br>• Kết quả xuất ra file CSV (`--csv`) và các biểu đồ PNG trong thư mục `result/compare/`. |
 | `version` / `help` | `aestool version`<br>`aestool help` (hoặc `aestool --help`) | In phiên bản phần mềm và thông tin thư viện Crypto++. In bảng trợ giúp đầy đủ các lệnh và tùy chọn. | • `version` cho ra `aestool 1.0.0 (Crypto++ x.x.x)`.<br>• `help` in lại cú pháp tương tự bảng trên. |
 
@@ -203,7 +195,7 @@ Ví dụ:
 .\build\bin\aestool.exe keygen --bits 256 --out key.bin
 .\build\bin\aestool.exe encrypt --mode gcm --key key.bin --in msg.txt --out ct_gcm.bin --aad-text "v1" --verbose
 .\build\bin\aestool.exe decrypt --key key.bin --in ct_gcm.bin --out dec.txt
-.\build\bin\aestool.exe --kat vectors/nist_vectors.json --verbose
+.\build\bin\aestool.exe --kat vectors/vectors.json --verbose
 ```
 ![](img/genkey.png)
 
@@ -305,9 +297,9 @@ KAT so sánh kết quả thực thi với vector chuẩn:
 
 Kết luận: `RESULT: ALL PASS`.
 
-Tỷ lệ PASS theo bảng: `27/27 × 100% = 100%`. 
+Tỷ lệ PASS theo bảng: `34/34 × 100% = 100%`. 
 ### 4.2. Kiểm thử đối chiếu kết quả
-Ta kiểm thử mã hóa và dịch bằng cách sử dụng file cần mã hóa để mã hóa và dịch ngược để kiểm tra so sánh.
+Ta kiểm thử mã hóa và giải mã bằng cách sử dụng file cần mã hóa để mã hóa và dịch ngược để kiểm tra so sánh.
 
 ![](img/sosanhfile.png)
 
@@ -315,15 +307,15 @@ Ta kiểm thử mã hóa và dịch bằng cách sử dụng file cần mã hóa
 
 | # | Kịch bản | Điều kiện | Kết quả ghi nhận | Đánh giá |
 |---:|---|---|---|---|
-| 1 | Sai key | Mã hóa key A, giải mã key B | Plaintext không khớp | Đạt theo báo cáo nguồn |
-| 2 | Sai IV | IV sai độ dài/giá trị | UsageError hoặc thất bại | Đạt theo báo cáo nguồn |
+| 1 | Sai key | Mã hóa key A, giải mã key B | Plaintext không khớp | Đạt  |
+| 2 | Sai IV | IV sai độ dài/giá trị | UsageError hoặc thất bại | Đạt  |
 | 3 | Sửa ciphertext non-AEAD | XOR một bit ciphertext CBC | Plaintext bị thay đổi, không tự phát hiện | Đúng với giới hạn CBC |
 | 4 | Sửa ciphertext AEAD | XOR một bit ciphertext GCM | AuthError, không trả plaintext | Đạt |
 | 5 | Tag AEAD sai | Sửa byte cuối tag | AuthError | Đạt |
 | 6 | IV sai độ dài | GCM 8 byte, CBC 15 byte | UsageError | Đạt |
 
-- Kịch bản CBC không phải một lỗi triển khai: CBC không có xác thực tích hợp. 
-- GCM phải từ chối khi tag không hợp lệ và không chấp nhận plaintext.
+- Với mode không có xác thực (CBC, CTR…), sai khóa hoặc sai IV (đúng độ dài) cho ra plaintext sai mà không báo lỗi, vì không có cơ chế phát hiện.
+- Với GCM/CCM, mọi sai lệch về khóa, nonce, AAD, ciphertext hay tag đều cho AuthError và không ghi plaintext. Vì vậy dữ liệu cần toàn vẹn nên dùng AEAD.
 
 ![](img/gcmAuthError.png)
 
@@ -344,15 +336,15 @@ Ta kiểm thử mã hóa và dịch bằng cách sử dụng file cần mã hóa
 
 ### 4.5. Tổng hợp kết quả kiểm thử
 
-| Nhóm | Kết quả nguồn | 
+| Nhóm | Kết quả| 
 |---|---|
-| KAT NIST | 27/27 PASS | 
-| Catch2 | 13 test case được mô tả | 
+| KAT NIST | 34/34 PASS | 
+| Catch2 | 13 test case | 
 | Negative Tests | 6 kịch bản | 
 | AEAD tamper | GCM từ chối ciphertext bị sửa | 
 | Round-trip | Có ví dụ GCM và XTS | 
 | Edge Cases | Một số trường hợp được nêu | 
-
+|GUI self-test| 372 test, 371 pass, 0 fail, 1 skip.|
 
 ## 5. Môi trường và phương pháp thực nghiệm 
 
@@ -372,7 +364,7 @@ Ta kiểm thử mã hóa và dịch bằng cách sử dụng file cần mã hóa
 |---|---|---|
 | OS | Windows 10 Pro 21H2 | Ubuntu 22.04.3 LTS, kernel 5.15 |
 | Compiler | MinGW GCC 11.2.0 | g++ 11.4.0 |
-| Crypto++ | libcryptopp.so 8.9.0 | libcryptopp.so 8.9.0 |
+| Crypto++ | libcryptopp.a 8.9.0 | libcryptopp.so 8.9.0 |
 | CMake | 3.21.3 | 3.21.3 |
 
 ### 5.3. Thiết lập dữ liệu và kịch bản benchmark
@@ -421,14 +413,17 @@ Ví dụ với CTR, payload 1 MB:
 
 ### 6.1. Kết quả benchmark trên Windows
 
-#### Throughput trung bình (MB/s)
+#### Throughput trung bình 
 
 <figure>
   <img src="result/img/window/throughput_vs_size.png">
   <figcaption>Hình 1. Throughput các mode trên OS Window </figcaption>
 </figure>
 
-#### Latency trung bình (đơn vị ghi trong nguồn: ms/op)
+**Nhận xét:** 
+- Throughput đạt đỉnh ở 256 KiB (CTR khoảng 1.580 MB/s, ECB khoảng 1.480, GCM khoảng 1.250) rồi giảm mạnh ở 1 MiB (CTR còn 882,70, giảm khoảng 44%). Nguyên nhân có thể là dữ liệu vượt dung lượng cache, hoặc máy bị Memory bandwidth (pc). Ở mọi kích thước, CCM thấp nhất, và nhóm CBC/CFB/XTS nằm ở mức trung bình.
+
+#### Latency trung bình 
 
 <figure>
   <img src="result/img/window/latency_vs_size.png">
@@ -442,14 +437,17 @@ Ví dụ với CTR, payload 1 MB:
 
 ### 6.2. Kết quả benchmark trên Linux
 
-#### Throughput trung bình (MB/s)
+#### Throughput trung bình 
 
 <figure>
   <img src="result/img/linux/throughput_vs_size.png">
   <figcaption>Hình 3. Throughput các mode trên OS Ubuntu </figcaption>
 </figure>
 
-#### Latency trung bình (đơn vị ghi trong nguồn: ms/op)
+**Nhận xét:** 
+- ECB mã hóa giảm từ khoảng 2.810 MB/s (16 KiB) xuống khoảng 715 (256 KiB), trong khi CTR vẫn khoảng 3.130. Ở 1 MB, ECB mã hóa chỉ đạt 658,90 nhưng ECB giải mã đạt 3.000,36, dù hai chiều đều song song được. CBC, CCM và GCM cũng giảm ở 8 MiB. 
+
+#### Latency trung bình
 
 <figure>
   <img src="result/img/linux/latency_vs_size.png">
@@ -469,7 +467,8 @@ Ví dụ với CTR, payload 1 MB:
   <figcaption>Hình 5. So sánh throughput các mode trên 2 OS với payload 1MB </figcaption>
 </figure>
 
-Theo số liệu này, CTR nhanh nhất ở cả hai hệ thống tại 1 MB. GCM có chi phí xác thực nhưng cung cấp integrity; CCM thấp hơn GCM trong dữ liệu được cung cấp. XTS dành cho lưu trữ; ECB không nên được chọn chỉ vì tốc độ.
+**Nhận xét:** 
+- Theo số liệu này, CTR nhanh nhất ở cả hai hệ thống tại 1 MB. GCM có chi phí xác thực nhưng cung cấp integrity, CCM thấp hơn GCM trong dữ liệu được cung cấp. XTS dành cho lưu trữ, ECB không nên được chọn chỉ vì tốc độ.
 
 #### Stream-like/block
 
@@ -493,38 +492,74 @@ Theo số liệu này, CTR nhanh nhất ở cả hai hệ thống tại 1 MB. GC
 | CBC | Block | 896,39 | 3040,45 | 3,39 |
 | ECB | Block | 922,16 | 3000,36 | 3,25 |
 
-**Nhận xét:** Các phép toán mà mỗi block phụ thuộc kết quả block trước (mã hóa CBC, mã hóa CFB, cả hai hướng của OFB) buộc AES-NI xử lý tuần tự, nên chỉ đạt khoảng 850-900 MB/s. Các phép toán mà các block độc lập (CTR cả hai hướng, giải mã CBC, giải mã CFB) cho phép xử lý nhiều block cùng lúc và đạt 2100-3200 MB/s. Trên Windows, chênh lệch này gần như không xuất hiện (mọi mode đều trong khoảng 500-920 MB/s), cho thấy bản build Windows chưa tận dụng được việc xử lý song song nhiều block.
-#### AEAD và non-AEAD
+**Nhận xét:** 
+- Các phép toán mà mỗi block phụ thuộc kết quả block trước (mã hóa CBC, mã hóa CFB, cả hai hướng của OFB) buộc AES-NI xử lý tuần tự, nên chỉ đạt khoảng 850-900 MB/s. Các phép toán mà các block độc lập (CTR cả hai hướng, giải mã CBC, giải mã CFB) cho phép xử lý nhiều block cùng lúc và đạt 2100-3200 MB/s. Trên Windows, chênh lệch này gần như không xuất hiện (mọi mode đều trong khoảng 500-920 MB/s).
+- Ở 1 MB (mã hóa), CCM chỉ đạt khoảng 385 MB/s trên Windows và khoảng 720 trên Linux, thấp hơn GCM (644,64 và 2.122,44) khoảng 40% và 66%. CCM tính CBC-MAC (tuần tự) rồi mã CTR, còn GCM tính GHASH và có thể song song hóa. Vì vậy, nếu không bắt buộc dùng CCM, GCM phù hợp hơn khi cần throughput.
 
-Throughput 1 MB, trung bình, đơn vị µs (Linux/Windows nhỏ hơn 1 nghĩa là Linux nhanh hơn).
+#### AEAD và non-AEAD
 
 **Hướng mã hóa**
 
 <figure>
   <img src="result\img\mode_cmp\windows_gcc_aead_vs_non_enc.png">
-  <figcaption> Hình 6. Throughput các mode trên OS Window </figcaption>
+  <figcaption> Hình 6. Throughput các mode chế độ mã hóa trên OS Window </figcaption>
 </figure>
 
 <figure>
   <img src="result\img\mode_cmp\ubuntu_gcc_aead_vs_non_enc.png">
-  <figcaption> Hình 7. Throughput các mode trên OS Ubuntu </figcaption>
+  <figcaption> Hình 7. Throughput các mode chế độ mã hóa trên OS Ubuntu </figcaption>
 </figure>
 
 **Hướng giải mã**
 
 <figure>
   <img src="result\img\mode_cmp\windows_gcc_aead_vs_non_dec.png">
-  <figcaption> Hình 8. Throughput các mode trên OS Window payload 1MB </figcaption>
+  <figcaption> Hình 8. Throughput các mode chế độ giải mã trên OS Window payload 1MB </figcaption>
 </figure>
 
 <figure>
   <img src="result\img\mode_cmp\ubuntu_gcc_aead_vs_non_dec.png">
-  <figcaption> Hình 9. Throughput các mode trên OS Ubuntu payload 1MB </figcaption>
+  <figcaption> Hình 9. Throughput các mode chế độ giải mã trên OS Ubuntu payload 1MB </figcaption>
 </figure>
 
 $\Rightarrow$ GCM tăng latency so với CTR: mã hóa 37,2% (Windows) và 47,8% (Linux), giải mã 7,3% (Windows) và 45,0% (Linux). GCM có thêm GHASH, CCM dùng CBC-MAC và có quy trình xử lý khác. Không thể kết luận một mode luôn nhanh hơn mode kia trong mọi kích thước dữ liệu.
 
+#### Overhead throughput GCM so với CTR trên Windows lẫn Linux
+**Overhead của Authentication Tag:**
+Ngoài chi phí xử lý GHASH, GCM còn phát sinh overhead từ việc tạo và xác minh Authentication Tag. Tag được tạo trong quá trình mã hóa và phải được xác minh khi giải mã trước khi chấp nhận plaintext. CCM cũng có chi phí tương tự về mặt xác thực, nhưng sử dụng CBC-MAC thay vì GHASH. Do đó, sự khác biệt throughput giữa GCM và CCM không chỉ phụ thuộc vào kích thước Tag mà còn phụ thuộc vào cơ chế xác thực, khả năng song song hóa và mức độ hỗ trợ tăng tốc phần cứng. Cần lưu ý rằng benchmark hiện tại chưa tách riêng thời gian tính toán Tag khỏi thời gian mã hóa/giải mã, nên chưa thể định lượng overhead riêng của Tag.
+
+Ta có công thức phần giảm: 
+$(T_CTR − T_GCM) / T_CTR × 100$%.
+(Đơn vị MB/s, trung bình)
+
+**Hướng mã hóa**
+
+| Payload | Win CTR | Win GCM | Win giảm | Linux CTR | Linux GCM | Linux giảm |
+|---|---|---|---|---|---|---|
+| 1 KB | 488,21 | 366,61 | 24,91% | 909,69 | 670,98 | 26,24% |
+| 16 KB | 1410,15 | 1127,29 | 20,06% | 2858,21 | 2006,10 | 29,81% |
+| 1 MB | 882,70 | 644,64 | 26,97% | 3137,30 | 2122,44 | 32,35% |
+| 8 MB | 762,05 | 582,48 | 23,56% | 1736,11 | 505,97 | 70,86% |
+
+**Hướng giải mã**
+
+| Payload | Win CTR | Win GCM | Win giảm | Linux CTR | Linux GCM | Linux giảm |
+|---|---|---|---|---|---|---|
+| 1 KB | 495,03 | 267,54 | 45,95% | 925,66 | 475,36 | 48,65% |
+| 16 KB | 1426,41 | 1076,65 | 24,52% | 2955,99 | 1898,96 | 35,76% |
+| 1 MB | 875,87 | 814,50 | 7,01% | 3208,25 | 2212,19 | 31,05% |
+| 8 MB | 762,95 | 695,69 | 8,82% | 1759,63 | 1432,04 | 18,62% |
+
+**Nhận xét:**
+- GCM có throughput thấp hơn CTR ở mọi kích thước payload, cả hai hướng và cả hai hệ điều hành, với mức giảm từ 7% đến 71%, phổ biến trong khoảng 20–35%. Kết quả này phù hợp với cấu trúc của hai mode: CTR chỉ tạo keystream bằng AES, còn GCM làm thêm GHASH trên dữ liệu và AAD, rồi tính và so sánh tag. Đây chính là chi phí đổi lấy tính toàn vẹn mà CTR không có.
+- Chi phí xác thực của GCM thường nằm trong khoảng 20–35% throughput ở payload trung bình, và chỉ còn khoảng 7–9% khi giải mã payload lớn trên Windows. Đổi lại, GCM phát hiện được việc sửa ciphertext hoặc AAD, điều CTR không làm được. Với dữ liệu cần toàn vẹn, nên dùng GCM thay vì CTR trần; chỉ nên dùng CTR khi đã có cơ chế MAC riêng. Trường hợp Linux 8 MB (mất 70,86%) cần được kiểm tra lại trước khi kết luận về nguyên nhân.
+
 ### 6.4. So sánh hiệu năng giữa Windows và Linux
+
+<figure>
+  <img src="result\img\compare_throughput_enc.png">
+  <figcaption> Hình 10. Throughput mã hóa các mode trên 2 OS </figcaption>
+</figure>
 
 #### CTR 1 MB (hướng mã hóa)
 
@@ -533,7 +568,7 @@ $\Rightarrow$ GCM tăng latency so với CTR: mã hóa 37,2% (Windows) và 47,8%
 | Windows | 882,70 | 25,59 | [881,11; 884,29] |
 | Linux | 3.137,30 | 80,52 | [3.132,30; 3.142,29] |
 
-Linux đạt throughput khoảng 3,55 lần Windows, cao hơn khoảng 255% nếu lấy Windows làm mẫu số.
+$\Rightarrow$ Linux đạt throughput khoảng 3,55 lần Windows, cao hơn khoảng 255% nếu lấy Windows làm mẫu số.
 
 #### GCM 1 MB (hướng mã hóa)
 
@@ -542,21 +577,14 @@ Linux đạt throughput khoảng 3,55 lần Windows, cao hơn khoảng 255% nế
 | Windows | 644,64 | 28,92 | [642,84; 646,43] |
 | Linux | 2.122,44 | 43,73 | [2.119,72; 2.125,15] |
 
-Linux nhanh hơn khoảng 3,29 lần,cao hơn khoảng 229% nếu lấy Windows làm mẫu số.
-
-<figure>
-  <img src="result\img\compare_throughput_enc.png">
-  <figcaption> Hình 10. Throughput mã hóa các mode trên 2 OS </figcaption>
-</figure>
+$\Rightarrow$ Linux nhanh hơn khoảng 3,29 lần,cao hơn khoảng 229% nếu lấy Windows làm mẫu số.
 
 ### 6.5. Phân tích nguyên nhân chênh lệch
-Các yếu tố có thể ảnh hưởng: 
+Các yếu tố có thể ảnh hưởng đến kết quả báo cáo: 
 - CPU khác vi kiến trúc/xung nhịp/cache
 - Compiler MinGW GCC 11.2.0 và g++ 11.4.0
-- Static/shared Crypto++, cờ tối ưu hóa
 - AES-NI runtime
 - Tiến trình nền, nhiệt độ và chế độ nguồn
-- Quy ước MB/MiB và µs/ms. 
 
 ### 6.6. Nhận xét và đánh giá tổng hợp
 
@@ -589,7 +617,7 @@ CTR thường nổi bật trong bảng throughput. GCM có overhead nhưng mang 
 | IV | CFB/OFB | Reuse có thể tái sử dụng keystream hoặc làm lộ quan hệ plaintext |
 | Nonce/counter | CTR | `C1 ⊕ C2 = P1 ⊕ P2` khi keystream tái sử dụng |
 | Nonce | CCM | Suy yếu bảo đảm bí mật/xác thực |
-| Nonce | GCM | Có thể phá vỡ cả bí mật và xác thực |
+| Nonce | GCM | Có thể phá vỡ cả bí mật và xác thực. Nếu cùng khóa dùng lại nonce, XOR hai ciphertext cho ra XOR hai plaintext, và từ hai tag có thể suy ra khóa GHASH để giả mạo tag. |
 | Tweak | XTS | Không phân biệt đúng đơn vị dữ liệu có thể làm mất mục đích tweak |
 
 ### 7.3. Quản lý khóa và bảo vệ dữ liệu
@@ -600,7 +628,6 @@ Các biện pháp được sử dụng:
 - Hạn chế lộ khóa trên command line
 - Không ghi đè key file nếu không có `--force`
 - Quyền 600 trên Linux; `KeyGuard`/`secure_wipe`
-- Không in raw binary ra terminal, lưu IV/nonce/tag/metadata cùng ciphertext, ghi file đầu ra nguyên tử.
 
 ### 7.4. Các giới hạn an toàn của công cụ
 
@@ -609,58 +636,17 @@ Các biện pháp được sử dụng:
 - Key ID 64 bit chỉ phục vụ nhận diện nội bộ, không phải xác thực khóa.
 - Chưa có báo cáo audit bảo mật độc lập.
 - Xóa bộ nhớ và quyền file không bảo đảm chống mọi hình thức trích xuất khóa.
-- Đầy đủ giới hạn nonce/tag và giới hạn độ dài thông điệp AEAD.
+- GUI lưu khóa dạng plaintext trong .aestool_keys.json (thấy trong ảnh 8.2)
+- `--key-hex` lộ qua shell history; AES-192 không hỗ trợ XTS.
 
+### 7.5 Cross-platform considerations
+- RNG: AutoSeededRandomPool dùng nguồn của hệ điều hành (Windows: CryptoAPI/CNG; Linux: getrandom//dev/urandom). 
+- Quyền file: chmod 600 trên Linux, ACL trên Windows. 
+- Khác biệt về hiệu năng: xem 6.5.
 
-## 8. Build và triển khai đa nền tảng
+## 8. Mở rộng hệ thống
 
-### 8.1. Cấu hình CMake
-
-Dự án sử dụng CMake theo hướng out-of-source để tách file build khỏi mã nguồn. Xem ở `CMakeLists.txt` . Phù hơp để build trên Window (MinGW gcc, MSVC) và Linux (gcc).
-
-### 8.2. Quy trình biên dịch trên Windows
-
-Môi trường nguồn: Windows 10 Pro 21H2, MinGW GCC 11.2.0, CMake 3.21.3, Crypto++ 8.9.0.
-
-```powershell
-cmake -S . -B build -G "MinGW Makefiles"
-cmake --build build -j
-```
-
-```powershell
-.\build\bin\aestool.exe help
-```
-
-![](img/conWin.png)
-![](img/buildWin.png)
-
-### 8.3. Quy trình biên dịch trên Linux
-
-Môi trường nguồn: Ubuntu 22.04.3 LTS, g++ 11.4.0, CMake 3.21.3, Crypto++ 8.9.0.
-
-```bash
-cmake -S . -B build
-cmake --build build 
-./build/bin/aestool help
-```
-![](img/makelinux.png)
-
-### 8.4. Hướng dẫn sử dụng và triển khai
-
-Quy trình: cài compiler/CMake/Crypto++; configure; build; sinh khóa; chọn mode; mã hóa và lưu metadata; giải mã bằng đúng khóa; chạy KAT sau build. Ví dụ:
-
-```bash
-./build/bin/aestool keygen --bits 256 --out key.bin
-./build/bin/aestool encrypt --mode gcm --key key.bin --in plaintext.bin --out ciphertext.aest
-./build/bin/aestool decrypt --key key.bin --in ciphertext.aest --out recovered.bin
-./build/bin/aestool --kat vectors/nist_vectors.json
-```
-![](img/aeshelp.png)
-
-
-## 9. Extended Features
-
-### 9.1. Xây dựng thư viện động (DLL/SO)
+### 8.1. Xây dựng thư viện động (DLL/SO)
 
 1) Window:
 ![](img/crypWin.png)
@@ -670,7 +656,7 @@ Quy trình: cài compiler/CMake/Crypto++; configure; build; sinh khóa; chọn m
 2) Linux:
 ![](img/linuxcryp.png)
 
-### 9.2. Tích hợp giao diện đồ họa (GUI)
+### 8.2. Tích hợp giao diện đồ họa (GUI)
 
 File `aestool_gui.py` cho phép chọn file, mode, khóa, IV/nonce, thực hiện encrypt/decrypt, hiển thị trạng thái và lỗi xác thực. 
 
@@ -690,7 +676,7 @@ Test bị SKIP do chế độ AES-XTS sử dụng hai khóa AES độc lập (K1
 3) Chức năng giải mã
 ![](img/dec.png)
 
-### 9.3. Cơ chế liên kết giữa GUI và thư viện AES
+### 8.3. Cơ chế liên kết giữa GUI và thư viện AES
 
 ```text
 Python GUI 
@@ -703,280 +689,27 @@ Python GUI
         |
      Crypto++
 ```
-## 10. Kết luận (Conclusion)
+## 9. Kết luận
 
-Phạm vi thiết kế gồm nhiều mode, AES-128/192/256, CLI, quản lý IV/nonce, container, xử lý lỗi và benchmark. Bảng KAT nguồn ghi nhận 27/27 vector PASS. Negative Tests minh họa các tình huống sai khóa, sai IV, sửa ciphertext và tag, đồng thời cho thấy khác biệt giữa non-AEAD và AEAD. XTS không được hỗ trợ trong thuật AES 192.
+Phạm vi thiết kế gồm nhiều mode, AES-128/192/256, CLI, quản lý IV/nonce, container, xử lý lỗi và benchmark. Bảng KAT nguồn ghi nhận 34/34 vector PASS. Negative Tests minh họa các tình huống sai khóa, sai IV, sửa ciphertext và tag, đồng thời cho thấy khác biệt giữa non-AEAD và AEAD. XTS không được hỗ trợ trong thuật AES 192.
 
 Về hiệu năng, CTR nổi bật trong các bảng throughput; GCM có chi phí xác thực bổ sung nhưng bảo vệ tính toàn vẹn. CCM có kết quả thấp hơn trong các bảng được cung cấp.
 
 Về an toàn, lựa chọn mode và quản lý nonce quan trọng không kém độ dài khóa. GCM/CCM phù hợp khi cần xác thực, XTS phù hợp mã hóa lưu trữ, ECB cần tránh.
 
-## PHỤ LỤC
-### Phụ lục A – Bảng kết quả benchmark chi tiết
 
-Throughput (MB/s), giá trị trung bình của 1.000 lần đo.
-
-#### A.1. AES-128 – Windows
-
-**Mã hóa**
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 704,50 | 1.866,53 | 2.275,25 | 2.843,68 | 662,58 | 636,92 |
-| CBC | 465,14 | 833,24 | 976,48 | 430,14 | 467,63 | 409,47 |
-| OFB | 459,22 | 815,53 | 918,75 | 983,63 | 560,69 | 452,77 |
-| CFB | 465,38 | 833,42 | 979,77 | 1.047,44 | 553,70 | 468,14 |
-| CTR | 603,83 | 1.728,16 | 2.661,16 | 3.207,84 | 791,37 | 674,19 |
-| XTS | 365,06 | 742,33 | 976,91 | 1.074,21 | 522,30 | 447,73 |
-| CCM | 377,96 | 683,70 | 822,19 | 862,83 | 461,78 | 431,76 |
-| GCM | 487,12 | 1.277,61 | 1.861,46 | 2.203,45 | 674,34 | 625,07 |
-
-**Giải mã**
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 734,90 | 2.022,46 | 2.934,43 | 3.511,35 | 1.019,01 | 808,56 |
-| CBC | 623,10 | 1.748,44 | 2.718,62 | 3.242,74 | 961,50 | 786,18 |
-| OFB | 446,37 | 777,98 | 884,41 | 929,78 | 511,98 | 462,23 |
-| CFB | 615,38 | 1.488,86 | 2.100,92 | 2.320,54 | 774,68 | 630,18 |
-| CTR | 621,27 | 1.778,75 | 2.632,95 | 2.634,57 | 662,53 | 675,97 |
-| XTS | 412,10 | 910,58 | 1.124,36 | 1.106,62 | 676,45 | 523,39 |
-| CCM | 267,48 | 580,61 | 795,36 | 893,23 | 583,53 | 524,84 |
-| GCM | 316,80 | 952,45 | 1.733,78 | 2.388,22 | 941,31 | 757,06 |
-
-#### A.2. AES-128 – Linux
-
-**Mã hóa**
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 1.073,53 | 2.633,19 | 3.343,04 | 724,64 | 634,91 | 510,78 |
-| CBC | 610,60 | 957,71 | 1.075,24 | 1.096,67 | 1.056,50 | 389,01 |
-| OFB | 607,91 | 949,67 | 1.068,48 | 1.103,71 | 1.076,84 | 763,86 |
-| CFB | 581,87 | 941,95 | 1.086,86 | 1.125,54 | 1.127,83 | 778,61 |
-| CTR | 958,86 | 2.329,98 | 3.352,89 | 3.738,67 | 3.621,75 | 1.578,42 |
-| XTS | 534,33 | 938,82 | 1.196,19 | 1.265,40 | 1.259,76 | 837,67 |
-| CCM | 480,59 | 767,82 | 892,81 | 921,01 | 915,71 | 374,25 |
-| GCM | 684,21 | 1.617,13 | 2.258,30 | 2.434,55 | 2.151,19 | 473,55 |
-
-**Giải mã**
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 1.157,39 | 2.734,31 | 3.758,39 | 4.067,01 | 4.045,23 | 1.935,55 |
-| CBC | 988,96 | 2.508,76 | 3.609,30 | 3.912,78 | 3.909,36 | 1.624,28 |
-| OFB | 611,56 | 937,36 | 1.103,21 | 1.132,79 | 1.126,84 | 871,46 |
-| CFB | 855,78 | 1.997,91 | 2.621,53 | 2.811,48 | 2.778,76 | 1.434,02 |
-| CTR | 969,88 | 2.532,12 | 3.605,20 | 3.918,30 | 3.985,50 | 1.962,09 |
-| XTS | 593,10 | 1.144,03 | 1.347,21 | 1.274,80 | 1.271,88 | 967,16 |
-| CCM | 377,41 | 708,46 | 896,13 | 954,22 | 958,08 | 775,00 |
-| GCM | 485,48 | 1.275,75 | 2.161,05 | 2.633,60 | 2.648,78 | 1.551,95 |
-
-#### A.3. AES-192 – Windows
-
-**Mã hóa** (không có XTS)
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 702,98 | 1.781,67 | 2.277,23 | 2.472,64 | 584,67 | 538,47 |
-| CBC | 433,54 | 684,14 | 813,56 | 719,13 | 357,86 | 334,22 |
-| OFB | 422,09 | 715,10 | 803,26 | 863,98 | 536,21 | 469,63 |
-| CFB | 439,48 | 740,78 | 859,49 | 899,32 | 544,79 | 492,85 |
-| CTR | 592,50 | 1.545,27 | 2.206,09 | 2.651,88 | 914,68 | 758,87 |
-| CCM | 335,80 | 584,14 | 673,90 | 713,09 | 407,88 | 380,18 |
-| GCM | 479,68 | 1.220,30 | 1.666,27 | 2.027,01 | 661,74 | 581,58 |
-
-**Giải mã** (không có XTS)
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 734,22 | 1.946,60 | 2.669,87 | 2.808,47 | 992,50 | 771,97 |
-| CBC | 597,47 | 1.684,95 | 2.440,17 | 2.957,55 | 843,47 | 693,54 |
-| OFB | 435,73 | 750,96 | 845,24 | 898,06 | 565,86 | 469,83 |
-| CFB | 615,67 | 1.494,32 | 1.975,34 | 2.233,97 | 921,75 | 671,30 |
-| CTR | 636,88 | 1.704,73 | 2.471,59 | 2.986,13 | 965,87 | 771,72 |
-| CCM | 242,47 | 504,89 | 667,57 | 774,01 | 510,97 | 492,24 |
-| GCM | 294,47 | 902,59 | 1.465,64 | 1.316,23 | 794,06 | 730,95 |
-#### A.4. AES-192 – Linux
-
-**Mã hóa** (không có XTS)
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 999,72 | 2.391,18 | 3.084,54 | 726,95 | 657,12 | 514,41 |
-| CBC | 563,97 | 853,09 | 940,55 | 970,19 | 942,17 | 377,78 |
-| OFB | 573,76 | 842,04 | 939,54 | 948,20 | 914,12 | 711,60 |
-| CFB | 588,20 | 858,30 | 952,61 | 983,95 | 979,45 | 750,13 |
-| CTR | 910,07 | 2.121,76 | 3.033,80 | 3.344,66 | 3.269,98 | 1.560,59 |
-| CCM | 450,02 | 689,39 | 786,79 | 432,22 | 393,35 | 319,13 |
-| GCM | 658,64 | 1.468,26 | 1.967,54 | 2.139,39 | 1.856,89 | 413,76 |
-
-**Giải mã** (không có XTS)
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 1.098,68 | 2.473,50 | 3.324,34 | 3.493,82 | 3.360,27 | 1.501,54 |
-| CBC | 922,04 | 2.248,25 | 3.146,93 | 3.418,59 | 3.172,16 | 1.251,78 |
-| OFB | 554,77 | 843,40 | 940,63 | 959,77 | 916,00 | 721,23 |
-| CFB | 814,57 | 1.774,03 | 2.216,34 | 2.378,53 | 2.110,42 | 1.151,06 |
-| CTR | 920,90 | 2.295,05 | 3.146,17 | 3.487,90 | 3.411,10 | 1.511,51 |
-| CCM | 343,10 | 618,62 | 759,92 | 814,21 | 747,85 | 626,19 |
-| GCM | 463,02 | 1.198,36 | 1.913,64 | 2.264,64 | 2.145,68 | 1.245,72 |
-
-#### A.5. AES-256 – Windows
-
-**Mã hóa**
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 587,29 | 1.092,87 | 1.291,73 | 1.478,64 | 620,79 | 592,82 |
-| CBC | 374,48 | 635,03 | 725,17 | 768,94 | 498,47 | 452,54 |
-| OFB | 398,63 | 609,60 | 675,83 | 707,72 | 506,23 | 475,18 |
-| CFB | 424,70 | 678,52 | 754,90 | 789,68 | 551,53 | 517,79 |
-| CTR | 488,21 | 1.094,24 | 1.410,15 | 1.584,22 | 882,70 | 762,05 |
-| XTS | 302,34 | 592,98 | 742,87 | 805,54 | 579,09 | 522,74 |
-| CCM | 287,78 | 463,00 | 523,62 | 543,58 | 386,25 | 360,63 |
-| GCM | 366,61 | 837,60 | 1.127,29 | 1.253,76 | 644,64 | 582,48 |
-
-**Giải mã**
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 636,77 | 1.250,75 | 1.526,81 | 1.652,95 | 922,16 | 776,29 |
-| CBC | 480,42 | 1.158,74 | 1.462,54 | 1.606,32 | 896,39 | 736,18 |
-| OFB | 363,64 | 594,09 | 673,41 | 709,62 | 524,64 | 475,38 |
-| CFB | 494,21 | 1.079,85 | 1.362,00 | 1.507,85 | 852,67 | 725,95 |
-| CTR | 495,03 | 1.095,25 | 1.426,41 | 1.598,68 | 875,87 | 762,95 |
-| XTS | 337,04 | 661,13 | 813,78 | 787,05 | 582,16 | 527,55 |
-| CCM | 211,13 | 403,51 | 506,08 | 555,60 | 438,18 | 403,53 |
-| GCM | 267,54 | 689,80 | 1.076,65 | 1.327,11 | 814,50 | 695,69 |
-
-#### A.6. AES-256 – Linux
-
-**Mã hóa**
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 1.007,06 | 2.222,83 | 2.813,06 | 718,68 | 658,90 | 491,30 |
-| CBC | 511,87 | 750,14 | 848,82 | 864,73 | 854,00 | 365,05 |
-| OFB | 526,36 | 766,37 | 853,19 | 874,53 | 886,51 | 723,15 |
-| CFB | 541,51 | 786,35 | 877,34 | 894,28 | 896,05 | 730,20 |
-| CTR | 909,69 | 2.077,05 | 2.858,21 | 3.129,02 | 3.137,30 | 1.736,11 |
-| XTS | 523,19 | 932,10 | 1.154,72 | 1.210,02 | 1.213,70 | 928,64 |
-| CCM | 425,00 | 642,22 | 712,62 | 725,69 | 725,58 | 347,19 |
-| GCM | 670,98 | 1.486,61 | 2.006,10 | 2.123,28 | 2.122,44 | 505,97 |
-
-**Giải mã**
-
-| Mode | 1 KB | 4 KB | 16 KB | 256 KB | 1 MB | 8 MB |
-|---|---:|---:|---:|---:|---:|---:|
-| ECB | 1.037,39 | 2.260,34 | 2.993,91 | 3.118,61 | 3.000,36 | 1.538,94 |
-| CBC | 897,52 | 2.102,55 | 2.909,40 | 3.035,60 | 3.040,45 | 1.453,07 |
-| OFB | 532,64 | 776,19 | 866,32 | 885,70 | 887,04 | 724,10 |
-| CFB | 808,16 | 1.605,26 | 2.042,08 | 2.149,53 | 2.162,05 | 1.294,80 |
-| CTR | 925,66 | 2.136,31 | 2.955,99 | 3.195,74 | 3.208,25 | 1.759,63 |
-| XTS | 576,38 | 1.050,27 | 1.267,81 | 1.205,25 | 1.210,20 | 933,22 |
-| CCM | 339,90 | 584,30 | 704,48 | 739,96 | 739,26 | 628,11 |
-| GCM | 475,36 | 1.200,91 | 1.898,96 | 2.201,58 | 2.212,19 | 1.432,04 |
-
-### Phụ lục B – Bộ kiểm thử KAT và Negative Tests
-
-#### B.1. KAT
-
-|STT| Test vector | Mode | Khóa | Kết quả |
-|---|---|---|---|---|
-| 1|SP800-38A F.1.1 | ECB | AES-128 | PASS |
-| 2|SP800-38A F.1.3 | ECB | AES-192 | PASS |
-| 3|SP800-38A F.2.1 | CBC | AES-128 | PASS |
-| 4|SP800-38A F.2.3 | CBC | AES-192 | PASS |
-|5 |SP800-38A F.2.5 | CBC | AES-256 | PASS |
-|6| SP800-38A F.3.13 | CFB128 | AES-128 | PASS |
-|7 |SP800-38A F.3.15 | CFB128 | AES-192 | PASS |
-|8 |SP800-38A F.4.1 | OFB | AES-128 | PASS |
-|9 |SP800-38A F.4.3 | OFB | AES-192 | PASS |
-|10| SP800-38A F.5.1 | CTR | AES-128 | PASS |
-|11| SP800-38A F.5.3 | CTR | AES-192 | PASS |
-|12| SP800-38A F.5.5 | CTR | AES-256 | PASS |
-|13| GCM Test Case 1 (rỗng) | GCM | AES-128 | PASS |
-|14| GCM Test Case 2 | GCM | AES-128 | PASS |
-|15| GCM Test Case 3 | GCM | AES-128 | PASS |
-|16| GCM Test Case 4 (có AAD) | GCM | AES-128 | PASS |
-|17| GCM Test Case 7 (rỗng) | GCM | AES-192 | PASS |
-|18| GCM Test Case 8 | GCM | AES-192 | PASS |
-|19| GCM Test Case 9 | GCM | AES-192 | PASS |
-|20| GCM Test Case 10 (có AAD) | GCM | AES-192 | PASS |
-|21| GCM Test Case 13 (rỗng) | GCM | AES-256 | PASS |
-|22 |GCM Test Case 14 | GCM | AES-256 | PASS |
-|23| NEGATIVE: GCM Test Case 2, tag sai | GCM | AES-128 | PASS (bị từ chối đúng kỳ vọng) |
-|24| NEGATIVE: GCM Test Case 8, tag sai | GCM | AES-192 | PASS (bị từ chối đúng kỳ vọng) |
-|25 |SP800-38C Example 1 (Tlen=4, Nlen=7) | CCM | AES-128 | PASS |
-|26| SP800-38C Example 2 (Tlen=6, Nlen=8) | CCM | AES-128 | PASS |
-|27| SP800-38C Example 3 (Tlen=8, Nlen=12) | CCM | AES-128 | PASS |
-
-#### B.2. Negative Tests
-
-| STT | Test | Hành vi mong đợi |
-|---|---|---|
-| 1 | Sai khóa | Không thu được plaintext gốc |
-| 2 | Sai IV/nonce | Từ chối tham số hoặc giải mã thất bại |
-| 3 | Sửa ciphertext CBC | Cho thấy non-AEAD không tự xác thực |
-| 4 | Sửa ciphertext GCM | AuthError, không trả plaintext |
-| 5 | Tag sai | AuthError |
-| 6 | IV sai độ dài | UsageError |
-
-### Phụ lục C – Hướng dẫn build và sử dụng
-
-#### C.1. Windows
-
-```powershell
-cmake -S . -B build -G "MinGW Makefiles"
-cmake --build build -j
-```
-
-![](img\buildWin.png)
-
-Hoặc MSVC:
-``powershell
-cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
-cmake --build build --config Release
-ctest --test-dir build -C Release --output-on-failure
-```
-
-![](img/msvcMake.png)
-
-#### C.2. Linux
-
-```bash
-cmake -S . -B build
-cmake --build build -j"$(nproc)"
-```
-
-![Ảnh minh chứng: build thành công trên Linux](img/makelinux.png)
-
-#### C.3. Lệnh sử dụng
-
-```bash
-./build/bin/aestool keygen --bits 256 --out key.bin
-./build/bin/aestool encrypt --mode gcm --key key.bin --in plaintext.bin --out ciphertext.aest
-./build/bin/aestool decrypt --key key.bin --in ciphertext.aest --out recovered.bin
-./build/bin/aestool --kat vectors/nist_vectors.json --verbose
-./build/bin/aestool bench --modes gcm,ctr,cbc --sizes 1k,4k,16k,256k,1m,8m --runs 1000 --bits 256 --dir both
-```
-./build/bin/aestool.exe nếu chạy trên OS Window.
-
-
-### Phụ lục D – Bảng tự đánh giá (Self-grade Rubric)
+## Bảng tự đánh giá
 
 
 | Tiêu chí | Tối đa | Tự chấm | Minh chứng theo nguồn |
 |---|---:|---:|---|
-| Correctness & KATs | 25 | 25 | KAT 27/27 PASS |
+| Correctness & KATs | 25 | 25 | KAT 34/34 PASS |
 | Security Hygiene | 15 | 15 | Negative Tests, ECB check, nonce reuse |
 | UX & I/O Design | 10 | 10 | CLI `--mode`, `--key`, `--aead` |
-| Performance Methodology | 20 | 20 | Mean, Median, SD, CI, so sánh đa nền tảng |
+| Performance Methodology | 20 | 18 | Mean, Median, SD, CI, so sánh đa nền tảng |
 | Cross-Platform Build | 10 | 10 | Nguồn ghi build Windows/Linux thành công |
 | Report Quality | 20 | 20 | Bảng, biểu đồ, nhận xét |
-| Bonus | +5 | 3 |aes_gui.py |
+| Bonus | +5 | 3 |aestool_gui.py |
 | **Tổng** | **100 (+5)** | **97** | **Tự đánh giá theo tài liệu nguồn** |
 
 *Kết thúc báo cáo Lab 1 – Symmetric Encryption with Crypto++*
