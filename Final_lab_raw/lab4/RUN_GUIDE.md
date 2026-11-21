@@ -34,7 +34,7 @@ sudo cpupower frequency-set -g performance
 ```bash
 cd lab4
 mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@4  # sửa đường dẫn nếu cần
+cmake .. -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=/home/malus/CryptoLib/openssl-4.0.3-gcc # sửa đường dẫn nếu cần
 cmake --build . --config Release
 ctest -C Release --output-on-failure
 ```
@@ -233,3 +233,9 @@ Bạn dán kết quả ở phần Bước 6 về, tôi sẽ:
 5. Chuyển sang Lab 5 hoặc dừng chờ bạn.
 
 *File này sẽ được cập nhật nếu có thay đổi môi trường hoặc yêu cầu mới.*
+
+python3 scripts/make_tables.py                          # đọc results/linux
+python3 scripts/make_tables.py -r results/windows       # đọc results/windows
+python3 scripts/make_tables.py -r results/linux -t out/linux.md -p out/linux.png
+python3 scripts/make_tables.py -r /duong/dan/khac --title "SHA-2 vs SHA-3 (Linux)"
+python3 scripts/make_tables.py -h                       # xem hướng dẫn

@@ -9,7 +9,7 @@ $ErrorActionPreference = "Continue"
 $LabDir   = Split-Path -Parent $PSScriptRoot
 $BuildDir = Join-Path $LabDir "build"
 $DataDir  = Join-Path $LabDir "data"
-$ResDir   = Join-Path $LabDir "results"
+$ResDir   = Join-Path $LabDir "results\windows"
 $LogDir   = Join-Path $LabDir "logs"
 $CertDir  = Join-Path $LabDir "certs"
 

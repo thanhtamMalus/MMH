@@ -4,10 +4,11 @@
 set -u
 LAB_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 BUILD_DIR="$LAB_DIR/build"; BIN="$LAB_DIR/bin/hashtool"
-DATA="$LAB_DIR/data"; RES="$LAB_DIR/results"; LOGS="$LAB_DIR/logs"; CERTS="$LAB_DIR/certs"
+DATA="$LAB_DIR/data"; RES="$LAB_DIR/results/linux"; LOGS="$LAB_DIR/logs"; CERTS="$LAB_DIR/certs"
 mkdir -p "$BUILD_DIR" "$DATA" "$RES" "$LOGS" "$CERTS"
 
 echo "=== LAB 4 RUN ALL ==="; echo "Working directory: $LAB_DIR"
+echo "Results directory: $RES"
 
 echo; echo "--- Step 0: OpenSSL version ---"
 openssl version -a 2>&1 | head -3
@@ -31,18 +32,24 @@ bench() { # name, then hashtool args
   local out="$RES/$1.csv"; shift
   echo "  bench -> $(basename "$out")"; "$BIN" "$@" > "$out" 2>&1
 }
-for a in sha256 sha512 sha3-256 sha3-512; do
-  bench "${a}_1m" --algo "$a" --in "$DATA/test_1m.bin" --bench 30
+# --- 1 MiB (in-memory): du 10 thuat toan, giong run_all.ps1 ---
+for a in sha224 sha256 sha384 sha512 sha3-224 sha3-256 sha3-384 sha3-512; do
+  bench "${a}_1m" --algo "$a" --in "$DATA/test_1m.bin" --bench 100
 done
+bench shake128_1m --algo shake128 --outlen 64  --in "$DATA/test_1m.bin" --bench 100
+bench shake256_1m --algo shake256 --outlen 128 --in "$DATA/test_1m.bin" --bench 100
+
 if [ -z "${QUICK:-}" ]; then
   mk "$DATA/test_100m.iso" 100; mk "$DATA/test_1g.iso" 1024
+  # --- 100 MiB: stream + mmap ---
   for a in sha256 sha512 sha3-256 sha3-512; do
-    bench "${a}_100m_stream" --algo "$a" --in "$DATA/test_100m.iso" --stream --bench 30
-    bench "${a}_100m_mmap"   --algo "$a" --in "$DATA/test_100m.iso" --mmap   --bench 30
+    bench "${a}_100m_stream" --algo "$a" --in "$DATA/test_100m.iso" --stream --bench 100
+    bench "${a}_100m_mmap"   --algo "$a" --in "$DATA/test_100m.iso" --mmap   --bench 100
   done
-  bench sha256_1g_stream --algo sha256 --in "$DATA/test_1g.iso" --stream --bench 30
-  bench sha256_1g_mmap   --algo sha256 --in "$DATA/test_1g.iso" --mmap   --bench 30
-  bench sha512_1g_stream --algo sha512 --in "$DATA/test_1g.iso" --stream --bench 30
+  # --- 1 GiB ---
+  bench sha256_1g_stream --algo sha256 --in "$DATA/test_1g.iso" --stream --bench 100
+  bench sha256_1g_mmap   --algo sha256 --in "$DATA/test_1g.iso" --mmap   --bench 100
+  bench sha512_1g_stream --algo sha512 --in "$DATA/test_1g.iso" --stream --bench 100
 fi
 
 echo; echo "--- Step 4: X.509 ---"

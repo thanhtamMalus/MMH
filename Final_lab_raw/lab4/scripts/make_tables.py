@@ -4,6 +4,7 @@
 
 import os
 import sys
+import argparse
 import csv
 import glob
 import re
@@ -21,15 +22,26 @@ if hasattr(sys.stdout, 'reconfigure'):
 matplotlib.pyplot.rcParams['font.sans-serif'] = ['DejaVu Sans']
 matplotlib.pyplot.rcParams['figure.autolayout'] = True
 
-RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'results')
 LAB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEFAULT_RESULTS_ROOT = os.path.join(LAB_DIR, 'results')
+
+def read_text_auto(path):
+  """Đọc file text, tự nhận diện encoding qua BOM.
+  PowerShell 5.1 ghi file bằng toán tử *> / > ở dạng UTF-16 LE (có BOM FF FE),
+  còn Linux/pwsh 7 ghi UTF-8, nên cần xử lý cả hai."""
+  with open(path, 'rb') as f:
+    raw = f.read()
+  if raw.startswith((b'\xff\xfe', b'\xfe\xff')):
+    return raw.decode('utf-16')          # utf-16 tự bỏ BOM và nhận LE/BE
+  if raw.startswith(b'\xef\xbb\xbf'):
+    return raw.decode('utf-8-sig')
+  return raw.decode('utf-8', errors='replace')
 
 def parse_csv_benchmark(csv_path):
   """Parse file kết quả benchmark từ run_all.sh/.ps1 output.
   Đợi format: các dòng chứa mean, median, stddev, 95% CI."""
   results = {}
-  with open(csv_path, 'r', encoding='utf-8') as f:
-    content = f.read()
+  content = read_text_auto(csv_path)
   # Tìm các cặp key::value
   # Ví dụ: "Throughput (MB/s): mean=523.4, median=521.1, stddev=12.3, 95% CI=[518.2, 528.6]"
   patterns = {
@@ -61,12 +73,12 @@ def parse_csv_benchmark(csv_path):
         break  # first line = Throughput (MB/s); later lines are latency
   return results
 
-def collect_all_results():
-  """Thu thập tất cả kết quả CSV từ thư mục results/."""
+def collect_all_results(results_dir):
+  """Thu thập tất cả kết quả CSV từ thư mục results_dir."""
   all_results = {}
-  csv_files = glob.glob(os.path.join(RESULTS_DIR, '*.csv'))
+  csv_files = glob.glob(os.path.join(results_dir, '*.csv'))
   if not csv_files:
-    print(f"⚠️  No CSV files found in {RESULTS_DIR}")
+    print(f"⚠️  No CSV files found in {results_dir}")
     return all_results
   
   for csv_path in sorted(csv_files):
@@ -98,7 +110,7 @@ def generate_markdown_table(results):
   
   return '\n'.join(lines)
 
-def generate_plot(results, output_path='figures/hash_benchmark.png'):
+def generate_plot(results, output_path='figures/hash_benchmark.png', title='Hash Benchmark: Throughput với 95% CI (Student-t)'):
   """Sinh đồ thị throughput với error bars (95% CI)."""
   if not results:
     print("⚠️  No results to plot.")
@@ -124,7 +136,7 @@ def generate_plot(results, output_path='figures/hash_benchmark.png'):
   ax.set_yticks(y_pos)
   ax.set_yticklabels(sorted_algos)
   ax.set_xlabel('Throughput (MB/s)')
-  ax.set_title('Hash Benchmark: Throughput với 95% CI (Student-t)')
+  ax.set_title(title)
   
   # In giá trị mean lên cột
   for i, bar in enumerate(bars):
@@ -132,40 +144,77 @@ def generate_plot(results, output_path='figures/hash_benchmark.png'):
     ax.text(means[i] + 5, y_pos[i], text, va='center', fontsize=8)
   
   # Lưu figure
-  os.makedirs(os.path.dirname(output_path), exist_ok=True)
+  os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
   fig.savefig(output_path, dpi=150, bbox_inches='tight')
   matplotlib.pyplot.close(fig)
   print(f"✓ Plot saved to {output_path}")
 
+def default_results_dir():
+  """Mặc định: results/linux nếu có, ngược lại results/."""
+  linux_dir = os.path.join(DEFAULT_RESULTS_ROOT, 'linux')
+  return linux_dir if os.path.isdir(linux_dir) else DEFAULT_RESULTS_ROOT
+
+def parse_args():
+  p = argparse.ArgumentParser(
+    prog='make_tables.py',
+    description='Đọc các file CSV benchmark (Lab 4), sinh bảng Markdown và đồ thị error bars.',
+    epilog=(
+      'Ví dụ:\n'
+      '  python3 scripts/make_tables.py\n'
+      '  python3 scripts/make_tables.py -r results/windows\n'
+      '  python3 scripts/make_tables.py -r results/linux -t out/linux.md -p out/linux.png\n'
+      '  python3 scripts/make_tables.py -r /duong/dan/khac --title "SHA-2 vs SHA-3 (Linux)"'
+    ),
+    formatter_class=argparse.RawDescriptionHelpFormatter,
+  )
+  p.add_argument('-r', '--results-dir', metavar='DIR', default=None,
+                 help='Thư mục chứa các file *.csv (mặc định: results/linux nếu có, nếu không là results/)')
+  p.add_argument('-t', '--table', metavar='FILE', default=None,
+                 help='File Markdown đầu ra (mặc định: <results-dir>/benchmark_table.md)')
+  p.add_argument('-p', '--plot', metavar='FILE', default=None,
+                 help='File ảnh đầu ra (mặc định: figures/hash_benchmark_<tên thư mục>.png)')
+  p.add_argument('--title', default=None, help='Tiêu đề đồ thị')
+  return p.parse_args()
+
 def main():
+  args = parse_args()
   print("=== make_tables.py - Lab 4 ===")
-  results = collect_all_results()
-  
+
+  results_dir = os.path.abspath(args.results_dir) if args.results_dir else default_results_dir()
+  if not os.path.isdir(results_dir):
+    print(f"❌ Không tìm thấy thư mục: {results_dir}")
+    sys.exit(2)
+  label = os.path.basename(results_dir.rstrip('/\\')) or 'results'
+  print(f"Đọc CSV từ: {results_dir}")
+
+  results = collect_all_results(results_dir)
+
   if not results:
     print("⚠️  No benchmark results found. Run run_all.sh/.ps1 first.")
     sys.exit(1)
-  
+
   # Hiển thị bảng Markdown
   md_table = generate_markdown_table(results)
   print("\n--- Benchmark Table (Markdown) ---")
   print(md_table)
-  
+
   # Lưu bảng Markdown vào file
-  table_path = os.path.join(LAB_DIR, 'results', 'benchmark_table.md')
+  table_path = os.path.abspath(args.table) if args.table else os.path.join(results_dir, 'benchmark_table.md')
+  os.makedirs(os.path.dirname(table_path), exist_ok=True)
   with open(table_path, 'w', encoding='utf-8') as f:
     f.write(md_table + '\n')
   print(f"\n✓ Table saved to {table_path}")
-  
+
   # Tạo đồ thị
-  plot_path = os.path.join(LAB_DIR, 'figures', 'hash_benchmark.png')
-  generate_plot(results, plot_path)
-  
+  plot_path = os.path.abspath(args.plot) if args.plot else os.path.join(LAB_DIR, 'figures', f'hash_benchmark_{label}.png')
+  title = args.title or f'Hash Benchmark ({label}): Throughput với 95% CI (Student-t)'
+  generate_plot(results, plot_path, title)
+
   print("\n=== Done ===")
   print("Kết quả:")
   print(f"  - Bảng: {table_path}")
   print(f"  - Hình: {plot_path}")
   print("\nBạn có thể chèn bảng Markdown này vào báo cáo lab4/report_lab4.md.")
-  print("Và chèn hình hash_benchmark.png vào figures/.")
 
 if __name__ == '__main__':
   main()

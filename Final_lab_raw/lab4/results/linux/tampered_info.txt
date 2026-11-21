@@ -1,0 +1,36 @@
+=== X.509 CERTIFICATE ANALYSIS ===
+File: /home/malus/Github/MMH/Final_lab_raw/lab4/certs/tampered.crt
+
+-- Identity --
+Version:  v3
+Serial:   7C2DA45C26CF56F0F1C776C2036BF4C5230C07A0
+Subject:  O=Test Organization,CN=Test Certificate
+Issuer:   O=Test Organization,CN=Test Certificate
+
+-- Validity --
+Not Before: Nov 18 13:30:06 2026 GMT
+Not After:  Nov 18 13:30:06 2027 GMT
+  [ OK ] current time is inside the validity period
+
+-- Subject Public Key Info --
+Algorithm: rsaEncryption (OID 1.2.840.113549.1.1.1)
+Key size:  2048 bits
+Parameters: public exponent e = 65537
+
+-- Signature --
+Signature algorithm: sha256WithRSAEncryption (OID 1.2.840.113549.1.1.11)
+Signature length:    256 bytes
+  [ OK ] TBS signature algorithm == outer signature algorithm
+Digest: sha256, key type: rsaEncryption
+  [ OK ] signature hash is not MD5/SHA-1
+
+-- Extensions --
+Key Usage:          (extension absent)
+Extended Key Usage: (extension absent)
+CA (basicConstraints): yes
+Subject Alternative Names: (extension absent)
+
+-- Signature verification --
+  [FAIL] self-signed signature INVALID (certificate altered)
+
+VERDICT: FAIL
