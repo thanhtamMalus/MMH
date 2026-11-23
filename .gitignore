@@ -1,0 +1,61 @@
+# Build & CMake
+build/
+build*/
+cmake-build-*/
+bin/
+out/
+.deps/
+_deps/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+CTestTestfile.cmake
+
+# Compiled & Logs
+*.o
+*.out
+*.exe
+*.log
+*.tmp
+data/*
+
+# Python
+__pycache__/
+*.pyc
+
+# Generated Crypto, Keys & Test Outputs
+*.pem
+*.der
+*.enc
+*.dec
+key*.bin
+key*.hex
+xts.key
+meta.json
+msg.txt
+out.txt
+bad.txt
+tampered.bin
+big.bin
+*.bin.large
+bench_temp_*
+ct.*
+plots/
+
+# IDE, Cache & OS
+.cache/
+.vscode/
+.idea/
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*~
+*.swp
+.DS_Store
+Thumbs.db
+Desktop.ini
