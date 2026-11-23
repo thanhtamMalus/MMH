@@ -1,0 +1,26 @@
+# Default: treat as text, normalize LF on checkin
+* text=auto
+
+*.sh   text eol=lf
+*.py   text eol=lf
+*.cpp  text eol=lf
+*.h    text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+CMakeLists.txt text eol=lf
+
+# Force CRLF line endings (Windows scripts)
+*.bat  text eol=crlf
+*.ps1  text eol=crlf
+
+# Binary, crypto & compiled artifacts (never mangle)
+*.bin  binary
+*.der  binary
+*.pem  binary
+*.o    binary
+*.obj  binary
+*.a    binary
+*.lib  binary
+*.so   binary
+*.dll  binary
+*.exe  binary

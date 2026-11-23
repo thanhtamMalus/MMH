@@ -1,0 +1,2 @@
+# Only required for the GUI mode of chacha20_demo.py
+PyQt6>=6.5

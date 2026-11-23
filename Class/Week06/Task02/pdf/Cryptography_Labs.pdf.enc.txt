@@ -1,0 +1,24 @@
+=== AES-256-CBC ENCRYPTION INFO ===
+Time              : 2026-10-19T21:12:36
+Algorithm         : AES-256-CBC, PKCS7 padding, chunk 65536 bytes
+
+[INPUT]
+File              : C:\Users\Admin\Downloads\Cryptography_Labs.pdf
+Size              : 463588 bytes
+SHA-256           : 7f2926e3a82940a7263eb775319a6744645500af92459290c9bc9880fec82289
+
+[OUTPUT]
+File              : C:\Users\Admin\Downloads\Cryptography_Labs.pdf.enc
+Total size        : 464025 bytes (header + ciphertext)
+Ciphertext size   : 463600 bytes
+Ciphertext SHA-256: e85db4dedcfff4f65b1142389ea0b9fff1ef44ed701dc1b3d09d7759559ab61c
+
+[KEY / IV]
+AES key (32 bytes): 14905baf35ecccf101a7285356a8bdbcdf7b409020768dbdb1c03311d90fe8d8
+IV (16 bytes)     : ad7b266edfc143a3a7f858090fdff840
+RSA-OAEP encrypted AES key (384 bytes, stored in header):
+  370344f4e7e93fa53ba26ba1f3236db3cf9e87a968c8d706a60850f4900b95f0f0874e713f01a6d225a9ded9438f093750e26122ee3660e72b032b69286c1aa7cd27948297d150b84780bf3f787d0ef3ee837ef8218f09378484be6e36a28f14bbe991574c41ff48b783b0295fea640b4f5c159c20849e9371ae020e7a1fd624f9f8505596c72f2a66c0e0767bf21b4d4200500a0142711eee46e5dbaa44954f29c3d2ca3f90e9bdf6b51da466ea6c7ed8369ace72b5cf2fe6648edc06f88f20aeacf8d3ad0aeb05a8b0fa9cb3200a941110bddba9daf032afd3c6388cfb0a92c78a48136b691e0ffea6ecc7ff0436ac7beb2789f77af5ee41b1ce187161fabb0af67eb500412af10f1a65997be10a259634c21f087de2fe5d1d783892401d66f73a029e4ff933a8c55c208c3059c1ddf0b59e09838742ae2c0767bd9df6a7098e26a01ca322c589ae6fd02e3ff89c6b6bbcb6236cbc96ca1942f3a41b4a3621494557bb2ef82647291f56a749667a0b1cf87102fdfcd1301dd828e8219c60e1
+
+WARNING: this file contains the AES session key in plain text.
+Anyone who has it can decrypt the .enc file without the RSA private key.
+Keep it private or delete it after the lab.

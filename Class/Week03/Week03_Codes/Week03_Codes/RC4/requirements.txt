@@ -1,0 +1,2 @@
+# Only needed for the GUI in rc4_demo.py
+PyQt6>=6.6

@@ -1,0 +1,24 @@
+=== AES-256-CBC ENCRYPTION INFO ===
+Time              : 2026-10-19T21:08:53
+Algorithm         : AES-256-CBC, PKCS7 padding, chunk 65536 bytes
+
+[INPUT]
+File              : D:\0. Download\MMH\ngaiPutin.png
+Size              : 813870 bytes
+SHA-256           : b307c0b4523f149b1bbcc26db45e4d71c12cc2dfc5343e21c7cb1c27ffe3f7b7
+
+[OUTPUT]
+File              : D:\0. Download\MMH\ngaiPutin.png.enc
+Total size        : 814289 bytes (header + ciphertext)
+Ciphertext size   : 813872 bytes
+Ciphertext SHA-256: 64b0acb83df498c301a56b007f3d00d5519ed8836b5336f59fde36211a0d76c3
+
+[KEY / IV]
+AES key (32 bytes): d3fb4ee9588ccee9c1a74c94da28a559b5e8da0cd6f9e34726e649f4fa73aaed
+IV (16 bytes)     : 6050db04342152aa3714579ede56f8ac
+RSA-OAEP encrypted AES key (384 bytes, stored in header):
+  05112cb7fca031e23ae3d02a782e343cdfab5b23b38647161358bb1a920c02c6c226749eb25d565290bfacd1be7bc7be9d4257ed99bfdd20132a1a6d2bda62ea58471dd0c2046dcbc46d2e43dcc72fc3a6f67608bd792e63e0a336497f5ff0dc87c4968a40a959022fa6c72060cf9d67c52effceacdfa50be21740b759a8dd3c445570397e2fc3a70d0333b4a5a837d103a7eff44ed0aa7e4e1e223e2d5f776da6f0f375a00c80f3291304d284a2805b52701d6807e4baac59390626cdda02690a3acdf1d9e8610a096d94b74cb2330e7b9c5061c5bf4c12e77e8ad9563a883489281f84113a30058eb008d571d734ed8d2f3b252b6bcc3d8afaaa072f3c350c901fdd53486cafe2306d662ab86327b378a17eaa4edd40aac08974bbddacf0a0b17da970014927ae0bd6c96438a6c1da464f022f52ead3958c824c923a2148654dae829229703cfc341249ebc083861088d753b8db9f7c551a10f756258bb359278de5807901e54493049afe81a340d12dd86779343ff993d6cce295e6727751
+
+WARNING: this file contains the AES session key in plain text.
+Anyone who has it can decrypt the .enc file without the RSA private key.
+Keep it private or delete it after the lab.
