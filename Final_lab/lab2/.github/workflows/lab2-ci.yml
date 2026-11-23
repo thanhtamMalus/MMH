@@ -1,0 +1,84 @@
+name: Lab 2 CI (Windows & Linux Matrix)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.os }} (${{ matrix.compiler }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            compiler: gcc
+            build_type: Release
+            cmake_args: "-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
+          - os: ubuntu-latest
+            compiler: clang
+            build_type: Release
+            cmake_args: "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
+          - os: windows-latest
+            compiler: msvc
+            build_type: Release
+            cmake_args: ""
+
+    defaults:
+      run:
+        working-directory: lab2
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup OpenSSL & Tools on Ubuntu
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openssl python3
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} ${{ matrix.cmake_args }}
+
+      - name: Build Targets
+        run: |
+          cmake --build build --config ${{ matrix.build_type }} --parallel
+
+      - name: Run CTest
+        run: |
+          ctest --test-dir build -C ${{ matrix.build_type }} --output-on-failure
+
+      - name: Run KAT Vectors
+        shell: bash
+        run: |
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            ./build/bin/${{ matrix.build_type }}/aestool.exe --kat vectors/vectors.json
+          else
+            ./build/bin/aestool --kat vectors/vectors.json
+          fi
+
+      - name: Run Cross-Validation with OpenSSL
+        shell: bash
+        run: |
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            python scripts/cross_validate.py --aestool build/bin/${{ matrix.build_type }}/aestool.exe
+          else
+            python3 scripts/cross_validate.py --aestool build/bin/aestool
+          fi
+
+      - name: Package Dist
+        shell: bash
+        run: |
+          python scripts/package_dist.py
+
+      - name: Upload Binary Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aestool-${{ matrix.os }}-${{ matrix.compiler }}
+          path: lab2/dist/

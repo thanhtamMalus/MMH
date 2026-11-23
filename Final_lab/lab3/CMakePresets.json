@@ -1,0 +1,68 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "linux-release",
+      "displayName": "Linux Release (GCC/Clang, tự dò OpenSSL >= 4.0)",
+      "binaryDir": "${sourceDir}/build/linux-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "windows-release",
+      "displayName": "Windows Release (MSVC 2022, tự dò OpenSSL >= 4.0)",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/windows-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-release",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-release",
+      "configuration": "Release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-release",
+      "configuration": "Release",
+      "output": {
+        "verbosity": "normal"
+      }
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-release",
+      "configuration": "Release",
+      "output": {
+        "verbosity": "normal"
+      }
+    }
+  ]
+}

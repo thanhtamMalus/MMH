@@ -1,0 +1,6 @@
+OS: Linux / Ubuntu LTS (To be captured when running on Linux host / CI runner)
+Compiler: GCC >= 9 / Clang >= 10
+Command to gather on Linux:
+  lscpu > docs/results/linux/sysinfo.txt
+  free -h >> docs/results/linux/sysinfo.txt
+  lsb_release -a >> docs/results/linux/sysinfo.txt

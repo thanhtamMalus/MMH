@@ -1,0 +1,1 @@
+Padding-oracle demo. This shows how a CBC PKCS#7 padding oracle leaks plaintext one byte at a time, without knowing the key.

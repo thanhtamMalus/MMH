@@ -1,0 +1,90 @@
+{
+  "description": "NIST SP 800-38A (ECB/CBC/CFB128/OFB/CTR), GCM spec test cases (SP 800-38D), SP 800-38C CCM examples",
+  "tests": [
+    {"name": "SP800-38A F.1.1 ECB-AES128", "mode": "ecb",
+     "key": "2b7e151628aed2a6abf7158809cf4f3c",
+     "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+     "ciphertext": "3ad77bb40d7a3660a89ecaf32466ef97f5d3d58503b9699de785895a96fdbaaf43b1cd7f598ece23881b00e3ed0306887b0c785e27e8ad3f8223207104725dd4"},
+
+    {"name": "SP800-38A F.2.1 CBC-AES128", "mode": "cbc",
+     "key": "2b7e151628aed2a6abf7158809cf4f3c", "iv": "000102030405060708090a0b0c0d0e0f",
+     "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+     "ciphertext": "7649abac8119b246cee98e9b12e9197d5086cb9b507219ee95db113a917678b273bed6b8e3c1743b7116e69e222295163ff1caa1681fac09120eca307586e1a7"},
+
+    {"name": "SP800-38A F.2.5 CBC-AES256", "mode": "cbc",
+     "key": "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4", "iv": "000102030405060708090a0b0c0d0e0f",
+     "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+     "ciphertext": "f58c4c04d6e5f1ba779eabfb5f7bfbd69cfc4e967edb808d679f777bc6702c7d39f23369a9d9bacfa530e26304231461b2eb05e2c39be9fcda6c19078c6a9d1b"},
+
+    {"name": "SP800-38A F.3.13 CFB128-AES128", "mode": "cfb",
+     "key": "2b7e151628aed2a6abf7158809cf4f3c", "iv": "000102030405060708090a0b0c0d0e0f",
+     "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+     "ciphertext": "3b3fd92eb72dad20333449f8e83cfb4ac8a64537a0b3a93fcde3cdad9f1ce58b26751f67a3cbb140b1808cf187a4f4dfc04b05357c5d1c0eeac4c66f9ff7f2e6"},
+
+    {"name": "SP800-38A F.4.1 OFB-AES128", "mode": "ofb",
+     "key": "2b7e151628aed2a6abf7158809cf4f3c", "iv": "000102030405060708090a0b0c0d0e0f",
+     "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+     "ciphertext": "3b3fd92eb72dad20333449f8e83cfb4a7789508d16918f03f53c52dac54ed8259740051e9c5fecf64344f7a82260edcc304c6528f659c77866a510d9c1d6ae5e"},
+
+    {"name": "SP800-38A F.5.1 CTR-AES128", "mode": "ctr",
+     "key": "2b7e151628aed2a6abf7158809cf4f3c", "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+     "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+     "ciphertext": "874d6191b620e3261bef6864990db6ce9806f66b7970fdff8617187bb9fffdff5ae4df3edbd5d35e5b4f09020db03eab1e031dda2fbe03d1792170a0f3009cee"},
+
+    {"name": "SP800-38A F.5.5 CTR-AES256", "mode": "ctr",
+     "key": "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4", "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+     "plaintext": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+     "ciphertext": "601ec313775789a5b7a7f504bbf3d228f443e3ca4d62b59aca84e990cacaf5c52b0930daa23de94ce87017ba2d84988ddfc9c58db67aada613c2dd08457941a6"},
+
+    {"name": "GCM Test Case 1 (AES-128, empty)", "mode": "gcm",
+     "key": "00000000000000000000000000000000", "iv": "000000000000000000000000",
+     "plaintext": "", "ciphertext": "", "tag": "58e2fccefa7e3061367f1d57a4e7455a"},
+
+    {"name": "GCM Test Case 2 (AES-128)", "mode": "gcm",
+     "key": "00000000000000000000000000000000", "iv": "000000000000000000000000",
+     "plaintext": "00000000000000000000000000000000",
+     "ciphertext": "0388dace60b6a392f328c2b971b2fe78", "tag": "ab6e47d42cec13bdf53a67b21257bddf"},
+
+    {"name": "GCM Test Case 3 (AES-128)", "mode": "gcm",
+     "key": "feffe9928665731c6d6a8f9467308308", "iv": "cafebabefacedbaddecaf888",
+     "plaintext": "d9313225f88406e5a55909c5aff5269a86a7a9531534f7da2e4c303d8a318a721c3c0c95956809532fcf0e2449a6b525b16aedf5aa0de657ba637b391aafd255",
+     "ciphertext": "42831ec2217774244b7221b784d0d49ce3aa212f2c02a4e035c17e2329aca12e21d514b25466931c7d8f6a5aac84aa051ba30b396a0aac973d58e091473f5985",
+     "tag": "4d5c2af327cd64a62cf35abd2ba6fab4"},
+
+    {"name": "GCM Test Case 4 (AES-128, with AAD)", "mode": "gcm",
+     "key": "feffe9928665731c6d6a8f9467308308", "iv": "cafebabefacedbaddecaf888",
+     "aad": "feedfacedeadbeeffeedfacedeadbeefabaddad2",
+     "plaintext": "d9313225f88406e5a55909c5aff5269a86a7a9531534f7da2e4c303d8a318a721c3c0c95956809532fcf0e2449a6b525b16aedf5aa0de657ba637b39",
+     "ciphertext": "42831ec2217774244b7221b784d0d49ce3aa212f2c02a4e035c17e2329aca12e21d514b25466931c7d8f6a5aac84aa051ba30b396a0aac973d58e091",
+     "tag": "5bc94fbc3221a5db94fae95ae7121a47"},
+
+    {"name": "GCM Test Case 13 (AES-256, empty)", "mode": "gcm",
+     "key": "0000000000000000000000000000000000000000000000000000000000000000", "iv": "000000000000000000000000",
+     "plaintext": "", "ciphertext": "", "tag": "530f8afbc74536b9a963b4f1c4cb738b"},
+
+    {"name": "GCM Test Case 14 (AES-256)", "mode": "gcm",
+     "key": "0000000000000000000000000000000000000000000000000000000000000000", "iv": "000000000000000000000000",
+     "plaintext": "00000000000000000000000000000000",
+     "ciphertext": "cea7403d4d606b6e074ec5d3baf39d18", "tag": "d0d1c8a799996bf0265b98b5d48ab919"},
+
+    {"name": "NEGATIVE: GCM Test Case 2 with corrupted tag must be rejected", "mode": "gcm", "expect": "auth_fail",
+     "key": "00000000000000000000000000000000", "iv": "000000000000000000000000",
+     "ciphertext": "0388dace60b6a392f328c2b971b2fe78", "tag": "ab6e47d42cec13bdf53a67b21257bdde"},
+
+    {"name": "CCM SP800-38C Example 1 (Tlen=4, Nlen=7)", "mode": "ccm",
+     "key": "404142434445464748494a4b4c4d4e4f", "nonce": "10111213141516",
+     "aad": "0001020304050607", "plaintext": "20212223",
+     "ciphertext": "7162015b", "tag": "4dac255d"},
+
+    {"name": "CCM SP800-38C Example 2 (Tlen=6, Nlen=8)", "mode": "ccm",
+     "key": "404142434445464748494a4b4c4d4e4f", "nonce": "1011121314151617",
+     "aad": "000102030405060708090a0b0c0d0e0f", "plaintext": "202122232425262728292a2b2c2d2e2f",
+     "ciphertext": "d2a1f0e051ea5f62081a7792073d593d", "tag": "1fc64fbfaccd"},
+
+    {"name": "CCM SP800-38C Example 3 (Tlen=8, Nlen=12)", "mode": "ccm",
+     "key": "404142434445464748494a4b4c4d4e4f", "nonce": "101112131415161718191a1b",
+     "aad": "000102030405060708090a0b0c0d0e0f10111213",
+     "plaintext": "202122232425262728292a2b2c2d2e2f3031323334353637",
+     "ciphertext": "e3b201a9f5b71a7a9b1ceaeccd97e70b6176aad9a4428aa5", "tag": "484392fbc1b09951"}
+  ]
+}

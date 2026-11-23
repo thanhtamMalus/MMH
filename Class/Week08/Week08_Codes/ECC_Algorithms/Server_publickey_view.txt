@@ -1,0 +1,5 @@
+1. Download
+openssl s_client -connect www.example.com:443 -servername www.example.com -showcerts <NUL 2>NUL | openssl x509 -outform PEM -out server.crt
+
+2. View public key
+openssl x509 -in server.crt -text -noout

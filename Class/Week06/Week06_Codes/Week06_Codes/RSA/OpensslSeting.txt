@@ -1,0 +1,2 @@
+D:\msys64\mingw64\bin\openssl.exe
+D:\msys64\usr\ssl\openssl.cnf

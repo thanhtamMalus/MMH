@@ -1,0 +1,36 @@
+# Build directories
+build/
+# OpenSSL tự build (RSATOOL_AUTO_BUILD_OPENSSL)
+.deps/
+cmake-build-*/
+
+# Generated key & envelope files (from demo/tests)
+*.pem
+*.der
+meta.json
+*.enc
+*.dec
+
+# IDE
+.vscode/
+.idea/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+CTestTestfile.cmake
+_deps/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc

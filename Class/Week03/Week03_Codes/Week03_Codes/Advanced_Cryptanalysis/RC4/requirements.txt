@@ -1,0 +1,3 @@
+# Core labs use only the Python standard library.
+# Optional plotting in rc4_bias_lab.py:
+matplotlib>=3.7

@@ -1,0 +1,73 @@
+type,label,sbox,mode,size,ratio
+table_over_computed,Linux GCC,,compute,1KiB,9.2842
+table_over_computed,Linux GCC,,compute,64KiB,28.8039
+table_over_computed,Linux GCC,,compute,1MiB,28.9084
+table_over_computed,Linux GCC,,compute,16MiB,28.7486
+table_over_computed,Linux GCC,,compute,100MiB,29.0864
+table_over_computed,Linux GCC,,compute,1GiB,29.0537
+table_over_computed,Windows MinGW-w64_GCC,,compute,1KiB,26.8553
+table_over_computed,Windows MinGW-w64_GCC,,compute,64KiB,26.1099
+table_over_computed,Windows MinGW-w64_GCC,,compute,1MiB,26.6880
+table_over_computed,Windows MinGW-w64_GCC,,compute,16MiB,26.7823
+table_over_computed,Windows MinGW-w64_GCC,,compute,100MiB,25.4860
+table_over_computed,Windows MinGW-w64_GCC,,compute,1GiB,28.5817
+table_over_computed,Linux GCC,,e2e,1KiB,1.0090
+table_over_computed,Linux GCC,,e2e,64KiB,17.1369
+table_over_computed,Linux GCC,,e2e,1MiB,27.3134
+table_over_computed,Linux GCC,,e2e,16MiB,27.9962
+table_over_computed,Linux GCC,,e2e,100MiB,28.6551
+table_over_computed,Linux GCC,,e2e,1GiB,27.7253
+table_over_computed,Windows MinGW-w64_GCC,,e2e,1KiB,1.1889
+table_over_computed,Windows MinGW-w64_GCC,,e2e,64KiB,11.0437
+table_over_computed,Windows MinGW-w64_GCC,,e2e,1MiB,23.4304
+table_over_computed,Windows MinGW-w64_GCC,,e2e,16MiB,26.2598
+table_over_computed,Windows MinGW-w64_GCC,,e2e,100MiB,24.9674
+table_over_computed,Windows MinGW-w64_GCC,,e2e,1GiB,26.7249
+e2e_over_compute_pct,Linux GCC,table,,1KiB,9.9977
+e2e_over_compute_pct,Linux GCC,table,,64KiB,59.2779
+e2e_over_compute_pct,Linux GCC,table,,1MiB,94.4249
+e2e_over_compute_pct,Linux GCC,table,,16MiB,97.2471
+e2e_over_compute_pct,Linux GCC,table,,100MiB,98.5259
+e2e_over_compute_pct,Linux GCC,table,,1GiB,98.2184
+e2e_over_compute_pct,Windows MinGW-w64_GCC,table,,1KiB,1.1009
+e2e_over_compute_pct,Windows MinGW-w64_GCC,table,,64KiB,40.7008
+e2e_over_compute_pct,Windows MinGW-w64_GCC,table,,1MiB,87.2755
+e2e_over_compute_pct,Windows MinGW-w64_GCC,table,,16MiB,100.0421
+e2e_over_compute_pct,Windows MinGW-w64_GCC,table,,100MiB,97.9276
+e2e_over_compute_pct,Windows MinGW-w64_GCC,table,,1GiB,95.2813
+e2e_over_compute_pct,Linux GCC,computed,,1KiB,91.9913
+e2e_over_compute_pct,Linux GCC,computed,,64KiB,99.6352
+e2e_over_compute_pct,Linux GCC,computed,,1MiB,99.9389
+e2e_over_compute_pct,Linux GCC,computed,,16MiB,99.8604
+e2e_over_compute_pct,Linux GCC,computed,,100MiB,100.0087
+e2e_over_compute_pct,Linux GCC,computed,,1GiB,102.9242
+e2e_over_compute_pct,Windows MinGW-w64_GCC,computed,,1KiB,24.8674
+e2e_over_compute_pct,Windows MinGW-w64_GCC,computed,,64KiB,96.2264
+e2e_over_compute_pct,Windows MinGW-w64_GCC,computed,,1MiB,99.4098
+e2e_over_compute_pct,Windows MinGW-w64_GCC,computed,,16MiB,102.0323
+e2e_over_compute_pct,Windows MinGW-w64_GCC,computed,,100MiB,99.9617
+e2e_over_compute_pct,Windows MinGW-w64_GCC,computed,,1GiB,101.9014
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,compute,1KiB,3.0316
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,compute,64KiB,0.8645
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,compute,1MiB,0.8868
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,compute,16MiB,0.8897
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,compute,100MiB,0.8839
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,compute,1GiB,0.9725
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,e2e,1KiB,0.3338
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,e2e,64KiB,0.5936
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,e2e,1MiB,0.8197
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,e2e,16MiB,0.9153
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,e2e,100MiB,0.8785
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,table,e2e,1GiB,0.9434
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,compute,1KiB,1.0481
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,compute,64KiB,0.9537
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,compute,1MiB,0.9606
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,compute,16MiB,0.9550
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,compute,100MiB,1.0088
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,compute,1GiB,0.9886
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,e2e,1KiB,0.2833
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,e2e,64KiB,0.9211
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,e2e,1MiB,0.9555
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,e2e,16MiB,0.9758
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,e2e,100MiB,1.0083
+vs_baseline:Linux GCC,Windows MinGW-w64_GCC,computed,e2e,1GiB,0.9787
